@@ -1,1 +1,123 @@
-/home/ari/.local/bin/welcome
+#!/bin/bash
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# This was just made for an old Debain VM because I got bored one day. 
+# It's super inefficient and has quite a few bugs. **Don't use it.** 
+# It may have a .disabled file name extension because my ~/.bashrc_addons
+# file will automatically execute any script if it's named 
+# ~/scripts/welcome and is set to be executable 
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Declare functions
+function normalizeLength() # Makes it easy to keep the length of lines consistent
+{
+INPUT="$1"
+TEXT="$2"
+TEXTPREPEND="$3"
+TEXTAPPEND="$4"
+MODIFIER="$5"
+REPEATSTART="$6"
+INPUTLEN="${#INPUT}"
+TEXTCUT=$((MODIFIER-INPUTLEN))
+TEXTEDIT="$TEXT"
+REPEAT=$REPEATSTART
+while [ $REPEAT -le $TEXTCUT ]
+do
+        TEXTEDIT="$TEXTEDIT "
+        ((REPEAT++))
+done
+echo "$TEXTPREPEND$TEXTEDIT$TEXTAPPEND"
+}
+
+function boxTop()
+{
+echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+}
+
+function boxMiddle()
+{
+echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫"
+}
+
+function doubleBoxMiddle()
+{
+echo "┣══════════════════════════════════════════════════════════════┫"
+}
+
+function boxBottom()
+{
+echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+}
+
+function lightDoubleDashBoxMiddle()
+{
+echo "┠╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┨"
+}
+
+function lightTripleDashBoxMiddle()
+{
+echo "┠┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┨"
+}
+
+function lightQuadDashBoxMiddle()
+{
+echo "┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┨"
+}
+
+currentDate=`date +"%a, %b %d %Y - %T"`
+
+FULLOSNAME=$(grep "PRETTY_NAME=" /etc/os-release) # Get the line including the name of the operating system
+FULLOSNAME=$(echo $FULLOSNAME | awk -F'"' '{ print $2, $3, $4 }') # Remove PRETTY_NAME= from the storead operating system name
+KERNELNAMETEXT=$(uname -s) # Get the name of the kernel in use
+KERNELVERSIONTEXT=$(uname -r) # Get the version of the kernel in use
+KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT" # Concatenate the name and version of the kernel with a space in between
+UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }') # Get uptime and remove the extra stuff
+GPUDEV=$(lspci | grep "VGA compatible controller: ") # Get GPU name line
+#GPUDEV=$(echo "$GPUDEV" | awk '{ print $5, $6, $7, $8 }') # Isolate the GPU name
+GPUDEV=${GPUDEV:35:50}
+#lspci | grep "VGA compatible controller: " | awk '{ for (i=$5; i<=NF; i++) print $i }'
+CPUUSAGE=$(top -bn1 | grep "%Cpu(s):  ") # Get the CPU usage
+CPUUSAGE=$(echo $CPUUSAGE | awk '{ print $2 }') # Isolate the total percentage
+MEMORYTOTAL=$(free --mega | grep "Mem:") # Get memory data
+MEMORYTOTAL=$(echo "$MEMORYTOTAL" | awk '{ print $2 }') # Get total memory
+MEMORYTOTAL=$(echo "$MEMORYTOTAL""Mi")
+MEMORYUSED=$(free --mega | grep "Mem:") # Get memory data
+MEMORYUSED=$(echo "$MEMORYUSED" | awk '{ print $3 }') # Get used memory
+MEMORYUSED=$(echo "$MEMORYUSED""Mi")
+MEMORYUSAGERATIO="$MEMORYUSED/$MEMORYTOTAL"
+
+# Show Data
+#clear
+
+#kitty +kitten icat $HOME/Images/screensaver-resources/archlinux-logo-dark-90dpi.ebdee92a15b3.png 
+
+boxTop
+if [ -e $HOME/scripts/resources/welcome/BannerText ]; then
+cat $HOME/scripts/resources/welcome/BannerText
+boxMiddle
+fi
+
+#Show user info
+normalizeLength "$USER $UID" "You are logged in as $USER with the UID $UID" "┃ " "┃" 26 0
+boxMiddle
+
+#Show device info
+echo "┃ Operating System Info:                                       ┃"
+lightDoubleDashBoxMiddle
+normalizeLength "FULLOSNAME" "Operating System: $FULLOSNAME" "┃ " "┃" 40 0 # TODO: Fix normalizeLength for this entry
+normalizeLength "$KERNELNAMEVERTEXT" "Kernel: $KERNELNAMEVERTEXT" "┃ " "┃" 52 0
+normalizeLength "$UPTIME" "System Uptime: $UPTIME" "┃ " "┃" 45 0
+normalizeLength "$HOSTNAME" "Host: $HOSTNAME" "┃ " "┃" 54 0
+boxMiddle
+echo "┃ Hardware:                                                    ┃"
+lightDoubleDashBoxMiddle
+normalizeLength "$GPUDEV" "GPU: $GPUDEV" "┃ " "┃" 55 0
+boxMiddle
+echo "┃ System Resources:                                            ┃"
+lightDoubleDashBoxMiddle
+normalizeLength "$CPUUSAGE" "CPU Usage: $CPUUSAGE%" "┃ " "┃" 48 0
+normalizeLength "$MEMORYUSAGERATIO" "Memory Used: $MEMORYUSAGERATIO" "┃ " "┃" 47 0
+
+boxBottom

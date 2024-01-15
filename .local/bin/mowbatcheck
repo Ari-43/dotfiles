@@ -1,1 +1,10 @@
-/home/ari/.local/bin/mowbatcheck
+#!/bin/bash
+# This will keep sending notifications forever. Looking into ways to make this more reasonable. 
+while :
+do
+	batlevel=$(mow report battery)
+	if [ "$batlevel" == "100% (fully charged)" ]; then
+		notify-send 'Model-O Wireless fully charged' -w
+	fi
+	sleep 65
+done
