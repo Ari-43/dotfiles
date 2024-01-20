@@ -1,0 +1,38 @@
+# Audio
+## Increase volume
+"pactl set-sink-volume @DEFAULT_SINK@ +1%"
+ XF86AudioRaiseVolume
+## Decrease volume
+"pactl set-sink-volume @DEFAULT_SINK@ -1%"
+ XF86AudioLowerVolume
+## Mute volume
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+ XF86AudioMute
+## Mute microphone
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+ XF86AudioMicMute
+
+# Backlight
+## Increase Brightness
+"xbacklight -inc 5"
+ XF86MonBrightnessUp
+## Decrease Brightness
+"xbacklight -dec 5"
+ XF86MonBrightnessDown
+"xbacklight -dec 100"
+ Shift + XF86MonBrightnessDown
+"xbacklight -inc 100"
+ Shift + XF86MonBrightnessUp
+
+# Keyboard Backlight
+## Increase Brightness
+"brightnessctl --device='smc::kbd_backlight' set +16"
+ XF86KbdBrightnessUp
+## Decrease Brightness
+"brightnessctl --device='smc::kbd_backlight' set 16-"
+ XF86KbdBrightnessDown
+"brightnessctl --device='smc::kbd_backlight' set 0"
+ Shift + XF86KbdBrightnessDown
+"brightnessctl --device='smc::kbd_backlight' set 255"
+ Shift + XF86KbdBrightnessUp
+
