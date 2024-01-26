@@ -71,8 +71,7 @@ bindcode $mod+65 exec --no-startup-id "rofi -modi drun,run -show drun"
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-#bindcode $mod+mod1+46 exec i3lock -c 003133
-bindcode $mod+mod1+46 exec --no-startup-id xflock4
+bindcode $mod+mod1+46 exec i3lock -c 003133
 bindcode $mod+60 exec gucharmap
 bindcode $mod+Shift+39 exec xfce4-screenshooter
 
