@@ -8,3 +8,6 @@ The files within this repository are meant to be placed inside the user's home f
 
 ## Screenshots
 ![Desktop example](/Pictures/screenshots/rice1.png)
+
+## My keyboard is weird!
+I'm a user of the Dvorak keyboard layout, so keybinds are optimized for that. Wherever possible I have used key codes instead of symbols (letters) for binds, but in some cases this is not possible, such as with neovim. Most cases of this are small and can be edited out easily. 
