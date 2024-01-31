@@ -25,7 +25,8 @@ alias :q='exit'
 alias rsh='exec $0' # This works for what I usually need it to do, which is reloading aliases or the prompt script. Stands for "restart shell".
 alias sudo='sudo ' # Allows using aliases with sudo
 alias icat='kitty +kitten icat'
-alias ls='ls -h --color=auto'
+alias ls='exa -h'
+#alias ls='ls -h --color=auto'
 alias l='ls'
 alias ll='ls -l'
 alias lls='ls -l'

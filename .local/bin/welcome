@@ -3,10 +3,7 @@
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # This was just made for an old Debain VM because I got bored one day. 
-# It's super inefficient and has quite a few bugs. **Don't use it.** 
-# It may have a .disabled file name extension because my ~/.bashrc_addons
-# file will automatically execute any script if it's named 
-# ~/scripts/welcome and is set to be executable 
+# It's super inefficient and has quite a few bugs, so be warned. 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -68,23 +65,22 @@ echo "┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈�
 
 currentDate=`date +"%a, %b %d %Y - %T"`
 
-FULLOSNAME=$(grep "PRETTY_NAME=" /etc/os-release) # Get the line including the name of the operating system
-FULLOSNAME=$(echo $FULLOSNAME | awk -F'"' '{ print $2, $3, $4 }') # Remove PRETTY_NAME= from the storead operating system name
-KERNELNAMETEXT=$(uname -s) # Get the name of the kernel in use
-KERNELVERSIONTEXT=$(uname -r) # Get the version of the kernel in use
-KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT" # Concatenate the name and version of the kernel with a space in between
-UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }') # Get uptime and remove the extra stuff
-GPUDEV=$(lspci | grep "VGA compatible controller: ") # Get GPU name line
-#GPUDEV=$(echo "$GPUDEV" | awk '{ print $5, $6, $7, $8 }') # Isolate the GPU name
+FULLOSNAME=$(grep "PRETTY_NAME=" /etc/os-release)
+FULLOSNAME=$(echo $FULLOSNAME | awk -F'"' '{ print $2, $3, $4 }')
+KERNELNAMETEXT=$(uname -s)
+KERNELVERSIONTEXT=$(uname -r)
+KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT"
+UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }')
+GPUDEV=$(lspci | grep -i "VGA compatible controller: ")
 GPUDEV=${GPUDEV:35:50}
 #lspci | grep "VGA compatible controller: " | awk '{ for (i=$5; i<=NF; i++) print $i }'
-CPUUSAGE=$(top -bn1 | grep "%Cpu(s):  ") # Get the CPU usage
-CPUUSAGE=$(echo $CPUUSAGE | awk '{ print $2 }') # Isolate the total percentage
-MEMORYTOTAL=$(free --mega | grep "Mem:") # Get memory data
-MEMORYTOTAL=$(echo "$MEMORYTOTAL" | awk '{ print $2 }') # Get total memory
+CPUUSAGE=$(top -bn1 | grep "%Cpu(s):  ")
+CPUUSAGE=$(echo $CPUUSAGE | awk '{ print $2 }')
+MEMORYTOTAL=$(free --mega | grep "Mem:")
+MEMORYTOTAL=$(echo "$MEMORYTOTAL" | awk '{ print $2 }')
 MEMORYTOTAL=$(echo "$MEMORYTOTAL""Mi")
-MEMORYUSED=$(free --mega | grep "Mem:") # Get memory data
-MEMORYUSED=$(echo "$MEMORYUSED" | awk '{ print $3 }') # Get used memory
+MEMORYUSED=$(free --mega | grep "Mem:")
+MEMORYUSED=$(echo "$MEMORYUSED" | awk '{ print $3 }')
 MEMORYUSED=$(echo "$MEMORYUSED""Mi")
 MEMORYUSAGERATIO="$MEMORYUSED/$MEMORYTOTAL"
 
@@ -94,8 +90,8 @@ MEMORYUSAGERATIO="$MEMORYUSED/$MEMORYTOTAL"
 #kitty +kitten icat $HOME/Images/screensaver-resources/archlinux-logo-dark-90dpi.ebdee92a15b3.png 
 
 boxTop
-if [ -e $HOME/scripts/resources/welcome/BannerText ]; then
-cat $HOME/scripts/resources/welcome/BannerText
+if [ -e $HOME/.local/bin/resources/welcome/BannerText ]; then
+cat $HOME/.local/bin/resources/welcome/BannerText
 boxMiddle
 fi
 

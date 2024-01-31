@@ -10,8 +10,10 @@ setopt autocd
 unsetopt beep
 bindkey -e
 zstyle :compinstall filename '/home/ari/.zshrc'
-autoload -Uz compinit
+autoload -Uz compinit select-word-style
 compinit
+select-word-style bash
+zstyle ':completion::complete:*' gain-privileges 1
 
 # https://wiki.archlinux.org/title/zsh#Colors
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
@@ -23,7 +25,6 @@ prompt_custom_setup() {
 }
 prompt_themes+=( custom )
 prompt custom
-
 
 source $HOME/.bash_aliases # ZSH seems to handle bash aliases fine
 $HOME/.local/bin/welcome
