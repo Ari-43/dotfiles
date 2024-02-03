@@ -73,6 +73,7 @@ KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT"
 UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }')
 GPUDEV=$(lspci | grep -i "VGA compatible controller: ")
 GPUDEV=${GPUDEV:35:50}
+cpuname=$(grep -i model\ name /proc/cpuinfo | awk ' NR==1{ print }' | cut -d' ' -f 4- )
 #lspci | grep "VGA compatible controller: " | awk '{ for (i=$5; i<=NF; i++) print $i }'
 CPUUSAGE=$(top -bn1 | grep "%Cpu(s):  ")
 CPUUSAGE=$(echo $CPUUSAGE | awk '{ print $2 }')
@@ -110,6 +111,7 @@ boxMiddle
 echo "┃ Hardware:                                                    ┃"
 lightDoubleDashBoxMiddle
 normalizeLength "$GPUDEV" "GPU: $GPUDEV" "┃ " "┃" 55 0
+normalizeLength "$cpuname" "CPU: $cpuname" "┃ " "┃" 55 0
 boxMiddle
 echo "┃ System Resources:                                            ┃"
 lightDoubleDashBoxMiddle
