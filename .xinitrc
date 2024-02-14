@@ -15,5 +15,7 @@ setxkbmap -layout us,us -variant 'dvorak, '
 $HOME/.local/bin/mowbatcheck &
 # GTK Fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+GTK_CSD=0
 xrdb ~/.Xresources
+
 exec /bin/i3

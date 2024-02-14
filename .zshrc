@@ -6,7 +6,7 @@ fi
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=10000
-setopt autocd
+setopt autocd correct
 unsetopt beep
 bindkey -e
 zstyle :compinstall filename '/home/ari/.zshrc'
@@ -14,6 +14,10 @@ autoload -Uz compinit select-word-style
 compinit
 select-word-style bash
 zstyle ':completion::complete:*' gain-privileges 1
+
+ENABLE_CORRECTION="true"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # https://wiki.archlinux.org/title/zsh#Colors
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
