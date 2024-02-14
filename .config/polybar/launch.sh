@@ -5,11 +5,20 @@
 polybar-msg cmd quit
 # Otherwise you can use the nuclear option:
 # killall -q polybar
+HOST=$(hostname)
+echo Computer is $HOST
+if [[ $HOST == *"lap"* ]]; then
+	echo launching laptop
+	polybar laptop 2>&1 | tee -a /tmp/polybar1.log & disown
+fi
 
-polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar left 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar right 2>&1 | tee -a /tmp/polybar1.log & disown
-polybar last 2>&1 | tee -a /tmp/polybar1.log & disown
+if [[ $HOST == *"desk"* ]]; then
+	echo launching desktop
+	polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
+	polybar left 2>&1 | tee -a /tmp/polybar1.log & disown
+	polybar right 2>&1 | tee -a /tmp/polybar1.log & disown
+	polybar last 2>&1 | tee -a /tmp/polybar1.log & disown
+fi
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 
 # Launch bar on all screens. See https://github.com/polybar/polybar/issues/763 for details
