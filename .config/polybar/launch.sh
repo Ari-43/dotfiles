@@ -6,14 +6,14 @@ polybar-msg cmd quit
 # Otherwise you can use the nuclear option:
 # killall -q polybar
 HOST=$(hostname)
-echo Computer is $HOST
+echo Device is $HOST
 if [[ $HOST == *"lap"* ]]; then
-	echo launching laptop
+	echo launching laptop polybar
 	polybar laptop 2>&1 | tee -a /tmp/polybar1.log & disown
 fi
 
 if [[ $HOST == *"desk"* ]]; then
-	echo launching desktop
+	echo launching desktop polybars
 	polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
 	polybar left 2>&1 | tee -a /tmp/polybar1.log & disown
 	polybar right 2>&1 | tee -a /tmp/polybar1.log & disown

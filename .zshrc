@@ -3,6 +3,8 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
   exec startx
 fi
 
+export PATH=$PATH:"$HOME/.local/bin"
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=10000
@@ -31,4 +33,4 @@ prompt_themes+=( custom )
 prompt custom
 
 source $HOME/.bash_aliases # ZSH seems to handle bash aliases fine
-$HOME/.local/bin/welcome
+#$HOME/.local/bin/welcome

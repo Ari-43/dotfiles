@@ -3,6 +3,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $locker i3lock -c 003333
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -24,7 +25,9 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xfce4-power-manager --daemon
+#exec --no-startup-id xfce4-screensaver
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -58,7 +61,7 @@ bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
 bindcode $mod+65 exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Lock screen
-bindcode $mod+mod1+46 exec i3lock -c 003133
+bindcode $mod+mod1+46 exec --no-startup-id $locker
 # ======================================================================================
 
 # ==== Window Managment ================================================================
@@ -177,6 +180,12 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+Control+Right workspace next
 bindsym $mod+Control+Left workspace prev
+bindcode $mod+Control+44 workspace prev
+bindcode $mod+Control+47 workspace next
+bindcode $mod+mod1+44 workspace prev
+bindcode $mod+mod1+47 workspace next
+bindcode Control+mod1+44 workspace prev
+bindcode Control+mod1+47 workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -261,6 +270,7 @@ exec_always --no-startup-id libinput-gestures-setup stop start
 bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
 
 # Custom Autostart/run
-#exec_always --no-startup-id $HOME/.local/bin/autostart
+#exec_always $HOME/.local/bin/wmstartup
+exec_always --no-startup-id xfce-screensaver
 
 exec --no-startup-id i3-msg workspace 1
