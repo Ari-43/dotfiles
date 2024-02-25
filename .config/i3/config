@@ -229,7 +229,7 @@ client.background       #ffffff
 #default_floating_border normal 1
 #default_border normal 1
 for_window [class="^.*"] border pixel 0
-default_floating_border normal 0
+default_floating_border normal 5
 default_border none
 # Remove borders when only one window is on screen
 hide_edge_borders smart
@@ -265,6 +265,11 @@ exec_always --no-startup-id $HOME/.fehbg
 
 # Use Libinput Gestures
 exec_always --no-startup-id libinput-gestures-setup stop start
+
+# Conky
+exec --no-startup-id conky
+
+# Set appropriate monitor config
 
 # Per-app keymap
 bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
