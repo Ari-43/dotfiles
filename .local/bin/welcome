@@ -65,8 +65,8 @@ echo "┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈�
 
 currentDate=`date +"%a, %b %d %Y - %T"`
 
-FULLOSNAME=$(grep "PRETTY_NAME=" /etc/os-release)
-FULLOSNAME=$(echo $FULLOSNAME | awk -F'"' '{ print $2, $3, $4 }')
+. /etc/os-release
+FULLOSNAME=$PRETTY_NAME
 KERNELNAMETEXT=$(uname -s)
 KERNELVERSIONTEXT=$(uname -r)
 KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT"
@@ -100,7 +100,7 @@ boxMiddle
 #Show device info
 echo "┃ Operating System Info:                                       ┃"
 lightDoubleDashBoxMiddle
-normalizeLength "FULLOSNAME" "Operating System: $FULLOSNAME" "┃ " "┃" 40 0 # TODO: Fix normalizeLength for this entry
+normalizeLength "FULLOSNAME" "Operating System: $FULLOSNAME" "┃ " "┃" 42 0 # TODO: Fix normalizeLength for this entry
 normalizeLength "$KERNELNAMEVERTEXT" "Kernel: $KERNELNAMEVERTEXT" "┃ " "┃" 52 0
 normalizeLength "$UPTIME" "System Uptime: $UPTIME" "┃ " "┃" 45 0
 normalizeLength "$HOSTNAME" "Host: $HOSTNAME" "┃ " "┃" 54 0
