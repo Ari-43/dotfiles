@@ -1,5 +1,8 @@
 #!/bin/bash
+# Themes and usage
+export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
+export GTK_CSD=0
 # Fix CLI applications opened on the desktop opening in xterm
 export TERMINAL=kitty
 # Java theming and font fixes

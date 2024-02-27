@@ -14,6 +14,7 @@ alias less='nvimpager'
 alias untar='tar -fvxz'              
 alias mkdir='mkdir -pv' # Make new directories recursively. For example, running "mkdir ./folder1/folder2/" makes ./folder1/ with folder2/ inside it without complaining. Also makes mkdir list out the directories that were made.
 alias mkd='mkdir'
+alias nvc='nvimpager -c'
 
 # Shell
 alias cl='clear'
