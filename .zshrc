@@ -5,9 +5,14 @@ fi
 
 export PATH=$PATH:"$HOME/.local/bin"
 
+export EDITOR='/usr/bin/nvim'
+export VISUAL=$EDITOR 
+export PAGER='nvimpager'
+export MANPAGER='nvim +Man!'
+
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=10000
+HISTSIZE=-1
+SAVEHIST=-1
 setopt autocd correct
 unsetopt beep
 bindkey -e
@@ -18,8 +23,8 @@ select-word-style bash
 zstyle ':completion::complete:*' gain-privileges 1
 
 ENABLE_CORRECTION="true"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
+if [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh; fi
 
 # https://wiki.archlinux.org/title/zsh#Colors
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor

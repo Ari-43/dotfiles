@@ -2,13 +2,14 @@
 # ========================================================================
 
 # Editors
+if [ -f /usr/bin/nvim ]; then alias vim='nvim'; fi
 alias nv='nvim'
 alias v='vim'
 alias nano='nano -l' # Always use line numbers in Nano
 
 # Pagers
 alias more='less' # A classic
-alias less='nvimpager'
+alias nvp='nvimpager'
 
 # Files
 alias untar='tar -fvxz'              
@@ -37,10 +38,9 @@ alias lla='ls -la'
 # System
 alias sdn='shutdown now'
 alias du='du -h'
-alias nf='neofetch' # Most important part of any Arch Linux install
-alias pf='pfetch'
-alias ramfetch='curl -s https://codeberg.org/o69mar/ramfetch/raw/branch/main/ramfetch | sh' # I trust this repository
-alias cnf='clear && neofetch && read -p ""'
+alias kali='distrobox-enter kali-rolling-latest'
+alias aoeu='setxkbmap us'
+alias asdf='setxkbmap us dvorak'
 
 # Network and Wireless Communication
 alias ping4='ping -c 4'
@@ -52,3 +52,14 @@ alias bluez='bluetoothctl'
 # Configuration
 alias muc='muc -f $HOME/.bash_history'
 alias tty-clock='tty-clock -cs -C 6'
+
+# Fun
+alias nf='neofetch' # Most important part of any Arch Linux install
+alias pf='pfetch'
+alias cnf='clear && neofetch'
+alias cbonsai='cbonsai -il'
+alias parrot='curl parrot.live'
+alias rick='curl ascii.live/rick'
+asciilive () {
+	curl ascii.live/$1
+}

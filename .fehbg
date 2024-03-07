@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill --no-xinerama '/home/ari/Pictures/wallpapers/nonfree/wallhaven-rrpogm-nostar.png' 
+feh --no-fehbg --bg-scale '/home/ari/Pictures/wallpapers/T480 Padgriffin Remastered.png' 

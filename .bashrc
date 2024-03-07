@@ -17,8 +17,8 @@ esac
 
 export EDITOR='/usr/bin/nvim'
 export VISUAL=$EDITOR 
-export PAGER='/bin/nvimpager -p'
-export MANPAGER=$PAGER
+export PAGER='nvimpager'
+export MANPAGER='nvim +Man!'
 
 export PATH=$PATH:"$HOME/.local/bin"
 
@@ -82,3 +82,5 @@ if [ -x $HOME/.local/bin/welcome ]
 then
     $HOME/.local/bin/welcome
 fi
+
+if [[ $(hostname) == *kali* ]]; then; unset LD_PRELOAD; fi

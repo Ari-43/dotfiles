@@ -11,11 +11,14 @@ $HOME/.screenlayout/$(cat /etc/hostname).sh
 xfce4-clipman &
 xbindkeys
 xbacklight
+#clight-gui --tray &
 picom -b
 /usr/lib/kdeconnectd &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
-/usr/lib/xfce-polkit/xfce-polkit &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/xfce-polkit/xfce-polkit &
 xfce4-power-manager &
+nm-applet &
 blueman-applet &
 streamdeck -n &
 setxkbmap -layout us,us -variant 'dvorak, '

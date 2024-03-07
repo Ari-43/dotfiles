@@ -52,16 +52,18 @@ bindcode $mod+54 exec firefox
 
 # Screenshot
 bindcode $mod+Shift+39 exec xfce4-screenshooter
+bindcode 107 exec xfce4-screenshooter
 
 # Character & Emoje selector
-bindcode $mod+60 exec gucharmap
+# TODO Find a better emoji selector than gucharmap (KDE?)
 
 # Rofi
 bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
-bindcode $mod+65 exec --no-startup-id "rofi -modi drun,run -show drun"
+bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Lock screen
 bindcode $mod+mod1+46 exec --no-startup-id $locker
+bindcode Control+mod1+46 exec --no-startup-id $locker
 # ======================================================================================
 
 # ==== Window Managment ================================================================
@@ -126,6 +128,7 @@ bindcode $mod+56 focus mode_toggle
 #bindsym $mod+d focus child
 
 # resize window (you can also use the mouse for that)
+bindcode $mod+27 mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -149,8 +152,6 @@ mode "resize" {
         bindsym Escape mode "default"
         bindcode $mod+27 mode "default"
 }
-
-bindcode $mod+27 mode "resize"
 # ======================================================================================
 
 # ==== Workspaces ======================================================================
@@ -206,6 +207,9 @@ workspace 3 output DP-2
 workspace 8 output DP-2
 workspace 9 output DP-2
 workspace 10 output USB-C-0
+
+# Application Workspaces
+assign [class="discord"] $ws8
 
 # reload the configuration file
 bindcode $mod+Shift+54 reload
