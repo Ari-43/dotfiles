@@ -2,6 +2,10 @@
 
 " General Interface {{{
 " Colors: https://www.ditig.com/256-colors-cheat-sheet
+hi 	Normal 		guibg=NONE
+hi 	NonText		guibg=NONE
+hi 	Normal 		ctermbg=NONE
+hi 	Normal 		ctermbg=NONE
 hi 	CursorLine	term=NONE	cterm=NONE	ctermbg=234	ctermfg=NONE
 hi 	LineNr		term=NONE	cterm=NONE	ctermbg=236
 hi 	CursorLineNr	term=bold	cterm=bold	ctermbg=235	ctermfg=012
@@ -10,6 +14,7 @@ set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
+colorscheme vim
 " }}}
 
 " Status Line {{{
@@ -20,6 +25,7 @@ set statusline+=\
 set statusline+=%F
 set statusline+=\ 
 set statusline+=%{StatuslineMode()}
+set statusline+=\ 
 set statusline+=%=
 set statusline+=%{strftime(\"%H:%M:%S\")}
 set statusline+=%=

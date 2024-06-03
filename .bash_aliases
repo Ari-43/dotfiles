@@ -38,7 +38,7 @@ alias lla='ls -la'
 # System
 alias sdn='shutdown now'
 alias du='du -h'
-alias kali='distrobox-enter kali-rolling-latest'
+alias kali='distrobox-enter kali'
 alias aoeu='setxkbmap us'
 alias asdf='setxkbmap us dvorak'
 

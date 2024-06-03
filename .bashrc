@@ -24,6 +24,7 @@ export PATH=$PATH:"$HOME/.local/bin"
 
 HISTSIZE=-1
 HISTFILESIZE=-1
+HISTCONTROL='ignoreboth'
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window

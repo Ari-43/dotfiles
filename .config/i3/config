@@ -62,8 +62,8 @@ bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
 bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Lock screen
-bindcode $mod+mod1+46 exec --no-startup-id $locker
-bindcode Control+mod1+46 exec --no-startup-id $locker
+bindsym $mod+mod1+l exec --no-startup-id $locker
+bindsym Control+mod1+l exec --no-startup-id $locker
 # ======================================================================================
 
 # ==== Window Managment ================================================================
@@ -101,8 +101,8 @@ bindcode $mod+42 split h
 bindcode $mod+55 split v
 
 # enter fullscreen mode for the focused container
-bindcode $mod+41 fullscreen toggle
-bindcode $mod+Shift+41 fullscreen toggle global
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindcode $mod+39 layout stacking
@@ -116,10 +116,10 @@ bindcode $mod+33 move workspace to output right
 bindcode $mod+32 move workspace to output left
 
 # toggle tiling / floating
-bindcode $mod+Shift+56 floating toggle
+bindsym $mod+Shift+b floating toggle
 
 # change focus between tiling / floating windows
-bindcode $mod+56 focus mode_toggle
+bindsym $mod+b focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+a focus parent
@@ -179,14 +179,18 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-bindsym $mod+Control+Right workspace next
-bindsym $mod+Control+Left workspace prev
 bindcode $mod+Control+44 workspace prev
 bindcode $mod+Control+47 workspace next
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
 bindcode $mod+mod1+44 workspace prev
 bindcode $mod+mod1+47 workspace next
+bindsym $mod+mod1+Left workspace prev
+bindsym $mod+mod1+Right workspace next
 bindcode Control+mod1+44 workspace prev
 bindcode Control+mod1+47 workspace next
+bindsym Control+mod1+Left workspace prev
+bindsym Control+mod1+Right workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -220,11 +224,11 @@ bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit
 
 # Colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #285577 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.focused          #1da5d4 #1d1f21 #d8d4cf #2e9ef4   #285577
+client.focused_inactive #333333 #222222 #d8d4cf #484e50   #5f676a
+client.unfocused        #333333 #222222 #777777 #292d2e   #222222
+client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
+client.placeholder      #000000 #0c0c0c #d8d4cf #000000   #0c0c0c
 
 client.background       #ffffff
 
@@ -259,7 +263,7 @@ exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-sche
 
 #	Uncomment this if not also using my polybar config. Polybar adds it's own 4px gap by default, so this subtracts it
 #gaps top -6px
-exec_always --no-startup-id picom
+exec_always --no-startup-id picom -b
 
 # Use PolyBar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -273,6 +277,8 @@ exec_always --no-startup-id libinput-gestures-setup stop start
 # Conky
 exec --no-startup-id conky
 
+exec --no-startup-id xborders -c $HOME/.config/xborder/config.json
+
 # Set appropriate monitor config
 
 # Per-app keymap
@@ -282,4 +288,5 @@ bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
 #exec_always $HOME/.local/bin/wmstartup
 exec_always --no-startup-id xfce-screensaver
 
+# Sometimes i3 starts on the wrong workspace for some reason
 exec --no-startup-id i3-msg workspace 1
