@@ -24,4 +24,5 @@ setxkbmap -layout us,us -variant 'dvorak, '
 $HOME/.local/bin/mowbatcheck &
 # GTK Fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+export GTK_THEME=Graphite-blue-Dark-nord
 xrdb ~/.Xresources
