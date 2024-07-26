@@ -54,8 +54,10 @@ alias muc='muc -f $HOME/.bash_history'
 alias tty-clock='tty-clock -cs -C 6'
 
 # Fun
+alias neofetch='neowofetch'
 alias nf='neofetch' # Most important part of any Arch Linux install
 alias pf='pfetch'
+alias hf='hyfetch'
 alias cnf='clear && neofetch'
 alias cbonsai='cbonsai -il'
 alias parrot='curl parrot.live'
@@ -63,3 +65,6 @@ alias rick='curl ascii.live/rick'
 asciilive () {
 	curl ascii.live/$1
 }
+
+# Misc Tools
+alias yt='yt-dlp' 
