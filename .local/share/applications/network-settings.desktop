@@ -1,0 +1,6 @@
+[Desktop Entry]
+Icon=preferences-system-network
+Exec=cinnamon-settings network
+Type=Application
+Categories=Settings;
+Name=Network Settings

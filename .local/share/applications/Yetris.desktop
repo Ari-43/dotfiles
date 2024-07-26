@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Yetris
+Comment=Tetris Clone
+Exec=yetris
+Icon=kblocks
+Terminal=true
+Type=Application
+Categories=Game;
+Path=
+StartupNotify=false

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XKill
+GenericName=Force Quit
+Exec=/usr/bin/xkill
+Icon=window-close
+Terminal=
+Categories=Utilities;
+Comment=Graphically Kill Applications
