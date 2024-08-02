@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=XColor
+GenericName=Color Picker
+Exec=/home/ari/.local/bin/xcolorpickerwrapper
+Icon=colorpicker
+Terminal=false
+Categories=Graphics;
+Comment=Simple Color Picker
+Path=
+StartupNotify=false

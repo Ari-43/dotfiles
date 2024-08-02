@@ -1,0 +1,4 @@
+#!/bin/bash
+pickedcolor="$(xcolor)" 
+echo "$pickedcolor" | xclip -selection clipboard -rmlastnl
+notify-send -i applications-graphics -a xcolor "Color ($pickedcolor) copied to clipboard."
