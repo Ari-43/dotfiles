@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Template Desktop File
+GenericName=Nothing
+TryExec=/usr/bin/echo
+Icon=help-browser
+Terminal=false
+Categories=Extra
+OnlyShowIn=Nowhere-
+Comment=No function
