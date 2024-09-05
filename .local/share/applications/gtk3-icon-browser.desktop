@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GTK Icon Viewer
+GenericName=System Icons
+Exec=gtk3-icon-browser
+Icon=image-x-generic
+Terminal=false
+Categories=System,Development
+Comment=View icons in the current GTK theme

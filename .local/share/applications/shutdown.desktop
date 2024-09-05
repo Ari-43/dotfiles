@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Shutdown System
+Exec=systemctl shutdown
+Icon=system-shutdown
+Terminal=false
+Categories=System

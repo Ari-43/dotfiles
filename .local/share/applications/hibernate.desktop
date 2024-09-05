@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Hibernate System
+Exec=systemctl hibernate
+Icon=system-hibernate
+Terminal=false
+Categories=System

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Reboot System
+Exec=systemctl reboot
+Icon=system-reboot
+Terminal=false
+Categories=System
