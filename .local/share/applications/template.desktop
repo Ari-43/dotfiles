@@ -7,5 +7,5 @@ TryExec=/usr/bin/echo
 Icon=help-browser
 Terminal=false
 Categories=Extra
-OnlyShowIn=Nowhere-
+Hidden=true
 Comment=No function
