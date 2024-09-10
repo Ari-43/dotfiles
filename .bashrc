@@ -83,5 +83,3 @@ if [ -x $HOME/.local/bin/welcome ]
 then
     $HOME/.local/bin/welcome
 fi
-
-if [[ $(hostname) == *kali* ]]; then; unset LD_PRELOAD; fi
