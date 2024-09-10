@@ -2,7 +2,7 @@
 Type=Application
 Version=1.0
 Name=Shutdown System
-Exec=systemctl shutdown
+Exec=systemctl poweroff
 Icon=system-shutdown
 Terminal=false
 Categories=System
