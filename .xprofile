@@ -19,6 +19,7 @@ picom -b
 xfce4-power-manager &
 nm-applet &
 blueman-applet &
+guxplay &
 streamdeck -n &
 setxkbmap -layout us,us -variant 'dvorak, '
 $HOME/.local/bin/mowbatcheck &
