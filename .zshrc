@@ -37,7 +37,7 @@ prompt_custom_setup() {
 prompt_themes+=( custom )
 prompt custom
 
-source $HOME/.bash_aliases # ZSH seems to handle bash aliases fine
+source $HOME/.shell_aliases # Shared with bash
 if [ -x $HOME/.local/bin/welcome ]; then $HOME/.local/bin/welcome; fi
 
 if [ -e /home/ari/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ari/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

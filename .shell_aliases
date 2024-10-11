@@ -34,6 +34,7 @@ alias ll='ls -l'
 alias lls='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
+alias chx='chmod u+x'
 
 # System
 alias sdn='shutdown now'
@@ -52,6 +53,7 @@ alias bluez='bluetoothctl'
 # Configuration
 alias muc='muc -f $HOME/.bash_history'
 alias tty-clock='tty-clock -cs -C 6'
+alias grep='grep --color=auto'
 
 # Fun
 alias neofetch='neowofetch'
