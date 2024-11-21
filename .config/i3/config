@@ -2,6 +2,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# Include system-specific configuration files
+include $HOME/.config/i3/`$HOSTNAME`*/i3.conf
+include $HOME/.config/i3/`$HOSTNAME`/i3.conf
+
 set $mod Mod4
 #set $locker i3lock -c 003333
 #set $locker xflock4
