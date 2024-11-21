@@ -63,12 +63,12 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [ -f ~/.bash_aliases ]; then
+if [ -e ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.shell_aliases ]; then
-    . ~/.shell_aliases
+if [ -e ~/.config/shell/aliases ]; then
+    . ~/.config/shell/aliases
 fi
 
 # enable programmable completion features (you don't need to enable

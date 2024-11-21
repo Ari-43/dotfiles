@@ -1,14 +1,34 @@
 # Ari43's bash aliases.
 # ========================================================================
 
+# Func
+function aliasife () {
+	# Alias only if the command exists. This is usually used to replace one command with a better alternative only if the alternative is installed. 
+	# Use $1 for the command to replace $2 with. $3 is used for cli arguments to be passed. 
+	# Replace neofetch with neowofetch: aliasife neowofetch neofetch
+	if [ -f $(which $1) ]; then
+		alias $2="$1 $3"
+	fi
+}
+asciilive () {
+	curl ascii.live/$1
+}
+
+# Configuration
+alias muc='muc -f $HOME/.bash_history'
+alias tty-clock='tty-clock -cs -C 6'
+alias grep='grep --color=auto'
+alias nano='nano -l' # Always use line numbers in Nano
+alias cbonsai='cbonsai -il'
+
 # Editors
-if [ -f /usr/bin/nvim ]; then alias vim='nvim'; fi
+aliasife nvim vim
 alias nv='nvim'
 alias v='vim'
-alias nano='nano -l' # Always use line numbers in Nano
 
 # Pagers
-alias more='less' # A classic
+aliasife less more # A classic
+aliasife nvimpager less
 alias nvp='nvimpager'
 
 # Files
@@ -16,6 +36,8 @@ alias untar='tar -fvxz'
 alias mkdir='mkdir -pv' # Make new directories recursively. For example, running "mkdir ./folder1/folder2/" makes ./folder1/ with folder2/ inside it without complaining. Also makes mkdir list out the directories that were made.
 alias mkd='mkdir'
 alias nvc='nvimpager -c'
+#aliasife bat cat --paging=never
+aliasife nvimpager cat -c
 
 # Shell
 alias cl='clear'
@@ -47,26 +69,17 @@ alias asdf='setxkbmap us dvorak'
 alias ping4='ping -c 4'
 alias pyhttp='python3 -m http.server'
 alias wificli='nmcli dev wifi'
-alias lswifi='nmcli dev wifi rescan && nmcli dev wifi list'
+alias leswifi='nmcli dev wifi rescan && nmcli dev wifi list'
 alias bluez='bluetoothctl'
 
-# Configuration
-alias muc='muc -f $HOME/.bash_history'
-alias tty-clock='tty-clock -cs -C 6'
-alias grep='grep --color=auto'
-
 # Fun
-alias neofetch='neowofetch'
+aliasife neowofetch neofetch
 alias nf='neofetch' # Most important part of any Arch Linux install
 alias pf='pfetch'
 alias hf='hyfetch'
 alias cnf='clear && neofetch'
-alias cbonsai='cbonsai -il'
 alias parrot='curl parrot.live'
-alias rick='curl ascii.live/rick'
-asciilive () {
-	curl ascii.live/$1
-}
+alias rick='asciilive rick'
 
 # Misc Tools
 alias yt='yt-dlp' 

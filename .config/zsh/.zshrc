@@ -16,11 +16,14 @@ SAVEHIST=100000
 setopt autocd correct histignorespace
 unsetopt beep
 bindkey -e
+
+# Shell completion
 zstyle :compinstall filename '/home/ari/.zshrc'
 autoload -Uz compinit select-word-style
-compinit
 select-word-style bash
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
 zstyle ':completion::complete:*' gain-privileges 1
+compinit
 
 ENABLE_CORRECTION="true"
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
@@ -28,6 +31,17 @@ if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 # https://wiki.archlinux.org/title/zsh#Colors
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
+
+# Prompts
+## Fix broken output
+autoload -Uz add-zsh-hook
+
+function reset_broken_terminal () {
+	printf '%b' '\e[0m\e(B\e)0\017\e[?5l\e7\e[0;0r\e8'
+}
+
+add-zsh-hook -Uz precmd reset_broken_terminal
+## My Prompt
 autoload -Uz promptinit
 promptinit
 fpath=("$HOME/.zprompts" "$fpath[@]")
@@ -37,7 +51,11 @@ prompt_custom_setup() {
 prompt_themes+=( custom )
 prompt custom
 
-source $HOME/.shell_aliases # Shared with bash
-if [ -x $HOME/.local/bin/welcome ]; then $HOME/.local/bin/welcome; fi
+# Aliases
+if [ -f ~/.config/shell/aliases ]; then
+    . ~/.config/shell/aliases
+fi
 
+# Autorun
+if [ -x $HOME/.local/bin/welcome ]; then $HOME/.local/bin/welcome; fi
 if [ -e /home/ari/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ari/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
