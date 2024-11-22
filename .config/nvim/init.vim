@@ -14,7 +14,6 @@ set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
-colorscheme vim
 " }}}
 
 " Status Line {{{
