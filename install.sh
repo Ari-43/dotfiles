@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 cd
-echo "What dotfiledir would you like to use relative to $(pwd)/?" # Home may sometimes have a trailing directory /. This is a quick and dirty way around that because I'm lazy. TODO: FIX
+echo "What dotfile directory would you like to use relative to $(pwd)/?" # $HOME may sometimes have a trailing directory /. This is a quick and dirty way around that because I'm lazy. TODO: FIX
 read -ei 'dotfiles' -p 'Enter directory: ' dotfiledir
 if [ ! -d ./$dotfiledir ] ; then
 	echo "Cloning Ari's dotfiles repository into $(pwd)/$dotfiledir"
