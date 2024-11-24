@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale '/home/ari/git/Ari-RERA-43/dotfiles/Pictures/wallpapers/free/003333.png' 
+feh --no-fehbg --bg-fill '/home/ari/Pictures/wallpapers/nonfree/starry-mountain-night.png' 
