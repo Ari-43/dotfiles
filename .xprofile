@@ -2,6 +2,7 @@
 # Themes and usage
 export MOZ_USE_XINPUT2=1
 export QT_STYLE_OVERRIDE=kvantum
+export QT_STYLE_OVERRIDE=qt5ct
 export GTK_CSD=0
 # Fix CLI applications opened on the desktop opening in xterm
 export TERMINAL=kitty
@@ -25,5 +26,6 @@ setxkbmap -layout us,us -variant 'dvorak, '
 $HOME/.local/bin/mowbatcheck &
 # GTK Fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-export GTK_THEME=Graphite-blue-Dark-nord
+#export GTK_THEME=Graphite-blue-Dark-nord
+export ADW_DISABLE_PORTAL=1
 xrdb ~/.Xresources
