@@ -46,7 +46,8 @@ autoload -Uz promptinit
 promptinit
 fpath=("$HOME/.zprompts" "$fpath[@]")
 prompt_custom_setup() {
-	PS1='%F{27}'$'\ue0c7''%K{27}%F{15} %* %K{39}%F{27}'$'\ue0b0%F''{15} %n %K{45}%F{39}'$'\ue0b0%'' %F{15} %~ %k%F{45}'$'\ue0b0''%f%k '
+	PS1='%F{27}'$'\ue0c7''%K{27}%F{15} %n %K{39}%F{27}'$'\ue0b0'' %F{15}%~ %k%F{39}'$'\ue0b0''%f%k '
+	RPROMPT='%F{207}'$'\ue0b2''%K{207}%F{15} %* %F{201}'$'\ue0b2''%K{201}%F{15} %M %F{165}'$'\ue0b2''%K{165}%F{15} %? %k%F{165}'$'\ue0c6''%f%k'
 }
 prompt_themes+=( custom )
 prompt custom
