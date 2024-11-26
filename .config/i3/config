@@ -276,6 +276,7 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="ark"] floating enable
+for_window [class="marktext"] floating disable
 #for_window [class="Blueman-manager"] floating enable
 
 #	Games should be on WS 6 TODO: Figure out a way to do this
