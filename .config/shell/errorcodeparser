@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Store the real exit code
+realcode="$1"
+# Store the exit code that will be modified for 129-254
+c="$1"
+# Store proper names of variables
+# Normal exit codes
+c0='ok'
+c1='error'
+c2='error (sh)'
+c126='noexec'
+c127='notfound'
+c128='exit fail'
+
+# Signals 
+# https://faculty.cs.niu.edu/~hutchins/csci480/signals.htm
+#c129="signal $(($realcode-128))" # Automatically calculates signal, no parsing for readability
+c129='HUP'
+c130='^C'
+c131='QUIT'
+c132='ILL'
+c133='TRAP'
+c134='ABRT'
+c135='BUS'
+c136='FPE'
+c137='KILL'
+c138='USR1'
+c139='SEGV'
+c140='USR2'
+c141='PIPE'
+c142='ALRM'
+c143='TERM'
+c144='STKSLT'
+c145='CHLD'
+c146='CONT'
+c147='STOP'
+c148='TSTP'
+c149='TTIN'
+c150='TTOU'
+c151='URG'
+c152='XCPU'
+c153='XFSZ'
+c154='VTALRM'
+c155='PROF'
+c156='WINCH'
+c157='IO'
+c158='PWR'
+c159='SYS'
+#c_other="SIG$(($realcode-128))" # Automatically calculates signal, no parsing for readability
+c_other="$realcode" # No parsing for readability
+
+c255='other'
+
+codename=c${c}
+if (($realcode >= 160 && $realcode < 255)); then
+	codename=c_other
+fi
+
+echo "${!codename}"
