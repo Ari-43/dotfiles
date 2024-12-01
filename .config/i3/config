@@ -241,7 +241,7 @@ bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit
 
 # Colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #1da5d4 #1d1f21 #d8d4cf #2e9ef4   #1da5d4
+client.focused          #5e81ac #1d1f21 #d8d4cf #2e9ef4   #5e81ac
 client.focused_inactive #333333 #222222 #d8d4cf #484e50   #5f676a
 client.unfocused        #333333 #222222 #777777 #292d2e   #222222
 client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
@@ -258,7 +258,7 @@ default_floating_border none
 
 # Use gaps
 gaps inner 10
-gaps top 45
+#gaps top 45
 
 for_window [class="^.*"] title_window_icon yes
 title_align center
