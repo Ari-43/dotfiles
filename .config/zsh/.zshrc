@@ -18,12 +18,14 @@ unsetopt beep
 bindkey -e
 
 # Shell completion
-zstyle :compinstall filename '/home/ari/.zshrc'
-autoload -Uz compinit select-word-style
+zstyle :compinstall filename '/home/ari/.config/zsh/.zshrc'
+autoload -Uz compinit bashcompinit select-word-style
 select-word-style bash
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}'
 zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion:*' menu select
 compinit
+bashcompinit
 
 ENABLE_CORRECTION="true"
 if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; fi
