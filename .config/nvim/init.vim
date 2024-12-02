@@ -1,19 +1,31 @@
 " vim:ft=vim:foldmethod=marker
 
+" Plugins {{{
+" Enable vim-plug
+call plug#begin()
+
+" Install Plugins
+Plug 'tpope/vim-sensible'
+Plug 'nordtheme/vim'
+call plug#end()
+
+" }}}
+
 " General Interface {{{
 " Colors: https://www.ditig.com/256-colors-cheat-sheet
-hi 	Normal 		guibg=NONE
-hi 	NonText		guibg=NONE
-hi 	Normal 		ctermbg=NONE
-hi 	Normal 		ctermbg=NONE
-hi 	CursorLine	term=NONE	cterm=NONE	ctermbg=234	ctermfg=NONE
-hi 	LineNr		term=NONE	cterm=NONE	ctermbg=236
+"hi 	Normal 		guibg=NONE
+"hi 	NonText		guibg=NONE
+"hi 	Normal 		ctermbg=NONE
+"hi 	Normal 		ctermbg=NONE
+"hi 	CursorLine	term=NONE	cterm=NONE	ctermbg=234	ctermfg=NONE
+"hi 	LineNr		term=NONE	cterm=NONE	ctermbg=236
 hi 	CursorLineNr	term=bold	cterm=bold	ctermbg=235	ctermfg=012
 set 	cursorline
 set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
+colorscheme nord
 " }}}
 
 " Status Line {{{
@@ -69,7 +81,7 @@ set 	clipboard=unnamedplus
 " }}}
 
 " Keybinds {{{
-" 	Dvorak Movement
+" 	Dvorak Movement (& shifted to the home keys)
 nnoremap h h
 nnoremap t j
 nnoremap n k
@@ -77,3 +89,4 @@ nnoremap s l
 " 	Dvorak Rebind Fixes
 nnoremap k n
 " }}}
+
