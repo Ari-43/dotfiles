@@ -22,9 +22,10 @@ alias nano='nano -l' # Always use line numbers in Nano
 alias cbonsai='cbonsai -il'
 
 # Editors
+aliasife vim vi
 aliasife nvim vim
 alias nv='nvim'
-alias v='vim'
+alias v='vi'
 
 # Pagers
 aliasife less more # A classic
