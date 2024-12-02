@@ -7,13 +7,21 @@ call plug#begin()
 " Install Plugins
 Plug 'tpope/vim-sensible'
 Plug 'nordtheme/vim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'fladson/vim-kitty'
 call plug#end()
+
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 " }}}
 
 " General Interface {{{
 " Colors: https://www.ditig.com/256-colors-cheat-sheet
-"hi 	Normal 		guibg=NONE
+colorscheme nord
+hi 	Normal 		guibg=NONE
 "hi 	NonText		guibg=NONE
 "hi 	Normal 		ctermbg=NONE
 "hi 	Normal 		ctermbg=NONE
@@ -25,7 +33,6 @@ set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
-colorscheme nord
 " }}}
 
 " Status Line {{{
