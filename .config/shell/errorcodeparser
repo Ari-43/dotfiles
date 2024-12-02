@@ -56,4 +56,4 @@ if (($realcode >= 160 && $realcode < 255)); then
 	codename=c_other
 fi
 
-echo "${!codename}"
+echo "$realcode (${!codename})"
