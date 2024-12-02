@@ -310,7 +310,7 @@ bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
 
 # Custom Autostart/run
 #exec_always $HOME/.local/bin/wmstartup
-exec_always --no-startup-id xfce-screensaver
+#exec_always --no-startup-id xfce-screensaver
 
-# Sometimes i3 starts on the wrong workspace for some reason
+# i3 starts on the wrong workspace when the lowest numbered monitor output is not ws-1
 exec --no-startup-id i3-msg workspace 1
