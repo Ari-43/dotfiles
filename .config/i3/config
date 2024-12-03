@@ -3,8 +3,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Include system-specific configuration files
-include $HOME/.config/i3/`$HOSTNAME`*/i3.conf
-include $HOME/.config/i3/`$HOSTNAME`/i3.conf
+include $HOME/.config/i3/`$(hostname)`*/i3.conf
+include $HOME/.config/i3/`$(hostname)`/i3.conf
 
 set $mod Mod4
 #set $locker i3lock -c 003333
@@ -299,7 +299,7 @@ exec_always --no-startup-id $HOME/.config/fehbg/$HOSTNAME.fehbg
 exec_always --no-startup-id libinput-gestures-setup stop start
 
 # Conky
-exec --no-startup-id conky --config=$HOME/.config/conky/$HOSTNAME.conf
+exec --no-startup-id conky --config=$HOME/.config/conky/$(hostname).conf
 
 exec_always --no-startup-id $HOME/.config/xborder/launch.sh
 
