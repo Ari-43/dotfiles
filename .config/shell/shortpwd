@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+## Short directory listing
+## https://stackoverflow.com/questions/45263799/collapse-directories-in-zsh-prompt-in-a-unique-way
+## TODO: Find a way to make this used ~/ instead of listing out the user home folder
+function spwd {
+  paths=(${(s:/:)PWD})
+
+  cur_path='/'
+  cur_short_path='/'
+  for directory in ${paths[@]}
+  do
+    cur_dir=''
+    for (( i=0; i<${#directory}; i++ )); do
+      cur_dir+="${directory:$i:3}"
+      matching=("$cur_path"/"$cur_dir"*/)
+      if [[ ${#matching[@]} -eq 1 ]]; then
+        break
+      fi
+    done
+    cur_short_path+="$cur_dir/"
+    cur_path+="$directory/"
+  done
+
+  printf %q "${cur_short_path: : -1}"
+  echo
+}
+
