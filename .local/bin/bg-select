@@ -1,0 +1,2 @@
+bg=$(zenity --file-selection 2> /dev/null)
+feh --bg-scale $bg
