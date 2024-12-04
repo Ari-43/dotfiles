@@ -45,5 +45,9 @@ fi
 echo "Running stow to create symlinks..."
 stow --no-folding --verbose ./
 
+# Create necessary directories and empty files that aren't handled by stow
+echo 'Creating other dirs...'
+mkdir -pv $HOME/.local/share/shell/ && echo '[✓] Directories Created'
+
 echo 'Done!
 You may need to log out and back in for all changes to apply.'

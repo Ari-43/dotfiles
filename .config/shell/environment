@@ -6,7 +6,7 @@ export VISUAL=$EDITOR
 export PAGER='nvimpager'
 export MANPAGER='nvim +Man!'
 
-HISTFILE=~/.histfile
+HISTFILE=~/.local/share/shell/history
 HISTSIZE=10000
 SAVEHIST=100000
 setopt autocd correct histignorespace PROMPT_SUBST
