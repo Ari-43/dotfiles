@@ -83,7 +83,6 @@ if ! shopt -oq posix; then
 fi
 
 # show a welcome screen if the welcome script exists
-if [ -x $HOME/.local/bin/welcome ]
-then
-	#$HOME/.local/bin/welcome
-fi
+#if [ -x $HOME/.local/bin/welcome ]; then
+#	#$HOME/.local/bin/welcome
+#fi
