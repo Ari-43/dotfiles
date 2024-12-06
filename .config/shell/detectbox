@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Automatically detects if the current shell is in a container and displays the container name if so
+# https://github.com/89luca89/distrobox/blob/main/docs/useful_tips.md#detect-if-youre-in-a-distrobox
+if [[ ${CONTAINER_ID} != "" ]]; then
+	echo $(hostname) ${CONTAINER_ID}
+else
+	echo $(hostname)
+fi
