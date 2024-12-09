@@ -9,6 +9,7 @@ Plug 'tpope/vim-sensible'
 Plug 'nordtheme/vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'fladson/vim-kitty'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 autocmd VimEnter *
