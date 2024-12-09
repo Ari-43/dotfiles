@@ -1,13 +1,8 @@
 #!/bin/bash
-# Themes and usage
-export MOZ_USE_XINPUT2=1
-export QT_STYLE_OVERRIDE=kvantum
-export QT_STYLE_OVERRIDE=qt5ct
-export GTK_CSD=0
-# Fix CLI applications opened on the desktop opening in xterm
-export TERMINAL=kitty
-# Java theming and font fixes
-export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+export isxprofile=1
+# Minimal shell startup. This defines the sourceife function as well as sets environment variables that are not set by systemd
+source $HOME/.config/shell/prestart
+
 $HOME/.screenlayout/$(cat /etc/hostname).sh
 xfce4-clipman &
 xbindkeys
@@ -26,6 +21,4 @@ setxkbmap -layout us,us -variant 'dvorak, '
 $HOME/.local/bin/mowbatcheck &
 # GTK Fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-#export GTK_THEME=Graphite-blue-Dark-nord
-export ADW_DISABLE_PORTAL=1
 xrdb ~/.Xresources

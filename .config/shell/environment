@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
+
 export PATH=$PATH:"$HOME/.local/bin"
 
+# Use smooth scrolling in Firefox
+export MOZ_USE_XINPUT2=1
+
+# QT/GTK Style
+export QT_STYLE_OVERRIDE=kvantum
+export QT_STYLE_OVERRIDE=qt5ct
+export GTK_CSD=0
+#export GTK_THEME=Graphite-blue-Dark-nord
+export ADW_DISABLE_PORTAL=1
+# Java theming and font fixes
+export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+# Fix CLI applications opened on the desktop opening in xterm
+export TERMINAL=kitty
+
+# Default terminal tools
 export EDITOR='/usr/bin/nvim'
 export VISUAL=$EDITOR 
 export PAGER='nvimpager'
@@ -9,6 +26,6 @@ export MANPAGER='nvim +Man!'
 HISTFILE=~/.local/share/shell/history
 HISTSIZE=10000
 SAVEHIST=100000
-setopt autocd correct histignorespace PROMPT_SUBST
-unsetopt beep
-bindkey -e
+
+sourceife $HOME/.config/shell/environment-colors
+

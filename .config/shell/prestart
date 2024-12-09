@@ -1,0 +1,16 @@
+# Define functions and other things necessary before the rest of the shell startup scripts are run
+
+# Automatically start the X server if this is TTY1
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ] && [ "$isxprofile" != 1]; then
+  exec startx
+fi
+
+# Source only if exists
+function sourceife () {
+	if [ -f $1 ]; then
+		source $1
+	fi
+}
+
+# Set environment variables
+sourceife $HOME/.config/shell/environment

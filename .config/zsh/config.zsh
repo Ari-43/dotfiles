@@ -1,3 +1,4 @@
+setopt autocd correct histignorespace PROMPT_SUBST
 # Shell completion & correction
 zstyle :compinstall filename '/home/ari/.config/zsh/.zshrc'
 autoload -Uz compinit bashcompinit select-word-style
@@ -7,10 +8,17 @@ zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*' menu select
 compinit
 bashcompinit
+ 
 
 ENABLE_CORRECTION="true"
 sourceife /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 sourceife /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Disable beep
+unsetopt beep
+
+# This does... something
+bindkey -e
 
 # zsh truecolor support
 # https://wiki.archlinux.org/title/zsh#Colors
