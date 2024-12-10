@@ -22,6 +22,7 @@ export MANPAGER='nvim +Man!'
 
 export PATH=$PATH:"$HOME/.local/bin"
 
+HISTFILE="$HOME/.local/share/shell/history"
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL='ignoreboth'
