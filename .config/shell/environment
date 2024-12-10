@@ -28,4 +28,3 @@ HISTSIZE=10000
 SAVEHIST=100000
 
 sourceife $HOME/.config/shell/environment-colors
-
