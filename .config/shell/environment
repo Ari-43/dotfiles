@@ -7,7 +7,7 @@ export MOZ_USE_XINPUT2=1
 
 # QT/GTK Style
 export QT_STYLE_OVERRIDE=kvantum
-export QT_STYLE_OVERRIDE=qt5ct
+export QT_STYLE_OVERRIDE=qt5ct-style
 export GTK_CSD=0
 #export GTK_THEME=Graphite-blue-Dark-nord
 export ADW_DISABLE_PORTAL=1
