@@ -309,7 +309,11 @@ exec_always --no-startup-id $HOME/.config/xborder/launch.sh
 # Set appropriate monitor config
 
 # Per-app keymap
-bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
+#bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
+
+# Update power sources on i3 restart (maybe?)
+# Power sources do not always automatically update when a battery is added or removed
+exec_always --no-startup-id upower --enumerate
 
 # Custom Autostart/run
 #exec_always $HOME/.local/bin/wmstartup
