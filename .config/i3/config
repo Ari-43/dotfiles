@@ -212,6 +212,9 @@ bindcode Control+mod1+47 workspace next
 bindsym Control+mod1+Left workspace prev
 bindsym Control+mod1+Right workspace next
 
+bindsym $mod+Control+space move scratchpad
+bindsym $mod+mod1+space scratchpad show
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
