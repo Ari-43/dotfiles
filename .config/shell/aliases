@@ -3,7 +3,7 @@
 
 # Functions
 function aliasife () {
-	# Alias only if the command exists. This is usually used to replace one command with a better alternative only if the alternative is installed. 
+	# Alias only if the command exists (Alias If Exists). This is usually used to replace one command with a better alternative only if the alternative is installed. 
 	# Use $1 for the command to replace $2 with. $3 is used for cli arguments to be passed. 
 	# Replace neofetch with neowofetch: aliasife neowofetch neofetch
 	if which $1 > /dev/null; then
@@ -24,8 +24,8 @@ alias cbonsai='cbonsai -il'
 # Editors
 aliasife vim vi
 aliasife nvim vim
-alias nv='nvim'
 alias v='vi'
+alias nv='vi' # Leftover from muscle memory
 
 # Pagers
 aliasife less more # A classic
@@ -43,7 +43,7 @@ aliasife bat cat --paging=never
 # Shell
 alias cl='clear'
 alias cls='clear' # The clear screen command from Windows
-alias wq='exit' # I've accidentally done this a few times
+alias wq='exit'
 alias :wq='exit'
 alias q='exit'
 alias :q='exit'
@@ -64,6 +64,8 @@ alias sdn='shutdown now'
 alias du='du -h'
 alias df='df -h'
 alias gt='trash-put -v'
+alias db='distrobox'
+alias dbe='distrobox enter'
 alias kali='distrobox-enter kali'
 alias aoeu='setxkbmap us'
 alias asdf='setxkbmap us dvorak'
@@ -80,6 +82,7 @@ aliasife neowofetch neofetch
 alias nf='neofetch' # Most important part of any Arch Linux install
 alias pf='pfetch'
 alias hf='hyfetch'
+alias ff='fastfetch'
 alias cnf='clear && neofetch'
 alias parrot='curl parrot.live'
 alias rick='asciilive rick'
