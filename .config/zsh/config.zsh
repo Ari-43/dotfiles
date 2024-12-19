@@ -26,6 +26,9 @@ unsetopt beep
 # This does... something
 bindkey -e
 
+# Performance Profiling
+zmodload zsh/zprof
+
 # zsh truecolor support
 # https://wiki.archlinux.org/title/zsh#Colors
 [[ "$COLORTERM" == (24bit|truecolor) || "${terminfo[colors]}" -eq '16777216' ]] || zmodload zsh/nearcolor
