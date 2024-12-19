@@ -83,6 +83,7 @@ alias nf='neofetch' # Most important part of any Arch Linux install
 alias pf='pfetch'
 alias hf='hyfetch'
 alias ff='fastfetch'
+alias wf='welcome'
 alias cnf='clear && neofetch'
 alias parrot='curl parrot.live'
 alias rick='asciilive rick'

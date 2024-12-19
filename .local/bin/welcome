@@ -7,6 +7,17 @@
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+conffile="$HOME/.config/welcomefetch/wf.conf"
+
+# Read configuration
+if [ -f "$conffile" ]; then
+	source "$conffile"
+fi
+
+if [[ "$shellstartup" == 'false' ]] && [[ "$1" == 'shellstartup' ]]; then
+	exit
+fi
+
 # Declare functions
 function normalizeLength() # Makes it easy to keep the length of lines consistent
 {

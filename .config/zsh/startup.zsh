@@ -1,2 +1,2 @@
 # Autorun
-#if [ -x $HOME/.local/bin/welcome ]; then $HOME/.local/bin/welcome; fi
+runife $HOME/.local/bin/welcome shellstartup

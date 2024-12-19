@@ -7,8 +7,14 @@ fi
 
 # Source only if exists
 function sourceife () {
-	if [ -f $1 ]; then
-		source $1
+	if [ -f "$1" ]; then
+		source "$@"
+	fi
+}
+
+function runife () {
+	if [ -f "$1" ]; then
+		"$@"
 	fi
 }
 
