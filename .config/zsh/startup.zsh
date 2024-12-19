@@ -1,2 +1,2 @@
 # Autorun
-runife $HOME/.local/bin/welcome shellstartup
+runifce wfetch shellstartup
