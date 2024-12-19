@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Define functions and other things necessary before the rest of the shell startup scripts are run
 
 # Automatically start the X server if this is TTY1
@@ -5,15 +6,23 @@ if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ] && [ "$isxprofile" != 1]; then
   exec startx
 fi
 
-# Source only if exists
+# Source if file exists
 function sourceife () {
 	if [ -f "$1" ]; then
 		source "$@"
 	fi
 }
 
+# Run if file exist
 function runife () {
 	if [ -f "$1" ]; then
+		"$@"
+	fi
+}
+
+# Run if command exists
+function runifce () {
+	if [ -f "$(which $1)" ]; then
 		"$@"
 	fi
 }
