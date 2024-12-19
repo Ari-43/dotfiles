@@ -1,5 +1,5 @@
 #!/bin/bash
-pkexec grub-reboot $1
+pkexec grub-reboot $1 --boot-directory $3
 zenity --info --text "$2 will be selected at next boot."
 zenity --question --text "Reboot now?"
 if [ $? == 0 ]; then
