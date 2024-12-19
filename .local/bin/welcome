@@ -7,7 +7,8 @@
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-conffile="$HOME/.config/welcomefetch/wf.conf"
+confdir="$HOME/.config/wfetch"
+conffile="$confdir/wfetch.conf"
 
 # Read configuration
 if [ -f "$conffile" ]; then
@@ -21,109 +22,110 @@ fi
 # Declare functions
 function normalizeLength() # Makes it easy to keep the length of lines consistent
 {
-INPUT="$1"
-TEXT="$2"
-TEXTPREPEND="$3"
-TEXTAPPEND="$4"
-MODIFIER="$5"
-REPEATSTART="$6"
-INPUTLEN="${#INPUT}"
-TEXTCUT=$((MODIFIER-INPUTLEN))
-TEXTEDIT="$TEXT"
-REPEAT=$REPEATSTART
-while [ $REPEAT -le $TEXTCUT ]
+text="$1"
+textprepend="$2"
+textappend="$3"
+fulltext="$textprepend$text$textappend"
+
+inputlen="${#fulltext}"
+textcut=$((fixedwidth-inputlen))
+textedit="$text"
+
+repeat='2' # TODO Figure out why this needs to start at 2. Where are the extra two spaces coming from when this is 0?
+while [ $repeat -le $textcut ]
 do
-        TEXTEDIT="$TEXTEDIT "
-        ((REPEAT++))
+        textedit="$textedit "
+        ((repeat++))
 done
-echo "$TEXTPREPEND$TEXTEDIT$TEXTAPPEND"
+	echo "$textprepend$textedit$textappend"
 }
 
 function boxTop()
 {
-echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
+	echo "┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓"
 }
 
 function boxMiddle()
 {
-echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫"
+	echo "┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫"
 }
 
 function doubleBoxMiddle()
 {
-echo "┣══════════════════════════════════════════════════════════════┫"
+	echo "┣══════════════════════════════════════════════════════════════┫"
 }
 
 function boxBottom()
 {
-echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
+	echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"
 }
 
 function lightDoubleDashBoxMiddle()
 {
-echo "┠╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┨"
+	echo "┠╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┨"
 }
 
 function lightTripleDashBoxMiddle()
 {
-echo "┠┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┨"
+	echo "┠┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┨"
 }
 
 function lightQuadDashBoxMiddle()
 {
-echo "┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┨"
+	echo "┠┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┨"
 }
 
 currentDate=`date +"%a, %b %d %Y - %T"`
 
+if [[ ${#bannertext} == '0' ]]; then
+	bannertext="$confdir/bannertext"
+	if not [ -e $bannertext ]; then
+		echo "Banner text at $bannertext not found. Disabling.
+Set usebannertext='false' in $conffile to ignore this message."
+		usebannertext='false'
+	fi
+fi
+
 . /etc/os-release
-FULLOSNAME=$PRETTY_NAME
-KERNELNAMETEXT=$(uname -s)
-KERNELVERSIONTEXT=$(uname -r)
-KERNELNAMEVERTEXT="$KERNELNAMETEXT $KERNELVERSIONTEXT"
-UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }')
-GPUDEV=$(lspci | grep -i "VGA compatible controller: ")
-GPUDEV=${GPUDEV:35:50}
+fullosname=$PRETTY_NAME
+kernelnamevertext="$(uname -s) $(uname -r)"
+uptime=$(uptime -p | awk '{ print $2, $3, $4, $5 }')
+gpudev=$(glxinfo | grep -i "OpenGL renderer string: Mesa ")
+gpudev=${gpudev:29:50}
 cpuname=$(grep -i model\ name /proc/cpuinfo | awk ' NR==1{ print }' | cut -d' ' -f 4- )
-#lspci | grep "VGA compatible controller: " | awk '{ for (i=$5; i<=NF; i++) print $i }'
-CPUUSAGE=$(top -bn1 | grep "%Cpu(s):  ")
-CPUUSAGE=$(echo $CPUUSAGE | awk '{ print $2 }')
-MEMORYTOTAL=$(free --mega | grep "Mem:")
-MEMORYTOTAL=$(echo "$MEMORYTOTAL" | awk '{ print $2 }')
-MEMORYTOTAL=$(echo "$MEMORYTOTAL""Mi")
-MEMORYUSED=$(free --mega | grep "Mem:")
-MEMORYUSED=$(echo "$MEMORYUSED" | awk '{ print $3 }')
-MEMORYUSED=$(echo "$MEMORYUSED""Mi")
-MEMORYUSAGERATIO="$MEMORYUSED/$MEMORYTOTAL"
+cpuusage=$(echo $(top -bn1 | grep "%Cpu(s):  ")| awk '{ print $2 }')
+memorytotal=$(echo "$(echo "$(free -h | grep "Mem:")" | awk '{ print $2 }')")
+memoryused=$(echo "$(free -h | grep "Mem:")" | awk '{ print $3 }')
+memoryusageratio="$memoryused/$memorytotal"
 
 # Show Data
 #clear
 boxTop
-if [ -e $HOME/.local/bin/resources/welcome/BannerText ]; then
-cat $HOME/.local/bin/resources/welcome/BannerText
-boxMiddle
+if [[ "$usebannertext" == 'true' ]]; then
+	cat $bannertext
+	boxMiddle
 fi
 
 #Show user info
-normalizeLength "$USER $UID" "You are logged in as $USER with the UID $UID" "┃ " "┃" 26 0
+normalizeLength "You are logged in as $USER with the UID $UID" "┃ " "┃"
 boxMiddle
 
 #Show device info
-echo "┃ Operating System Info:                                       ┃"
+normalizeLength "Operating System Info: " "┃ " "┃"
 lightDoubleDashBoxMiddle
-normalizeLength "FULLOSNAME" "Operating System: $FULLOSNAME" "┃ " "┃" 42 0 # TODO: Fix normalizeLength for this entry
-normalizeLength "$KERNELNAMEVERTEXT" "Kernel: $KERNELNAMEVERTEXT" "┃ " "┃" 52 0
-normalizeLength "$UPTIME" "System Uptime: $UPTIME" "┃ " "┃" 45 0
-normalizeLength "$HOSTNAME" "Host: $HOSTNAME" "┃ " "┃" 54 0
+normalizeLength "Operating System: $fullosname" "┃ " "┃"
+normalizeLength "Kernel: $kernelnamevertext" "┃ " "┃"
+normalizeLength "System Uptime: $uptime" "┃ " "┃"
+normalizeLength "Host: $(hostname)" "┃ " "┃"
 boxMiddle
-echo "┃ Hardware:                                                    ┃"
+normalizeLength "Hardware: " "┃ " "┃"
 lightDoubleDashBoxMiddle
-normalizeLength "$GPUDEV" "GPU: $GPUDEV" "┃ " "┃" 55 0
-normalizeLength "$cpuname" "CPU: $cpuname" "┃ " "┃" 55 0
+normalizeLength "GPU: $gpudev" "┃ " "┃"
+normalizeLength "CPU: $cpuname" "┃ " "┃"
 boxMiddle
-echo "┃ System Resources:                                            ┃"
+normalizeLength "System Resources: " "┃ " "┃"
 lightDoubleDashBoxMiddle
-normalizeLength "$CPUUSAGE" "CPU Usage: $CPUUSAGE%" "┃ " "┃" 48 0
-normalizeLength "$MEMORYUSAGERATIO" "Memory Used: $MEMORYUSAGERATIO" "┃ " "┃" 47 0
+normalizeLength "CPU Usage: $cpuusage%" "┃ " "┃"
+normalizeLength "Memory Used: $memoryusageratio" "┃ " "┃"
 
 boxBottom
