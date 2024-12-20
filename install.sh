@@ -26,7 +26,7 @@ if [ ! -d ./$dotfiledir ] ; then
 		echo 'Cloning dotfile repository...'
 		git clone https://github.com/Ari-RERA-43/dotfiles.git $dotfiledir && echo '[✓] Dotfiles cloned'
 	else
-		echo 'WARNING: You are not connected to a network. Connect to a network to download these dotfiles.'
+		echo 'WARNING: You are not connected to a network that can access GitHub. Connect to a network to download these dotfiles.'
 		exit 1
 	fi
 else
@@ -39,7 +39,7 @@ if [ $net == 1 ]; then
 	echo 'Updating dotfile repository...'
 	git pull && echo '[✓] Dotfiles updated'
 else
-	echo 'WARNING: You are not connected to a network, updated dotfiles will not be pulled from the git remote.'
+	echo 'WARNING: You are not connected to a network that can access GitHub. Updated dotfiles will not be pulled from the git remote.'
 fi
 
 echo "Running stow to create symlinks..."
