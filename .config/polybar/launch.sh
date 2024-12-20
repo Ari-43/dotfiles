@@ -8,12 +8,17 @@ polybar-msg cmd quit
 HOST=$(hostname)
 echo Device is $HOST
 if [[ $HOST == *"lap"* ]]; then
-	echo launching laptop polybar
-	polybar laptop 2>&1 | tee -a /tmp/polybar1.log & disown
+	echo Launching laptop polybar
+	if [[ $HOST == *"edu" ]]; then
+		echo Launching laptop polybar with marker for edu system
+		polybar laptop-edu 2>&1 | tee -a /tmp/polybar1.log & disown
+	else
+		polybar laptop 2>&1 | tee -a /tmp/polybar1.log & disown
+	fi
 fi
 
 if [[ $HOST == *"desk"* ]]; then
-	echo launching desktop polybars
+	echo Launching desktop polybars
 	polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
 	polybar left 2>&1 | tee -a /tmp/polybar1.log & disown
 	polybar right 2>&1 | tee -a /tmp/polybar1.log & disown
