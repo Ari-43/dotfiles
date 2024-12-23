@@ -92,4 +92,5 @@ alias live-neofetch='curl https://raw.githubusercontent.com/hykilpikonna/hyfetch
 alias live-pfetch='curl https://raw.githubusercontent.com/dylanaraps/pfetch/refs/heads/master/pfetch | bash'
 
 # Misc Tools
-alias yt='yt-dlp' 
+alias yt='yt-dlp --cookies-from firefox' 
+alias yt1080="yt-dlp --cookies-from firefox --format 'bestvideo[height<=1080]+bestaudio'"
