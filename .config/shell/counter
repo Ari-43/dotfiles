@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+[ ! -f $HOME/.local/share/shell/startscounter ] && echo '0' > "$HOME/.local/share/shell/" && echo 'Shell startup counter file created'
+function counter () {
+	shellcounterfile="$HOME/.local/share/shell/startscounter"
+	shellcounter=$(cat $shellcounterfile)
+	((shellcounter++))
+	echo $shellcounter > $HOME/.local/share/shell/startscounter
+	echo $shellcounter
+} 
+if [[ "$startupcounter" == 'true' ]]; then
+	echo "This nerd has opened their shell $(counter) times"
+fi
