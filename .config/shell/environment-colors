@@ -22,6 +22,24 @@ export nord13="#ebcb8b"
 export nord14="#a3be8c"
 export nord15="#b48ead"
 
+# Transparency Configurations
+# TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
+util_hex_trans='230' # Transparency for hex colors
+util_pct_trans='90' # Percentage-based transparency
+util_pct_trans='90' # Percentage-based transparency
+util_bg_hex_trans="$util_hex_trans"
+util_bg_pct_trans="$util_pct_trans"
+util_bg_dec_trans="$util_dec_trans"
+util_bg_raised_hex_trans="$util_hex_trans"
+util_bg_raised_pct_trans="$util_pct_trans"
+util_bg_raised_dec_trans="$util_dec_trans"
+util_primary_hex_trans="$util_hex_trans"
+util_primary_pct_trans="$util_pct_trans"
+util_primary_dec_trans="$util_dec_trans"
+util_bg_highest_hex_trans="$util_hex_trans"
+util_bg_highest_pct_trans="$util_pct_trans"
+util_bg_highest_dec_trans="$util_dec_trans"
+
 # Final theme configuration
 export theme_bg="$nord0"
 export theme_bg_raised="$nord1"
@@ -35,3 +53,8 @@ export theme_error="$nord11"
 export theme_danger="$nord12"
 export theme_warn="$nord13"
 export theme_success="$nord14"
+
+export theme_bg_pct_trans="$theme_bg$util_bg_pct_trans"
+export theme_bg_raised_pct_trans="$theme_bg_raised$util_bg_raised_pct_trans"
+export theme_bg_highlight_pct_trans="$theme_bg_highlight$util_primary_pct_trans"
+export theme_bg_highest_pct_trans="$theme_bg_highest$util_bg_highest_pct_trans"
