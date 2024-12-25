@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-[ ! -f $HOME/.local/share/shell/startscounter ] && echo '0' > "$HOME/.local/share/shell/" && echo 'Shell startup counter file created'
+[ ! -f $HOME/.local/share/shell/startscounter ] && echo '0' > "$HOME/.local/share/shell/startscounter" && echo 'Shell startup counter file created'
 function counter () {
 	shellcounterfile="$HOME/.local/share/shell/startscounter"
 	shellcounter=$(cat $shellcounterfile)
