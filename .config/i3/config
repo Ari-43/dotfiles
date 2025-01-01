@@ -233,7 +233,7 @@ workspace 2 output DP-0
 workspace 3 output DP-4
 workspace 8 output DP-4
 workspace 9 output DP-4
-workspace 10 output USB-C-0
+workspace 10 output DP-4
 
 # reload the configuration file
 bindcode $mod+Shift+54 restart
@@ -270,6 +270,7 @@ title_align center
 assign [class="discord"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Cider"] $ws9
+for_window [class="Keymapp"] move scratchpad
 
 # Forced floating &/ Snapped
 for_window [window_role="pop-up"] floating enable

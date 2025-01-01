@@ -12,6 +12,7 @@ bashcompinit
 
 ENABLE_CORRECTION="true"
 
+# TODO: Set up zsh-fast-syntax-highlighting
 sourceife /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Arch
 sourceife /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Debian
 sourceife /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # BSD
