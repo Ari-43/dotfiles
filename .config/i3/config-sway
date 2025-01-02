@@ -1,0 +1,7 @@
+# i3 config file (v4)
+input * {
+    xkb_layout us
+    xkb_variant dvorak
+}
+
+exec_always swaybg --image Pictures/wallpapers/T480\ Padgriffin\ Remastered-background-nord.png

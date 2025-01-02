@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Detects if the current WM is i3, Sway, or SwayFX. This output is then used by the i3 configuration file to source necessary configurations for each environment. 
+if [[ $XDG_CURRENT_DESKTOP == 'sway' ]] || [[ $XDG_SESSION_DESKTOP == 'sway' ]] || [[ $DESKTOP_SESSION == 'sway' ]]; then
+	# Check if first word of sway version is swayfx or not
+	[[ $(sway --version) =~ "^sway" ]]; i3type='sway'
+	[[ $(sway --version) =~ "^swayfx" ]]; i3type='swayfx'
+elif [[ $XDG_CURRENT_DESKTOP == 'i3' ]] || [[ $XDG_SESSION_DESKTOP == 'i3' ]] || [[ $DESKTOP_SESSION == 'i3' ]] && [[ $(i3 --version) =~ "^i3 " ]]; then
+	i3type='i3'
+else
+	# Fall back to standard i3
+	# I may make something here that spits an error to the screen if no i3type is detected, possibly using zenity and/or i3-nagbar
+	i3type='i3'
+fi
+export i3type

@@ -3,7 +3,9 @@ export isxprofile=1
 # Minimal shell startup. This defines the sourceife function as well as sets environment variables that are not set by systemd
 source $HOME/.config/shell/prestart
 
-$HOME/.screenlayout/$(cat /etc/hostname).sh
+runife $HOME/.screenlayout/$(hostname).sh
+sourceife $HOME/.config/i3/swaydetect
+
 xfce4-clipman &
 xbindkeys
 xbacklight

@@ -1,0 +1,2 @@
+# i3 config file (v4)
+include $HOME/.config/i3/config-sway

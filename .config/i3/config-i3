@@ -1,0 +1,42 @@
+# i3 config file (v4)
+# i3-specific configuration. This configuration file will not be sourced by Sway(FX).
+
+# Locker/Screensaver
+# TODO: Set up xsecurelock
+#set $locker i3lock -c 003333
+#set $locker xflock4
+#set $locker light-locker-command --lock
+set $locker xdg-screensaver lock
+
+exec --no-startup-id light-locker
+exec --no-startup-id xfce4-power-manager --daemon
+#exec --no-startup-id xfce4-screensaver
+
+# Screenshot
+bindcode $mod+Shift+39 exec xfce4-screenshooter
+bindcode 107 exec xfce4-screenshooter
+
+exec_always --no-startup-id picom -b
+
+# Use PolyBar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Use Libinput Gestures
+exec_always --no-startup-id libinput-gestures-setup stop start
+
+# Wallpaper
+exec_always --no-startup-id $HOME/.config/fehbg/$(hostname).fehbg
+
+# Conky
+exec --no-startup-id conky --config=$HOME/.config/conky/$(hostname).conf
+
+exec_always --no-startup-id $HOME/.config/xborder/launch.sh
+
+# Set appropriate monitor config
+
+# Per-app keymap
+#bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
+
+# Custom Autostart/run
+#exec_always $HOME/.local/bin/wmstartup
+#exec_always --no-startup-id xfce-screensaver

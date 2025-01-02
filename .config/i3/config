@@ -2,15 +2,12 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# Include system-specific configuration files
-include $HOME/.config/i3/`$(hostname)`*/i3.conf
-include $HOME/.config/i3/`$(hostname)`/i3.conf
+# Include system/implementation-specific configuration files
+include $HOME/.config/i3/`$(hostname)`/config
+include $HOME/.config/i3/`$(hostname)`/config-$i3type
+include $HOME/.config/i3/config-$i3type
 
 set $mod Mod4
-#set $locker i3lock -c 003333
-#set $locker xflock4
-#set $locker light-locker-command --lock
-set $locker xdg-screensaver lock
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -32,8 +29,6 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xfce4-power-manager --daemon
-#exec --no-startup-id xfce4-screensaver
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -69,9 +64,6 @@ bindcode $mod+31 exec qalculate-gtk
 # File Manager
 bindcode $mod+52 exec xdg-open "$HOME"
 
-# Screenshot
-bindcode $mod+Shift+39 exec xfce4-screenshooter
-bindcode 107 exec xfce4-screenshooter
 
 # Character & Emoje selector
 # TODO Find a better emoji selector than gucharmap (KDE?)
@@ -81,7 +73,6 @@ bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
 bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Lock screen
-exec --no-startup-id light-locker
 bindsym $mod+mod1+l exec --no-startup-id $locker
 bindsym Control+mod1+l exec --no-startup-id $locker
 # ======================================================================================
@@ -291,34 +282,10 @@ exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-sche
 
 #	Uncomment this if not also using my polybar config. Polybar adds it's own 6px gap by default, so this subtracts it
 #gaps top -6px
-exec_always --no-startup-id picom -b
-
-# Use PolyBar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Wallpaper
-exec_always --no-startup-id $HOME/.config/fehbg/$HOSTNAME.fehbg
-
-# Use Libinput Gestures
-exec_always --no-startup-id libinput-gestures-setup stop start
-
-# Conky
-exec --no-startup-id conky --config=$HOME/.config/conky/$(hostname).conf
-
-exec_always --no-startup-id $HOME/.config/xborder/launch.sh
-
-# Set appropriate monitor config
-
-# Per-app keymap
-#bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
 
 # Update power sources on i3 restart (maybe?)
 # Power sources do not always automatically update when a battery is added or removed
 exec_always --no-startup-id upower --enumerate
-
-# Custom Autostart/run
-#exec_always $HOME/.local/bin/wmstartup
-#exec_always --no-startup-id xfce-screensaver
 
 # i3 starts on the wrong workspace when the lowest numbered monitor output is not ws-1
 exec --no-startup-id i3-msg workspace 1
