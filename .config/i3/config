@@ -231,7 +231,8 @@ bindcode $mod+Shift+54 restart
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindcode $mod+Shift+27 reload
 # exit i3 (logs you out of your X session)
-bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindcode $mod+Shift+26 exec zenity --question --icon=video-display --text "Exit $i3type" && i3-msg exit
 
 # Colors
 # class                 border  backgr. text    indicator child_border
