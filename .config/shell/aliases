@@ -69,6 +69,7 @@ alias dbe='distrobox enter'
 alias kali='distrobox-enter kali'
 alias aoeu='setxkbmap us'
 alias asdf='setxkbmap us dvorak'
+alias id='installdots'
 
 # Network and Wireless Communication
 alias ping4='ping -c 4'

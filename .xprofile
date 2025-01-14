@@ -1,5 +1,5 @@
-#!/bin/bash
-export isxprofile=1
+#!/usr/bin/env bash
+isxprofile=1
 # Minimal shell startup. This defines the sourceife function as well as sets environment variables that are not set by systemd
 source $HOME/.config/shell/prestart
 
