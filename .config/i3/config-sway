@@ -1,7 +1,14 @@
 # i3 config file (v4)
+
+# Input (keyboard/mouse) configuration
 input * {
-    xkb_layout us
-    xkb_variant dvorak
+	xkb_layout us
+	xkb_variant dvorak
+}
+input type:touchpad {
+	natural_scroll enabled
+	tap enabled
 }
 
+# Wallpaper
 exec_always swaybg --image Pictures/wallpapers/T480\ Padgriffin\ Remastered-background-nord.png
