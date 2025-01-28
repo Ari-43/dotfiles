@@ -69,7 +69,6 @@ bindcode $mod+52 exec xdg-open "$HOME"
 # TODO Find a better emoji selector than gucharmap (KDE?)
 
 # Rofi
-bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
 bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Lock screen
