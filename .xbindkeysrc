@@ -14,15 +14,15 @@
 
 # Backlight
 ## Increase Brightness
-#"xbacklight -inc 5"
-# XF86MonBrightnessUp
+"brightnessctl s +5%"
+ XF86MonBrightnessUp
 ### Decrease Brightness
-#"xbacklight -dec 5"
-# XF86MonBrightnessDown
-#"xbacklight -dec 100"
-# Shift + XF86MonBrightnessDown
-#"xbacklight -inc 100"
-# Shift + XF86MonBrightnessUp
+"brightnessctl s 5%-"
+ XF86MonBrightnessDown
+"brightnessctl s 0%"
+ Shift + XF86MonBrightnessDown
+"brightnessctl s 100%"
+ Shift + XF86MonBrightnessUp
 
 # Keyboard Backlight
 ## Increase Brightness
