@@ -26,7 +26,7 @@ export nord15="#b48ead"
 # TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
 util_hex_trans='230' # Transparency for hex colors
 util_pct_trans='90' # Percentage-based transparency
-util_pct_trans='90' # Percentage-based transparency
+util_dec_trans='90' # Decimal-based transparency
 util_bg_hex_trans="$util_hex_trans"
 util_bg_pct_trans="$util_pct_trans"
 util_bg_dec_trans="$util_dec_trans"

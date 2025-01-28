@@ -1,8 +1,46 @@
+#!/usr/bin/env zsh
 autoload -Uz promptinit
 promptinit
-fpath=("$HOME/.zprompts" "$fpath[@]")
+fpath=("$HOME/.config/zsh/prompts" "$fpath[@]")
+
+# Glyphs and Icons
+ledge='' # Left edge character (start of PS1)
+redge='' # Right edge character (end of RPROMPT)
+lsep='' # Separator between sections
+rsep=''
+lend="$lsep" # Right end of $PS1
+rend="$rsep" # Left end of RPROMPT
+
+# Colors
+txt="15" # Text color
+lc1="27" # Left colors
+lc2="39"
+rc1="207" # Right colors
+rc2="201"
+rc3="165"
+
+txtc="%F{$txt}" # Text color
+lfg1="%F{$lc1}" # Left foreground colors
+lfg2="%F{$lc2}"
+rfg1="%F{$rc1}" # Right foreground colors
+rfg2="%F{$rc2}"
+rfg3="%F{$rc3}"
+
+lbg1="%K{$lc1}" # Left background colors
+lbg2="%K{$lc2}"
+rbg1="%K{$rc1}" # Right background colors
+rbg2="%K{$rc2}"
+rbg3="%K{$rc3}"
+
+# Reset Colors
+resetfg='%f'
+resetbg='%k'
+resetc='%f%k'
+
 prompt_slick-arrows_setup () {
-	PS1='%F{27}'$'\ue0c7''%K{27}%F{15} %n %K{39}%F{27}'$'\ue0b0'' %F{15}%~ %k%F{39}'$'\ue0b0''%f%k '
-	RPROMPT='%F{207}'$'\ue0b2''%K{207}%F{15} $(ecp $?) %F{201}'$'\ue0b2''%K{201}%F{15} '"$($HOME/.config/shell/detectbox)"' %F{165}'$'\ue0b2''%K{165}%F{15} %* %k%F{165}'$'\ue0c6''%f%k'
+	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$lfg1$lbg2$lsep$txtc"' %~ '"$resetbg$lfg2$lsep$resetc "
+	RPROMPT="$rfg1$rsep$rbg1$txtc $(ecp $?) $rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
 }
 prompt_themes+=( slick-arrows )
+
+#unset txt lc1 lc2 rc1 rc2 rc3 lfg1 lfg2 rfg1 rfg2 rfg3 lbg1 lbg2 rbg1 rbg2 rbg3 resetfg resetbg resetc
