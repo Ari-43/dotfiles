@@ -259,7 +259,7 @@ title_align center
 assign [class="discord"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Cider"] $ws9
-assign [title="background-kitty"] $wsbg # For background kitty instance
+assign [class="background-kitty"] $wsbg # For background kitty instance
 for_window [class="Keymapp"] move scratchpad
 
 # Forced floating &/ Snapped
@@ -287,7 +287,7 @@ exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-sche
 exec_always --no-startup-id upower --enumerate
 
 # Background kitty instance for instant startup
-exec kitty -1 --title background-kitty sh
+exec kitty -1 --app-id background-kitty sleep infinity
 
 # i3 starts on the wrong workspace when the lowest numbered monitor output is not ws-1
 exec --no-startup-id i3-msg workspace 1
