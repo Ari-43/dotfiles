@@ -71,9 +71,6 @@ bindcode $mod+52 exec xdg-open "$HOME"
 # Rofi
 bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
 
-# Lock screen
-bindsym $mod+mod1+l exec --no-startup-id $locker
-bindsym Control+mod1+l exec --no-startup-id $locker
 # ======================================================================================
 
 # ==== Window Managment ================================================================

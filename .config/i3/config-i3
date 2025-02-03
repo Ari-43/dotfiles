@@ -12,6 +12,9 @@ exec --no-startup-id light-locker
 exec --no-startup-id xfce4-power-manager --daemon
 #exec --no-startup-id xfce4-screensaver
 
+bindsym $mod+mod1+l exec --no-startup-id $locker
+bindsym Control+mod1+l exec --no-startup-id $locker
+
 # Screenshot
 bindcode $mod+Shift+39 exec xfce4-screenshooter
 bindcode 107 exec xfce4-screenshooter
