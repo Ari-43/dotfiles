@@ -10,6 +10,7 @@ Plug 'nordtheme/vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'fladson/vim-kitty'
 Plug 'ap/vim-css-color'
+Plug 'elkowar/yuck.vim'
 call plug#end()
 
 autocmd VimEnter *
@@ -34,6 +35,7 @@ set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
+"setlocal spell spelllang=en_us
 " }}}
 
 " Status Line {{{

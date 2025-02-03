@@ -18,6 +18,7 @@ asciilive () {
 alias muc='muc -f $HISTFILE'
 alias tty-clock='tty-clock -cs -C 6'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias nano='nano -l' # Always use line numbers in Nano
 alias cbonsai='cbonsai -il'
 
