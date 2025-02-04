@@ -259,6 +259,8 @@ title_align center
 assign [class="discord"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Cider"] $ws9
+assign [title="WreckageSystems"] $ws9
+assign [title="Wreckage Systems"] $ws9
 assign [class="background-kitty"] $wsbg # For background kitty instance
 for_window [class="Keymapp"] move scratchpad
 
