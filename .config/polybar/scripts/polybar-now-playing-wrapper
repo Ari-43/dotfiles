@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if script -O /dev/null -e -c '(playerctl -l)' | grep "No players found" > /dev/null ; then
+	echo
+else
+	polybar-now-playing
+fi
