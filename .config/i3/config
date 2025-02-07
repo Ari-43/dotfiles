@@ -257,6 +257,8 @@ title_align center
 
 # Application Workspaces
 assign [class="discord"] $ws8
+assign [class="vesktop"] $ws8
+assign [class="vencord"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Cider"] $ws9
 assign [title="WreckageSystems"] $ws9
