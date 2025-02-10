@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# Warning: Experimental script
+
+# Set default config variables
+radiotmp="/run/user/$UID/mpvradio/"
+radiourl='https://wreckage-systems.club/radio/8000/radio.mp3'
+
+# Config file
+if [ -f "$(dirname $0)/config/mpvradio.env" ]; then
+	source "$(dirname $0)/config/mpvradio.env"
+fi
+
+baraction=$1
+
+status="$(cat $radiotmp/status)"
+
+statusline () {
+	if [[ $status == 0 ]]; then
+		statusword=''
+	elif [[ $status == 1 ]]; then
+		statusword=''
+	fi
+	echo "%{A1:$0 lclick:}%{A8:$0 rclick:}%{F$theme_primary} 󰐹%{F-} $statusword%{A}%{A}"
+}
+
+radiomanager () {
+	action=$1
+	if [[ $action == play ]]; then
+		mpv $radiourl > /dev/null & disown
+		status=1
+	elif [[ $action == pause ]]; then
+		radiopid=$(pgrep -af "$radiourl" | head -n1 | awk '{print $1;}')
+		if [ -n $radiopid ]; then
+			kill $radiopid
+		fi
+		status=0
+	fi
+	mkdir -p $radiotmp > /dev/null
+	echo $status > $radiotmp/status
+}
+
+toggleradio () {
+	if [[ $status == 0 ]]; then
+		radiomanager play
+	else
+		# I'm not checking if this is a '1' because if something has gone 
+		# so horribly wrong that it is neither 0 nor 1, the system should be 
+		# killed anyway
+		radiomanager pause
+	fi
+}
+
+if [ -z $status ] || (( $status >= 2 )); then
+	radiomanager pause
+fi
+
+if ! [ -z ${baraction+a} ]; then
+	if [[ $baraction == lclick ]]; then
+		toggleradio
+	elif [[ $baraction == rclick ]]; then
+		# Activated with a double right click
+		# ===================================
+		# Debug kill until I set up a way to reliably kill every stream in rare the event 
+		# multiple are started because of a race condition. Will also kill any other mpv 
+		# instances, so using it regularly is not desirable. 
+		radiomanager pause
+		killall mpv
+	fi
+fi
+
+# Print final status line for Polybar to use
+# TODO: Make this update on click instead of having it run repeatedly
+statusline
