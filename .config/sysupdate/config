@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+useaur=1
+aurhelper='paru'
+useflatpak=1

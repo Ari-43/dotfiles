@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+sudo echo
+
+function sourceife () {
+	if [ -f "$1" ]; then
+		source "$@"
+	fi
+}
+
+# Run if command exists
+function runifce () {
+	if [ -f "$(which $1)" ]; then
+		"$@"
+	fi
+}
+
+function boxline () {
+	printf '%.s─' $(seq 1 $(tput cols))
+}
+
+useaur=1
+aurhelper='paru'
+useflatpak=1
+
+sourceife /etc/os-release
+sourceife $HOME/.config/sysupdate/config
+
+if [[ $ID == 'arch' ]]; then
+	if [[ $useaur = 1 ]]; then
+		boxline
+		echo 'Updating Pacman and AUR packages...'
+		runifce $aurhelper -Syu
+	else
+		boxline
+		echo 'Updating Pacman packages...'
+		sudo pacman -Syu
+	fi
+fi
+if [[ $useflatpak == 1 ]]; then
+	boxline
+	echo 'Updating Flatpak packages...'
+	runifce flatpak upgrade
+fi
+		
