@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo echo
+sudo echo -n
 
 function sourceife () {
 	if [ -f "$1" ]; then
