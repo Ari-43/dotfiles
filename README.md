@@ -13,10 +13,10 @@ Much of what is here is very janky. If you use something, consider copying only 
 
 ## Installation (Stow)
 
-There is an install script (`/install.sh`) in this repository. It can be piped into bash for easy installation, as it will clone the rest of the repo to the directory of your choice itself. The script is also fairly simple if you wish to just copy the necessary commands manually for security reasons. 
+There is an install script ([`/install.sh`](./install.sh)) in this repository. It can be piped into bash for easy installation, as it will clone the rest of the repo to the directory of your choice itself. The script is also fairly simple if you wish to just copy the necessary commands manually for security reasons. 
 
 ```
-curl 'https://raw.githubusercontent.com/Ari-RERA-43/dotfiles/refs/heads/main/install.sh' | bash
+curl 'https://ari43.net/dotfiles/install.sh' | bash
 ```
 
 You will need to remove conflicting files and/or symlinks before running the installer. The installer also needs to be run again when new files are added to the repository. 
