@@ -1,26 +1,30 @@
 #!/usr/bin/env bash
 
-# Nord
-# https://www.nordtheme.com/docs/colors-and-palettes
-export nord0="#2e3440"
-export nord1="#3b4252"
-export nord2="#434c5e"
-export nord3="#4c566a"
+settheme='nord'
 
-export nord4="#d8dee9"
-export nord5="#e5e9f0"
-export nord6="#eceff4"
+if [ $settheme = 'nord' ]; then
+	# Nord
+	# https://www.nordtheme.com/docs/colors-and-palettes
+	export nord0="#2e3440"
+	export nord1="#3b4252"
+	export nord2="#434c5e"
+	export nord3="#4c566a"
 
-export nord7="#8fbcbb"
-export nord8="#88c0d0"
-export nord9="#81a1c1"
-export nord10="#5e81ac"
+	export nord4="#d8dee9"
+	export nord5="#e5e9f0"
+	export nord6="#eceff4"
 
-export nord11="#bf616a"
-export nord12="#d08770"
-export nord13="#ebcb8b"
-export nord14="#a3be8c"
-export nord15="#b48ead"
+	export nord7="#8fbcbb"
+	export nord8="#88c0d0"
+	export nord9="#81a1c1"
+	export nord10="#5e81ac"
+
+	export nord11="#bf616a"
+	export nord12="#d08770"
+	export nord13="#ebcb8b"
+	export nord14="#a3be8c"
+	export nord15="#b48ead"
+fi
 
 # Transparency Configurations
 # TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
