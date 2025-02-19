@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 cd
+
+args=$@
+
+function sourceife () {
+	if [ -f "$1" ]; then
+		source "$@"
+	fi
+}
+
 # Check for network connectivity
 echo 'Checking network status...'
 # https://unix.stackexchange.com/a/190610 
@@ -17,20 +26,36 @@ else
 	echo '[X] Network connection'
 fi
 
+# Read local installer configuration file
+dotfileconffile="$HOME/.config/net.ari43.dotfiles/dotfileconf"
+if [[ $args == *'noconf'* ]]; then 
+	echo 'Skipping local dotfile installer configuration'
+else
+	echo Reading local installer configuration
+	sourceife $dotfileconffile
+fi
+
 # Clone dotfiles
-echo "What dotfile directory would you like to use relative to $(pwd)/?" # $HOME may sometimes have a trailing directory /. This is a quick and dirty way around that because I'm lazy. TODO: FIX
-read -ei 'dotfiles' -p 'Enter directory: ' dotfiledir
-if [ ! -d ./$dotfiledir ] ; then
-	echo "Cloning Ari's dotfiles repository into $(pwd)/$dotfiledir..."
+if [ -z $dotfiledir ]; then
+	echo "What dotfile directory would you like to use?"
+	read -ei "$HOME/dotfiles" -p 'Directory: ' dotfiledir
+else
+	echo "Using $dotfiledir as defined in $dotfileconffile"
+	echo "Use the \`noconf\` command line flag to override this"
+fi
+
+if [ ! -d $dotfiledir ] ; then
+	echo "Cloning Ari43's dotfiles repository into $dotfiledir..."
 	if [ $net == 1 ]; then
-		echo 'Cloning dotfile repository...'
-		git clone https://github.com/Ari-RERA-43/dotfiles.git $dotfiledir && echo '[✓] Dotfiles cloned'
+		echo "Cloning dotfile repository into $dotfiledir..."
+		mkdir -pv $dotfiledir
+		git clone https://github.com/Ari-43/dotfiles.git $dotfiledir && echo '[✓] Dotfiles cloned'
 	else
 		echo 'WARNING: You are not connected to a network that can access GitHub. Connect to a network to download these dotfiles.'
 		exit 1
 	fi
 else
-	echo "Looks like $(pwd)/$dotfiledir already exists, using it"
+	echo "Looks like $dotfiledir already exists, using it"
 fi
 
 cd $dotfiledir
@@ -47,7 +72,14 @@ stow --no-folding --verbose ./
 
 # Create necessary directories and empty files that aren't handled by stow
 echo 'Creating other dirs...'
-mkdir -pv $HOME/.local/share/shell/ && echo '[✓] Directories Created'
+mkdir -pv\
+	$HOME/.local/share/shell/\
+	$HOME/.config/net.ari43.dotfiles/\
+	&& echo '[✓] Directories Created'
 
-echo 'Done!
-You may need to log out and back in for all changes to apply.'
+echo "Saving Preferences to $dotfileconffile"
+echo "dotfiledir=$(pwd)
+conf=1" > $dotfileconffile
+
+echo 'You may need to log out and back in for all changes to apply.
+Done!'
