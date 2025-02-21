@@ -20,7 +20,9 @@ blueman-applet &
 guxplay &
 streamdeck -n &
 setxkbmap -layout us,us -variant 'dvorak, '
+# TODO: Move mowbatcheck to polybar scripts folder
 $HOME/.local/bin/mowbatcheck &
+$HOME/.config/polybar/scripts/mpvradio rclick &
 # GTK Fixes
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 xrdb ~/.Xresources
