@@ -10,7 +10,7 @@ set $locker xfce4-screensaver-command --lock
 
 exec --no-startup-id light-locker
 exec --no-startup-id xfce4-power-manager --daemon
-#exec --no-startup-id xfce4-screensaver
+exec --no-startup-id xfce4-screensaver
 
 bindsym $mod+mod1+l exec --no-startup-id $locker
 bindsym Control+mod1+l exec --no-startup-id $locker

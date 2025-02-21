@@ -15,7 +15,6 @@ picom -b
 #/usr/lib/xfce4/notifyd/xfce4-notifyd & # May be provided by a systemd user service
 systemctl --user start xfce4-notifyd &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-xfce4-power-manager &
 nm-applet &
 blueman-applet &
 guxplay &
