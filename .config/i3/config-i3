@@ -4,9 +4,9 @@
 # Locker/Screensaver
 # TODO: Set up xsecurelock
 #set $locker i3lock -c 003333
-#set $locker xflock4
 #set $locker light-locker-command --lock
-set $locker xdg-screensaver lock
+set $locker xfce4-screensaver-command --lock
+#set $locker xdg-screensaver lock
 
 exec --no-startup-id light-locker
 exec --no-startup-id xfce4-power-manager --daemon
