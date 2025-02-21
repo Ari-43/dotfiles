@@ -39,7 +39,7 @@ resetc='%f%k'
 
 prompt_slick-arrows_setup () {
 	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$lfg1$lbg2$lsep$txtc"' %~ '"$resetbg$lfg2$lsep$resetc "
-	RPROMPT="$rfg1$rsep$rbg1$txtc $(ecp $?) $rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
+	RPROMPT="$rfg1$rsep$rbg1$txtc "'$(ecp $?)'" $rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
 }
 prompt_themes+=( slick-arrows )
 
