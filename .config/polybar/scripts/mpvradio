@@ -3,7 +3,7 @@
 
 # Set default config variables
 radiotmp="/run/user/$UID/mpvradio/"
-radiourl='https://wreckage-systems.club/radio/8000/radio.mp3'
+radiourl='https://wreckage-systems.club/radio/8000/stream192.mp3'
 
 # Config file
 if [ -f "$(dirname $0)/config/mpvradio.env" ]; then
