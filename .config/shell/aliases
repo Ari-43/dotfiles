@@ -38,7 +38,7 @@ alias untar='tar -fvxz'
 alias mkdir='mkdir -pv' # Make new directories recursively (-p) and lists them (-v)
 alias mkd='mkdir'
 alias nvc='nvimpager -c'
-aliasife bat cat --paging=never
+#aliasife bat cat --paging=never
 #aliasife nvimpager cat -c
 
 # Shell
@@ -51,8 +51,8 @@ alias :q='exit'
 alias rsh='exec $0' # This works for what I usually need it to do, which is reloading aliases or the prompt script. Stands for "restart shell".
 alias sudo='sudo ' # Allows using aliases with sudo
 alias icat='kitty +kitten icat'
-alias ls='exa -h'
-#alias ls='ls -h --color=auto'
+alias ls='ls -h --color=auto'
+aliasife eza ls -h
 alias l='ls'
 alias ll='ls -l'
 alias lls='ls -l'
@@ -76,7 +76,7 @@ alias id='installdots'
 alias ping4='ping -c 4'
 alias pyhttp='python3 -m http.server'
 alias wificli='nmcli dev wifi'
-alias leswifi='nmcli dev wifi rescan && nmcli dev wifi list'
+alias lswifi='nmcli dev wifi rescan && nmcli dev wifi list'
 alias bluez='bluetoothctl'
 
 # Fun
