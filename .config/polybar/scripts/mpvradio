@@ -10,7 +10,7 @@ if [ -f "$(dirname $0)/config/mpvradio.env" ]; then
 	source "$(dirname $0)/config/mpvradio.env"
 fi
 
-baraction=$1
+action=$1
 
 status="$(cat $radiotmp/status)"
 
@@ -54,10 +54,10 @@ if [ -z $status ] || (( $status >= 2 )); then
 	radiomanager pause
 fi
 
-if ! [ -z ${baraction+a} ]; then
-	if [[ $baraction == lclick ]]; then
+if ! [ -z $action ]; then
+	if [[ $action == lclick ]]; then
 		toggleradio
-	elif [[ $baraction == rclick ]]; then
+	elif [[ $action == rclick ]]; then
 		# Activated with a double right click
 		# ===================================
 		# Debug kill until I set up a way to reliably kill every stream in rare the event 
