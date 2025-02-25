@@ -18,7 +18,6 @@ systemctl --user start xfce4-notifyd &
 nm-applet &
 blueman-applet &
 guxplay &
-streamdeck -n &
 setxkbmap -layout us,us -variant 'dvorak, '
 # TODO: Move mowbatcheck to polybar scripts folder
 $HOME/.local/bin/mowbatcheck &
