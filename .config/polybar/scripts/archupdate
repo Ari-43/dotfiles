@@ -11,10 +11,27 @@ else
 	exit
 fi
 
-aurhelperlist=("paru" "yay")
+aurhelperlist=('paru' 'yay' 'pikaur')
 parucmd='paru -Qum'
 yaycmd='yay -Qum'
 pikaurcmd='pikaur -Qua'
+#
+# https://unix.stackexchange.com/a/190610 
+# Check network status
+function net () {
+	if nc -zw1 archlinux.org 443 2>/dev/null && echo |openssl s_client -connect archlinux.org:443 2>&1 |awk '
+		$1 == "SSL" && $2 == "handshake" { handshake = 1 }
+		handshake && $1 == "Verification:" { ok = $2; exit }
+		END { exit ok != "OK" }'; then
+		true
+	else
+		false
+	fi
+}
+while ! net; do
+	net
+	sleep 120
+done
 
 # Loading string
 echo "$(echo %{F$theme_primary}󰚰%{F-} )"
