@@ -49,8 +49,6 @@
 
 - Reorganize polybar to be more balanced instead of most modules being on the right
 
-- Make mpvradio useful without being in a bar
-
 - Fix non-centered picom shadow on Polybar
 
 # Long-term project: Switch to Sway(Fx)
