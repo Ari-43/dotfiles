@@ -20,7 +20,11 @@ statusline () {
 	elif [[ $status == 1 ]]; then
 		statusword=''
 	fi
-	echo "%{A1:$0 lclick:}%{A8:$0 rclick:}%{F$theme_primary} 󰐹%{F-} $statusword%{A}%{A}"
+	if [[ $action == polybar ]]; then
+		echo "%{A1:$0 toggle:}%{A8:$0 kill:}%{F$theme_primary} 󰐹%{F-} $statusword%{A}%{A}"
+	else
+		echo "$statusword"
+	fi
 }
 
 radiomanager () {
@@ -43,26 +47,26 @@ toggleradio () {
 	if [[ $status == 0 ]]; then
 		radiomanager play
 	else
-		# I'm not checking if this is a '1' because if something has gone 
-		# so horribly wrong that it is neither 0 nor 1, the system should be 
-		# killed anyway
 		radiomanager pause
 	fi
 }
 
 if [ -z $status ] || (( $status >= 2 )); then
+	# Used to set up the status file in the first place as well as fix it if something 
+	# has gone horribly wrong
 	radiomanager pause
 fi
 
 if ! [ -z $action ]; then
-	if [[ $action == lclick ]]; then
+	if [[ $action == toggle ]]; then
 		toggleradio
-	elif [[ $action == rclick ]]; then
+	elif [[ $action == kill ]]; then
 		# Activated with a double right click
 		# ===================================
-		# Debug kill until I set up a way to reliably kill every stream in rare the event 
-		# multiple are started because of a race condition. Will also kill any other mpv 
-		# instances, so using it regularly is not desirable. 
+		# Debug kill until I set up a way to reliably kill every stream in the 
+		# rare event multiple are started because of a race condition. Will 
+		# also kill any other mpv instances, so using it regularly is not 
+		# desirable. 
 		radiomanager pause
 		killall mpv
 	fi

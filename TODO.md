@@ -2,25 +2,29 @@
 
 - Finish polybar update status script
   - Flatpak support
-  - Click to open a terminal and update
-  - Captive & offline handling
+  - Click to open a terminal and update using a configurable command
+  - Captive network & offline handling
 - Verify xfce4 locker functionality and security
 - Verify xfce4 notification daemon startup works reliably
 - Fix theming in certain GTK4 applications
 
 # General To-Do (Low priority)
 
-- Add support for other distributions to polybar update status script
+- Add support for other distributions and package managers to polybar update status script
   
   - `apt`
   
   - Nix
+  
+  - Flatpak (High priority)
 
 - Add support for other distributions and package managers to sysupdate script
   
   - `apt`
   
   - Nix
+  
+  - Flatpak
 
 - Make polybar modules that do not strictly need to use a monospace font more readable using Noto Sans
   
