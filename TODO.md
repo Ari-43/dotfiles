@@ -3,7 +3,6 @@
 - Finish polybar update status script
   - Flatpak support
   - Click to open a terminal and update using a configurable command
-  - Captive network & offline handling
 - Verify xfce4 locker functionality and security
 - Verify xfce4 notification daemon startup works reliably
 - Fix theming in certain GTK4 applications
