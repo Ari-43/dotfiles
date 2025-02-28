@@ -23,7 +23,7 @@ You will need to remove conflicting files and/or symlinks before running the ins
 
 ## Dependencies
 
-Dependencies follow Arch and AUR package names, since that's what I currently use. These are for i3 and do not include all experimental configs in this repo (ie. Hyprland). 
+Dependencies follow Arch and AUR package names, since that's what I currently use most of the time. These are for i3 and do not include all experimental configs in this repo (ie. Hyprland). 
 
 ### Important
 
@@ -36,6 +36,12 @@ Dependencies follow Arch and AUR package names, since that's what I currently us
 ## Structure
 
 The files within this repository are meant to be placed inside the user's home folder. For example, the `.config` folder in this repository should be placed at `$HOME/.config`. Files that are to be placed relative to root (`/`) are located in the `/rootfs` folder of this repository. 
+
+There is also a `stable` branch that is slightly older but doesn't include as many experimental changes. 
+
+## Issues and To-Do
+
+There are still issues with these dotfiles. They are outlined in [TODO.md](./TODO.md). 
 
 ## Important Note: Keyboard Layout
 
