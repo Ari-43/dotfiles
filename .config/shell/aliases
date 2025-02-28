@@ -21,6 +21,7 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias nano='nano -l' # Always use line numbers in Nano
 alias cbonsai='cbonsai -il'
+alias yt-dlp='yt-dlp --prefer-free-formats --cookies-from firefox' 
 
 # Editors
 aliasife vim vi
@@ -94,5 +95,5 @@ alias live-neofetch='curl https://raw.githubusercontent.com/hykilpikonna/hyfetch
 alias live-pfetch='curl https://raw.githubusercontent.com/dylanaraps/pfetch/refs/heads/master/pfetch | bash'
 
 # Misc Tools
-alias yt='yt-dlp --cookies-from firefox' 
-alias yt1080="yt-dlp --cookies-from firefox --format 'bestvideo[height<=1080]+bestaudio'"
+alias yt='yt-dlp' 
+alias yt1080="yt-dlp --format 'bestvideo[height<=1080]+bestaudio'"
