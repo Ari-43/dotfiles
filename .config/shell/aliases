@@ -25,6 +25,8 @@ aliasife vim vi
 aliasife nvim vim
 alias v='vi'
 alias nv='vi' # Leftover from muscle memory
+alias se='sudoedit'
+alias sv='sudoedit'
 
 # Pagers
 aliasife less more # A classic
