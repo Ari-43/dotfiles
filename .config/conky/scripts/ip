@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if ! [[ -z $(ip -family inet addr show scope global) ]]; then
+	ip -family inet -json addr show scope global | jq -r '.[].addr_info[0] | select(.scope == "global") | "\(.label):\(.local)\/\(.prefixlen)"' | sed ':a;N;$!ba;s/\n/ /g'
+else
+	echo Disconnected
+fi

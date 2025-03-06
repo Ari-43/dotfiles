@@ -1,2 +1,0 @@
-UPTIME=$(uptime -p | awk '{ print $2, $3, $4, $5 }') # Get uptime and remove the extra stuff
-echo $UPTIME
