@@ -37,6 +37,7 @@
   
   - Volume mute/unmute shifts the icon
     - Use a half space to add padding to the unmuted icon?
+- Fix spacing of polybar network icons
 
 - Finish Albert configuration
   
