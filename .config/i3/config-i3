@@ -8,7 +8,7 @@
 set $locker xfce4-screensaver-command --lock
 #set $locker xdg-screensaver lock
 
-exec --no-startup-id light-locker
+#exec --no-startup-id light-locker
 exec --no-startup-id xfce4-power-manager --daemon
 exec --no-startup-id xfce4-screensaver
 
