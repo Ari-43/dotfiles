@@ -38,7 +38,7 @@ done
 # Loading string
 echo "$(echo %{F$theme_primary}󰚰%{F-} )"
 updatecount=$((paru -Qum 2> /dev/null & checkupdates 2> /dev/null) | wc -l)
-if [[ $updatecount > $minupdatecount ]]; then
+if [ $updatecount -ge $minupdatecount ]; then
 	outline="$(echo %{F$theme_primary}󰚰%{F-} $updatecount)"
 fi
 # The bar item will be empty if there are no updates ($outline variable not set), which will save space
