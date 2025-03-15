@@ -12,3 +12,6 @@ input type:touchpad {
 
 # Wallpaper
 exec_always swaybg --image Pictures/wallpapers/T480\ Padgriffin\ Remastered-background-nord.png
+
+# Desktop panel/bar
+exec nwg-panel
