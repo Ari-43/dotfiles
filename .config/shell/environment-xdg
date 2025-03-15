@@ -67,5 +67,4 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 ## ~/.wine
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 ## ~/.xsession-errors
-ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
-
+export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
