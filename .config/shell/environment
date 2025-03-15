@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export PATH=$PATH:"$HOME/.local/bin"
-
 # Use smooth scrolling in Firefox
 export MOZ_USE_XINPUT2=1
 
@@ -30,4 +28,5 @@ SAVEHIST=100000
 # Enable or disable custom things
 export startupcounter='false' # Setting this to false still counts startups but does not display the message
 
+sourceife $HOME/.config/shell/environment-xdg
 sourceife $HOME/.config/shell/environment-colors
