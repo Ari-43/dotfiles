@@ -37,6 +37,8 @@ done
 
 # Loading string
 echo "$(echo %{F$theme_primary}󰚰%{F-} )"
+
+# TODO: Set up checking for specific upgrades, such as `linux`, `firefox`, `(aur)/zen-browser-bin`, and other important packages. 
 updatecount=$((paru -Qum 2> /dev/null & checkupdates 2> /dev/null) | wc -l)
 if [ $updatecount -ge $minupdatecount ]; then
 	outline="$(echo %{F$theme_primary}󰚰%{F-} $updatecount)"
