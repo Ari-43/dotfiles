@@ -2,7 +2,7 @@
 # Warning: Experimental script
 
 # Set default config variables
-radiotmp="/run/user/$UID/mpvradio/"
+radiotmp="$XDG_RUNTIME_DIR/mpvradio/"
 radiourl='https://wreckage-systems.club/radio/8000/stream192.mp3'
 
 # Config file
