@@ -19,6 +19,8 @@ export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
 export BASH_COMPLETION_USER_FILE="$XDG_DATA_HOME"/bash-completion/bash_completion
 ## ~/.cargo
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
+## ~/.nv
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 ## $XDG_CONFIG_HOME/discord*
 export DISCORD_USER_DATA_DIR="${XDG_DATA_HOME}"
 ## ~/.dvdcss
@@ -38,14 +40,18 @@ export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 ## ~/.icons
 export XCURSOR_PATH=/usr/share/icons:$XDG_DATA_HOME/icons
+## ~/.ICauthority
+export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 ## ~/.ipfs
 export IPFS_PATH="$XDG_DATA_HOME"/ipfs
 ## ~/.java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_OPTIONS="$_JAVA_OPTIONS" -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 ## ~/.kde*
 export KDEHOME="$XDG_CONFIG_HOME"/kde
 ## ~/.kodi
 export KODI_DATA=$XDG_DATA_HOME/kodi
+## ~/.lesshst
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history
 ## /etc/lynx.cfg
 export LYNX_CFG="$XDG_CONFIG_HOME"/lynx.cfg
 ## ~/.mplayer
@@ -58,6 +64,8 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 ## ~/.nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
+## ~/.openjfx
+export _JAVA_OPTIONS="$_JAVA_OPTIONS" "-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java -Djavafx.cachedir=${XDG_CACHE_HOME}/openjfx"
 ## ~/.parallel
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 ## ~/.rustup
