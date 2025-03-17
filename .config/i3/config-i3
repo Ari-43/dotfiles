@@ -1,6 +1,10 @@
 # i3 config file (v4)
 # i3-specific configuration. This configuration file will not be sourced by Sway(FX).
 
+# XFCE4 Notification Daemon
+exec /usr/lib/xfce4/notifyd/xfce4-notifyd --no-startup-id # May be provided by a systemd user service
+#exec systemctl --user start xfce4-notifyd
+
 # Locker/Screensaver
 # TODO: Set up xsecurelock
 #set $locker i3lock -c 003333
