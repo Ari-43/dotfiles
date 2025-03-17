@@ -45,7 +45,7 @@ export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
 ## ~/.ipfs
 export IPFS_PATH="$XDG_DATA_HOME"/ipfs
 ## ~/.java
-export _JAVA_OPTIONS="$_JAVA_OPTIONS" -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export _JAVA_OPTIONS="$_JAVA_OPTIONS \-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 ## ~/.kde*
 export KDEHOME="$XDG_CONFIG_HOME"/kde
 ## ~/.kodi
@@ -65,11 +65,13 @@ export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
 ## ~/.nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 ## ~/.openjfx
-export _JAVA_OPTIONS="$_JAVA_OPTIONS" "-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java -Djavafx.cachedir=${XDG_CACHE_HOME}/openjfx"
+export _JAVA_OPTIONS="$_JAVA_OPTIONS \-Djavafx.cachedir=${XDG_CACHE_HOME}/openjfx"
 ## ~/.parallel
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 ## ~/.rustup
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+## ~/.w3m
+export W3M_DIR="$XDG_DATA_HOME"/w3m
 ## ~/.wgetrc
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 ## ~/.wine
