@@ -87,6 +87,7 @@ alias hf='hyfetch'
 alias ff='fastfetch'
 alias wf='wfetch'
 alias cnf='clear && neofetch'
+alias cff='clear && fastfetch'
 alias parrot='curl parrot.live'
 alias rick='asciilive rick'
 ## Live versions of some scripts
