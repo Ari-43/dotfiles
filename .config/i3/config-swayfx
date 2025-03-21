@@ -1,2 +1,18 @@
 # i3 config file (v4)
+# Source main Sway config
 include $HOME/.config/i3/config-sway
+
+# Shadows
+blur enable
+
+# Shadows
+shadows enable
+shadow_blur_radius 12
+shadow_offset 6 6
+
+# Window dimming
+default_dim_inactive 0.1
+
+# Borders
+corner_radius 10
+#titlebar_separator disable
