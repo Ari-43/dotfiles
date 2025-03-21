@@ -1,7 +1,7 @@
 {
     "border-rgba": "#5e81acFF",
     "border-radius": 10,
-    "border-width": 2,
+    "border-width": 3,
     "border-mode": "inside",
     "disable-version-warning": true,
     "border-gradient": "#1da5d4FF #1da5d4FF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #1da5d4FF",
