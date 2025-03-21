@@ -1,0 +1,2 @@
+# i3 config file (v4)
+exec zenity --error --text "i3-like environment detection failed ($i3type)"
