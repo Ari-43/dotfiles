@@ -7,7 +7,7 @@ runife $HOME/.screenlayout/$(hostname).sh
 sourceife $HOME/.config/i3/swaydetect
 
 xfce4-clipman &
-xbindkeys
+#xbindkeys
 xbacklight
 #clight-gui --tray &
 picom -b
