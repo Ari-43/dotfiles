@@ -2,7 +2,7 @@
 # i3-specific configuration. This configuration file will not be sourced by Sway(FX).
 
 # XFCE4 Notification Daemon
-exec /usr/lib/xfce4/notifyd/xfce4-notifyd --no-startup-id # May be provided by a systemd user service
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd # May be provided by a systemd user service
 #exec systemctl --user start xfce4-notifyd
 
 # Locker/Screensaver
@@ -12,7 +12,6 @@ exec /usr/lib/xfce4/notifyd/xfce4-notifyd --no-startup-id # May be provided by a
 set $locker xfce4-screensaver-command --lock
 #set $locker xdg-screensaver lock
 
-# Lock screen
 bindsym $mod+mod1+l exec --no-startup-id $locker
 bindsym Control+mod1+l exec --no-startup-id $locker
 
@@ -26,7 +25,7 @@ bindcode 107 exec xfce4-screenshooter
 
 exec_always --no-startup-id picom -b
 
-# Use PolyBar
+# Use Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use Libinput Gestures
@@ -38,7 +37,14 @@ exec_always --no-startup-id $HOME/.config/fehbg/$(hostname).fehbg
 # Conky
 exec --no-startup-id conky --config=$HOME/.config/conky/$(hostname).conf
 
+# Borders
 exec_always --no-startup-id $HOME/.config/xborder/launch.sh
+# Make borders thinner and remove the title bar
+#default_border pixel 2
+default_border none
+default_floating_border none
+# Remove borders when only one window is on screen
+#hide_edge_borders smart
 
 # Set appropriate monitor config
 
@@ -47,4 +53,3 @@ exec_always --no-startup-id $HOME/.config/xborder/launch.sh
 
 # Custom Autostart/run
 #exec_always $HOME/.local/bin/wmstartup
-#exec_always --no-startup-id xfce-screensaver
