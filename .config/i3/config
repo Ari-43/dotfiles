@@ -1,14 +1,14 @@
 # i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# Include system/implementation-specific configuration files
+# Include system and i3 implementation-specific (ie. Sway) configuration files
 include $HOME/.config/i3/`$(hostname)`/config
 include $HOME/.config/i3/`$(hostname)`/config-$i3type
 include $HOME/.config/i3/config-$i3type
 
 set $mod Mod4
 
+# Fonts {{{
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 12
@@ -19,7 +19,9 @@ set $mod Mod4
 
 #My personal preferred font
 font pango:JetBrains Nerd Font Mono 12
+# }}}
 
+# Session Managment {{{
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -31,15 +33,22 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# reload the configuration file
+bindcode $mod+Shift+54 restart
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindcode $mod+Shift+27 reload
+# exit i3 (logs you out of your X session)
+#bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindcode $mod+Shift+26 exec zenity --question --icon=video-display --text "Exit $i3type" && i3-msg exit
+# }}}
 
+# Special Function Keys {{{
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -47,13 +56,15 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Brightness keys
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+# }}}
 
-# ==== Program Hotkeys =================================================================
+#  Program Hotkeys {{{
 # Terminal
-bindsym $mod+Return exec kitty -1
-bindsym $mod+KP_Enter exec kitty -1
+bindsym $mod+Return exec kitty --single-instance
+bindsym $mod+KP_Enter exec kitty --single-instance
 
 # Web browser
 bindcode $mod+54 exec xdg-open "https://"
@@ -64,16 +75,14 @@ bindcode $mod+31 exec qalculate-gtk
 # File Manager
 bindcode $mod+52 exec xdg-open "$HOME"
 
-
-# Character & Emoje selector
+# Character & Emoji selector
 # TODO Find a better emoji selector than gucharmap (KDE?)
 
 # Rofi
 bindsym $mod+space exec --no-startup-id "rofi -modi drun,run -show drun"
+# }}}
 
-# ======================================================================================
-
-# ==== Window Managment ================================================================
+# Window Managment {{{
 # kill focused window
 bindcode $mod+24 kill
 
@@ -88,6 +97,9 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
 # move focused window
 bindcode $mod+Shift+44 move left
@@ -115,12 +127,6 @@ bindsym $mod+Shift+f fullscreen toggle global
 bindcode $mod+39 layout stacking
 bindcode $mod+25 layout tabbed
 bindcode $mod+26 layout toggle split
-
-workspace_layout tabbed
-
-# Moving workspaces between screens 
-bindcode $mod+33 move workspace to output right
-bindcode $mod+32 move workspace to output left
 
 # toggle tiling / floating
 bindsym $mod+Shift+b floating toggle
@@ -159,9 +165,9 @@ mode "resize" {
         bindsym Escape mode "default"
         bindcode $mod+27 mode "default"
 }
-# ======================================================================================
+# }}}
 
-# ==== Workspaces ======================================================================
+# Workspaces {{{
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -175,6 +181,12 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 set $wsbg "bg"
+
+workspace_layout tabbed
+
+# Moving workspaces between screens 
+bindcode $mod+33 move workspace to output right
+bindcode $mod+32 move workspace to output left
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -223,39 +235,11 @@ workspace 8 output DP-4
 workspace 9 output DP-4
 workspace 10 output DP-4
 
-# reload the configuration file
-bindcode $mod+Shift+54 restart
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindcode $mod+Shift+27 reload
-# exit i3 (logs you out of your X session)
-#bindcode $mod+Shift+26 exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
-bindcode $mod+Shift+26 exec zenity --question --icon=video-display --text "Exit $i3type" && i3-msg exit
+# i3 starts on the wrong workspace when the lowest numbered monitor output is not workspace 1
+exec --no-startup-id i3-msg workspace 1
+# }}}
 
-# Colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #5e81ac #1d1f21 #d8d4cf #2e9ef4   #5e81ac
-client.focused_inactive #333333 #222222 #d8d4cf #484e50   #5f676a
-client.unfocused        #333333 #222222 #777777 #292d2e   #222222
-client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
-client.placeholder      #000000 #0c0c0c #d8d4cf #000000   #0c0c0c
-
-client.background       #ffffff
-
-# Make borders thinner and remove the title bar
-#default_border normal 2
-default_border none
-default_floating_border none
-# Remove borders when only one window is on screen
-#hide_edge_borders smart
-
-# Use gaps
-gaps inner 10
-#gaps top 45
-
-for_window [class="^.*"] title_window_icon yes
-title_align center
-
-# Application Workspaces
+# Application Workspaces {{{
 assign [class="discord"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
@@ -264,35 +248,64 @@ assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
 assign [title="WreckageSystems"] $ws9
 assign [title="Wreckage Systems"] $ws9
-assign [class="background-kitty"] $wsbg # For background kitty instance
 for_window [class="Keymapp"] move scratchpad
-
-# Forced floating &/ Snapped
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [class="ark"] floating enable
-for_window [class="marktext"] floating disable
-#for_window [class="Blueman-manager"] floating enable
-
 #	Games should be on WS 6 TODO: Figure out a way to do this
 # (Possibly see if Steam is a parent process?)
 
+# Background kitty instance for instant startup
+# While Polybar is configured to hide the workspace it goes on, this also causes issues with relative workspace switiching
+#exec kitty -1 --app-id background-kitty sleep infinity
+assign [class="background-kitty"] $wsbg # For background kitty instance
+# }}}
+
+# Colors & Visual Tweaks {{{
+# class                 border  backgr. text    indicator child_border
+client.focused          #5e81ac #1d1f21 #d8d4cf #88c0d0   #5e81ac
+client.focused_inactive #333333 #222222 #d8d4cf #88c0d0   #5f676a
+client.unfocused        #333333 #222222 #777777 #292d2e   #222222
+client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
+client.placeholder      #000000 #0c0c0c #d8d4cf #000000   #0c0c0c
+
+client.background       #ffffff
+
+# Use gaps
+gaps inner 10
+#gaps top 45
+
+for_window [class="^.*"] title_window_icon yes
+title_align center
+# }}}
+
+# Forced floating &/ Snapped {{{
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [class="ark"] floating enable
+for_window [class="marktext"] floating disable
+for_window [class="wireshark"] floating disable
+#for_window [class="Blueman-manager"] floating enable
+## Steam (https://wiki.gentoo.org/wiki/Sway#Steam_Tweaks)
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+# }}}
+
 # GTK Theme Fix for libadwaita
 exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-#	Uncomment this if not also using my polybar config. Polybar adds it's own 6px gap by default, so this subtracts it
-#gaps top -6px
 
 # Update power sources on i3 restart (maybe?)
 # Power sources do not always automatically update when a battery is added or removed
 exec_always --no-startup-id upower --enumerate
 
-# Background kitty instance for instant startup
-exec kitty -1 --app-id background-kitty sleep infinity
-
-# i3 starts on the wrong workspace when the lowest numbered monitor output is not ws-1
-exec --no-startup-id i3-msg workspace 1
+# vim:foldmethod=marker
