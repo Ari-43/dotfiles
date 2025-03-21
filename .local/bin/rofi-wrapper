@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# A simple rofi wrapper that allows for toggling the application launcher
+
+if ps -p $PID $(cat /run/user/$UID/rofi.pid) > /dev/null; then
+	echo "$func: Killing rofi" | tee -a /tmp/rofiwrapperlog
+	# Theoretically this PID could be used for something else while rofi is not running. A check should be implemented before killing to make sure that rofi is actually the process on this PID. 
+	kill $(cat /run/user/$UID/rofi.pid)
+else
+	echo "$func: Starting rofi" | tee -a /tmp/rofiwrapperlog
+	rofi -modi drun,run -show drun -pid & disown
+fi
