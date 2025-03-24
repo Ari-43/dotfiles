@@ -100,3 +100,4 @@ asciilive () {
 # Misc Tools
 alias yt='yt-dlp' 
 alias yt1080="yt-dlp --format 'bestvideo[height<=1080]+bestaudio'"
+alias yt720="yt-dlp --format 'bestvideo[height<=720]+bestaudio'"
