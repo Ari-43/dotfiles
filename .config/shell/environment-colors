@@ -24,7 +24,52 @@ if [ $settheme = 'nord' ]; then
 	export nord13="#ebcb8b"
 	export nord14="#a3be8c"
 	export nord15="#b48ead"
+
+	# Theme colors
+	export theme0="$nord0"
+	export theme1="$nord1"
+	export theme2="$nord2"
+	export theme3="$nord3"
+
+	export theme4="$nord4"
+	export theme5="$nord5"
+	export theme6="$nord6"
+
+	export theme7="$nord7"
+	export theme8="$nord8"
+	export theme9="$nord9"
+	export theme10="$nord10"
+
+	export theme11="$nord11"
+	export theme12="$nord12"
+	export theme13="$nord13"
+	export theme14="$nord14"
+	export theme15="$nord15"
 fi
+
+if [ $settheme = 'monochrome' ]; then
+	# Theme colors
+	export theme0="#000000"
+	export theme1="#000000"
+	export theme2="#000000"
+	export theme3="#000000"
+
+	export theme4="#FFFFFF"
+	export theme5="#FFFFFF"
+	export theme6="#FFFFFF"
+
+	export theme7="#A0A0A0"
+	export theme8="#A0A0A0"
+	export theme9="#A0A0A0"
+	export theme10="#A0A0A0"
+
+	export theme11="#FF0000"
+	export theme12="#FFA000"
+	export theme13="#FFFF00"
+	export theme14="#00FF00"
+	export theme15="#FF00FF"
+fi
+
 
 # Transparency Configurations
 # TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
@@ -45,18 +90,18 @@ util_bg_highest_pct_trans="$util_pct_trans"
 util_bg_highest_dec_trans="$util_dec_trans"
 
 # Final theme configuration
-export theme_bg="$nord0"
-export theme_bg_raised="$nord1"
-export theme_bg_highlight="$nord2"
-export theme_bg_highest="$nord3"
-export theme_txt="$nord4"
-export theme_txt_brighter="$nord5"
-export theme_txt_brightest="$nord6"
-export theme_primary="$nord10"
-export theme_error="$nord11"
-export theme_danger="$nord12"
-export theme_warn="$nord13"
-export theme_success="$nord14"
+export theme_bg="$theme0"
+export theme_bg_raised="$theme1"
+export theme_bg_highlight="$theme2"
+export theme_bg_highest="$theme3"
+export theme_txt="$theme4"
+export theme_txt_brighter="$theme5"
+export theme_txt_brightest="$theme6"
+export theme_primary="$theme10"
+export theme_error="$theme11"
+export theme_danger="$theme12"
+export theme_warn="$theme13"
+export theme_success="$theme14"
 
 export theme_bg_pct_trans="$theme_bg$util_bg_pct_trans"
 export theme_bg_raised_pct_trans="$theme_bg_raised$util_bg_raised_pct_trans"
