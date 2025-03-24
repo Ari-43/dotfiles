@@ -22,22 +22,22 @@ fi
 # Declare functions
 function normalizeLength() # Keeps the length of lines consistent
 {
-text="$1"
-textprepend="$2"
-textappend="$3"
-fulltext="$textprepend$text$textappend"
+	text="$1"
+	textprepend="$2"
+	textappend="$3"
+	fulltext="$textprepend$text$textappend"
 
-inputlen="${#fulltext}"
-textcut=$((fixedwidth-inputlen))
-textedit="$text"
+	inputlen="${#fulltext}"
+	textcut=$((fixedwidth-inputlen))
+	textedit="$text"
 
-repeat='2' # TODO Figure out why this needs to start at 2. Where are the extra two spaces coming from when this is 0?
-while [ $repeat -le $textcut ]
-do
-        textedit="$textedit "
-        ((repeat++))
-done
-	echo "$textprepend$textedit$textappend"
+	repeat='2' # TODO Figure out why this needs to start at 2. Where are the extra two spaces coming from when this is 0?
+	while [ $repeat -le $textcut ]
+	do
+		textedit="$textedit "
+		((repeat++))
+	done
+		echo "$textprepend$textedit$textappend"
 }
 
 # TODO Make these follow the defined fixedwidth
