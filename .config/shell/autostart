@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+if [[ $1 == 'x11' ]]; then
+
+	# Set display preset
+	runife $HOME/.screenlayout/$(hostname).sh
+
+	# Check if this is a Sway/i3-type session
+	sourceife $HOME/.config/i3/swaydetect
+
+	# Display backlight managment
+	#clight-gui --tray &
+	
+	# WM-independent keybinds
+	#xbindkeys
+
+	# KDE Connect
+	/usr/lib/kdeconnectd &
+
+	# Use GUI polkit authentication
+	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+
+	# Bar services
+	## TODO: Move mowbatcheck to polybar scripts folder
+	$HOME/.local/bin/mowbatcheck &
+	## Disable mpvradio on login
+	$HOME/.config/polybar/scripts/mpvradio rclick &
+
+	# Theme Fixes
+	dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+	xrdb ~/.Xresources
+
+	# Fallback to manually set dvorak keyboard layout in X11
+	setxkbmap -layout us,us -variant 'dvorak, '
+	
+	# Tray applets
+	blueman-applet &
+	guxplay &
+	ibus-daemon &
+	kdeconnect-indicator &
+	nm-applet &
+	xfce4-clipman &
+fi

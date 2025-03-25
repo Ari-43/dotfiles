@@ -3,24 +3,4 @@ isxprofile=1
 # Minimal shell startup. This defines the sourceife function as well as sets environment variables that are not set by systemd
 source $HOME/.config/shell/prestart
 
-runife $HOME/.screenlayout/$(hostname).sh
-sourceife $HOME/.config/i3/swaydetect
-
-xfce4-clipman &
-#xbindkeys
-xbacklight
-#clight-gui --tray &
-picom -b
-/usr/lib/kdeconnectd &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-nm-applet &
-blueman-applet &
-guxplay &
-ibus-daemon &
-setxkbmap -layout us,us -variant 'dvorak, '
-# TODO: Move mowbatcheck to polybar scripts folder
-$HOME/.local/bin/mowbatcheck &
-$HOME/.config/polybar/scripts/mpvradio rclick &
-# GTK Fixes
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-xrdb ~/.Xresources
+sourceife $HOME/.config/shell/autostart x11
