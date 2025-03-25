@@ -12,14 +12,7 @@ bashcompinit
 
 ENABLE_CORRECTION="true"
 
-# TODO: Set up zsh-fast-syntax-highlighting
-sourceife /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Arch
-sourceife /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Debian
-sourceife /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # BSD
-sourceife $(brew --prefix 2> /dev/null)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # macOS Brew
-
-sourceife /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Arch
-sourceife /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh # Debian
+sourceife $HOME/.config/zsh/assist.zsh
 
 # Disable beep
 unsetopt beep

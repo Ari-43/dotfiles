@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Normally I would not put something that actually affects the shell in a prestart, but putting this later may hide important error messages
+# TODO: Only clear the shell when a certain arg is passed to this script
+clear
 # Define functions and other things necessary before the rest of the shell startup scripts are run
 
 # Automatically start the X server if this is TTY1
