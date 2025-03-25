@@ -17,7 +17,6 @@ function ecp () {
 	~/.config/shell/errorcodeparser $1
 }
 
-
 # Short directory listing (currently not used)
 # sourcing this file defines the `spwd` function
 sourceife $HOME/.config/shell/shortpwd

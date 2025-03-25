@@ -7,7 +7,9 @@ fpath=("$HOME/.config/zsh/prompts" "$fpath[@]")
 ledge='' # Left edge character (start of PS1)
 redge='' # Right edge character (end of RPROMPT)
 lsep='' # Separator between sections
+lsepalt=''
 rsep=''
+rsepalt=''
 lend="$lsep" # Right end of $PS1
 rend="$rsep" # Left end of RPROMPT
 
@@ -37,10 +39,30 @@ resetfg='%f'
 resetbg='%k'
 resetc='%f%k'
 
+function cleanecp () {
+	ecpout=$(ecp $@)
+	# If the error code is missing or 0 (ok), then don't show anything
+	if [[ $ecpout != '0 (ok)' ]] || [[ -z $ecpout ]]; then
+		#ecp $@
+		echo -n "$rfg1$rsep$rbg1$txtc $ecpout "
+	else
+		echo -n "$rfg1$rsepalt$txtc"
+	fi	
+}
+function cleanpwd () {
+	dir=$(print -rD $PWD)
+	if [[ $dir != '~' ]]; then
+		echo -n "$lfg1$lbg2$lsep$txtc $dir $resetbg$lfg2$lsep"
+	else
+		echo -n "$lfg1$lsep$txtc"
+	fi
+}
+
 prompt_slick-arrows_setup () {
-	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$lfg1$lbg2$lsep$txtc"' %~ '"$resetbg$lfg2$lsep$resetc "
-	RPROMPT="$rfg1$rsep$rbg1$txtc "'$(ecp $?)'" $rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
+	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc"'$(cleanpwd)'"$resetc$lfg2$lsepalt$resetc "
+	RPROMPT='$(cleanecp $?)'"$rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
 }
 prompt_themes+=( slick-arrows )
 
+# Find a way to safely unset these without breaking the prompt
 #unset txt lc1 lc2 rc1 rc2 rc3 lfg1 lfg2 rfg1 rfg2 rfg3 lbg1 lbg2 rbg1 rbg2 rbg3 resetfg resetbg resetc
