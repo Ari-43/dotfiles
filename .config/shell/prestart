@@ -28,4 +28,4 @@ function runifce () {
 }
 
 # Set environment variables
-sourceife $HOME/.config/shell/environment
+sourceife $HOME/.config/shell/env/env
