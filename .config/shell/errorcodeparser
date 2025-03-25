@@ -3,18 +3,21 @@
 realcode="$1"
 # Store the exit code that will be modified for 129-254
 c="$1"
+# No code handling
+if [[ -z "$realcode" ]]; then
+	exit
+fi
 # Store proper names of variables
 # Normal exit codes
 c0='ok'
-c1='error'
-c2='error (sh)'
+c1='err'
+c2='err (sh)'
 c126='noexec'
 c127='notfound'
 c128='exit fail'
 
 # Signals 
 # https://faculty.cs.niu.edu/~hutchins/csci480/signals.htm
-#c129="signal $(($realcode-128))" # Automatically calculates signal, no parsing for readability
 c129='HUP'
 c130='^C'
 c131='QUIT'

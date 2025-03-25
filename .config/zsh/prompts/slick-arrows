@@ -54,12 +54,12 @@ function cleanpwd () {
 	if [[ $dir != '~' ]]; then
 		echo -n "$lfg1$lbg2$lsep$txtc $dir $resetbg$lfg2$lsep"
 	else
-		echo -n "$lfg1$lsep$txtc"
+		echo -n "$lfg1$lsep$txtc$resetc$lfg2$lsepalt"
 	fi
 }
 
 prompt_slick-arrows_setup () {
-	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc"'$(cleanpwd)'"$resetc$lfg2$lsepalt$resetc "
+	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc"'$(cleanpwd)'"$resetc "
 	RPROMPT='$(cleanecp $?)'"$rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
 }
 prompt_themes+=( slick-arrows )
