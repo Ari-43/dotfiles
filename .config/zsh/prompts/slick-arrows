@@ -6,10 +6,12 @@ fpath=("$HOME/.config/zsh/prompts" "$fpath[@]")
 # Glyphs and Icons
 ledge='' # Left edge character (start of PS1)
 redge='' # Right edge character (end of RPROMPT)
-lsep='' # Separator between sections
-lsepalt=''
-rsep=''
-rsepalt=''
+lsep1='' # Separator between sections
+lsep2='' # Separator between sections
+#lsepalt='' # Thin separator indicating a hidden section
+rsep1='' # Separator between sections
+rsep2='' # Separator between sections
+#rsepalt='' # Thin separator indicating a hidden section
 lend="$lsep" # Right end of $PS1
 rend="$rsep" # Left end of RPROMPT
 
@@ -44,23 +46,23 @@ function cleanecp () {
 	# If the error code is missing or 0 (ok), then don't show anything
 	if [[ $ecpout != '0 (ok)' ]] || [[ -z $ecpout ]]; then
 		#ecp $@
-		echo -n "$rfg1$rsep$rbg1$txtc $ecpout "
+		echo -n "$rbg1$txtc $ecpout "
 	else
-		echo -n "$rfg1$rsepalt$txtc"
+		echo -n ""
 	fi	
 }
 function cleanpwd () {
 	dir=$(print -rD $PWD)
 	if [[ $dir != '~' ]]; then
-		echo -n "$lfg1$lbg2$lsep$txtc $dir $resetbg$lfg2$lsep"
+		echo -n "$lbg2$txtc $dir "
 	else
-		echo -n "$lfg1$lsep$txtc$resetc$lfg2$lsepalt"
+		echo -n ""
 	fi
 }
 
 prompt_slick-arrows_setup () {
-	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc"'$(cleanpwd)'"$resetc "
-	RPROMPT='$(cleanecp $?)'"$rfg2$rsep$rbg2$txtc $($HOME/.config/shell/detectbox) $rfg3$rsep$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
+	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc$lfg1$lsep2$lfg2$lsep1$txtc"'$(cleanpwd)'"$resetc$lfg2$lsep2$resetc "
+	RPROMPT="$rfg1$rsep2"'$(cleanecp $?)'"$resetc$rfg1$rsep1$resetc$rfg2$rsep2$resetc$rbg2$txtc $($HOME/.config/shell/detectbox) $resetc$rfg2$rsep1$resetc$rfg3$rsep2$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
 }
 prompt_themes+=( slick-arrows )
 
