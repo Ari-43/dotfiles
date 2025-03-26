@@ -1,8 +1,8 @@
-syntaxmode=fast
-
 function setupassist () {
-	if [[ $syntaxmode == 'fast' ]]; then
-		sourceife /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+	if [[ $1 == 'fast' ]]; then
+		# I only have an Arch path for now
+		source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh || \
+		return 1
 	else
 		# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
 		# Arch, Debian, BSD, and macOS Brew respectively
@@ -17,4 +17,5 @@ function setupassist () {
 	source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh || \
 	sourceife $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 }
-setupassist
+# Janky, but it works for falling back if zsh-fast-syntax-highlighting is not available
+setupassist fast 2> /dev/null || setupassist slow

@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -f "$HOME/.config/shell/prestart" ]
+then
+	source "$HOME/.config/shell/prestart"
+fi
+
 # Start an X session if on TTY1
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
   exec startx
