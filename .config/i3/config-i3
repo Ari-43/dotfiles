@@ -29,7 +29,7 @@ exec_always --no-startup-id picom -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use Libinput Gestures
-exec_always --no-startup-id libinput-gestures-setup stop start
+exec_always --no-startup-id libinput-gestures-setup stop && libinput-gestures-setup start & disown
 
 # Wallpaper
 exec_always --no-startup-id $HOME/.config/fehbg/$(hostname).fehbg
