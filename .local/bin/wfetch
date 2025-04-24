@@ -15,7 +15,7 @@ if [ -f "$conffile" ]; then
 	source "$conffile"
 fi
 
-if [[ "$shellstartup" == 'false' ]] && [[ "$1" == 'shellstartup' ]]; then
+if (( "$shellstartup" == 0 )) && [[ "$1" == 'shellstartup' ]]; then
 	exit
 fi
 

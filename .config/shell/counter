@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-[ ! -f $HOME/.local/share/shell/startscounter ] && echo '0' > "$HOME/.local/share/shell/startscounter" && echo 'Shell startup counter file created'
-function counter () {
-	shellcounterfile="$HOME/.local/share/shell/startscounter"
-	shellcounter=$(cat $shellcounterfile)
-	((shellcounter++))
-	echo $shellcounter > $HOME/.local/share/shell/startscounter
-	echo $shellcounter
-} 
-if [[ "$startupcounter" == 'true' ]]; then
-	echo "This nerd has opened their shell $(counter) times"
+showstartscounter='false' # Setting this to false still counts startups but does not display the message
+startscounterfile="$HOME/.local/share/shell/startscounter"
+
+[ ! -f $startscounterfile ] && echo '0' > "$startscounterfile" && echo 'Shell startup counter file created'
+# TODO: Find a way to increment and set $startscounter in one expression
+startscounter=$(cat $startscounterfile)
+((startscounter++))
+echo $startscounter > $startscounterfile 
+
+if [[ "$showstartscounter" == 'true' ]]; then
+	echo "You have opened your shell $startscounter times"
 fi

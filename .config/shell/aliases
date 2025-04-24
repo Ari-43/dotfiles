@@ -92,7 +92,7 @@ alias parrot='curl parrot.live'
 alias rick='asciilive rick'
 ## Live versions of some scripts
 alias live-neofetch='curl https://raw.githubusercontent.com/hykilpikonna/hyfetch/refs/heads/master/neofetch | bash'
-alias live-pfetch='curl https://raw.githubusercontent.com/dylanaraps/pfetch/refs/heads/master/pfetch | bash'
+alias live-pfetch='curl https://raw.githubusercontent.com/dylanaraps/pfetch/refs/heads/master/pfetch | sh'
 asciilive () {
 	curl ascii.live/$1
 }

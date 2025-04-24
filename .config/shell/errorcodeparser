@@ -13,13 +13,13 @@ c0='ok'
 c1='err'
 c2='err (sh)'
 c126='noexec'
-c127='notfound'
+c127='nocmd'
 c128='exit fail'
 
 # Signals 
 # https://faculty.cs.niu.edu/~hutchins/csci480/signals.htm
 c129='HUP'
-c130='^C'
+c130='INT'
 c131='QUIT'
 c132='ILL'
 c133='TRAP'
