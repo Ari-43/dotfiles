@@ -21,6 +21,7 @@ function boxline () {
 useaur=1
 aurhelper='paru'
 useflatpak=1
+userustup=1
 
 sourceife /etc/os-release
 sourceife $HOME/.config/sysupdate/config
@@ -35,6 +36,11 @@ if [[ $ID == 'arch' ]]; then
 		echo 'Updating Pacman packages...'
 		sudo pacman -Syu
 	fi
+fi
+if [[ $userustup == 1 ]]; then
+	boxline
+	echo 'Updating rust packages with rustup...'
+	runifce rustup update
 fi
 if [[ $useflatpak == 1 ]]; then
 	boxline
