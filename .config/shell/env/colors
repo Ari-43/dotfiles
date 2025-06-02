@@ -1,53 +1,130 @@
 #!/usr/bin/env bash
+# Themes are converted to a standardized base16 mapping, and then to my own theme mapping based on the Nord palette
+# TODO: Convert theme# to theme## (1 > 01) format, and use hex. This requires edits in some other configuration files. 
+# TODO: Create consistent definitions for each theme
+# TODO: Make definition order consistent (so themes can be easily swapped out)
 
-settheme='nord'
+settheme='rose-pine'
+#if ! [ -z $1 ]; then
+#	settheme="$1"
+#fi
+
+# Color schemes
+# Nord
+# https://www.nordtheme.com/docs/colors-and-palettes
+export nord00="#2e3440"
+export nord01="#3b4252"
+export nord02="#434c5e"
+export nord03="#4c566a"
+export nord04="#d8dee9"
+export nord05="#e5e9f0"
+export nord06="#eceff4"
+export nord07="#8fbcbb"
+export nord08="#88c0d0"
+export nord09="#81a1c1"
+export nord0A="#5e81ac"
+export nord0B="#bf616a"
+export nord0C="#d08770"
+export nord0D="#ebcb8b"
+export nord0E="#a3be8c"
+export nord0F="#b48ead"
+
+# Rose Pine (main)
+# https://rosepinetheme.com/palette/ingredients/
+export rose00="#191724"
+export rose01="#1f1d2e"
+export rose02="#26233a"
+export rose03="#6e6a86"
+export rose04="#908caa"
+export rose05="#e0def4"
+export rose06="#eb6f92"
+export rose07="#f6c177"
+export rose08="#ebbcba"
+export rose09="#31748f"
+export rose0A="#9ccfd8"
+export rose0B="#c4a7e7"
+export rose0C="#21202e"
+export rose0D="#403d52"
+export rose0E="#524f67"
 
 if [ $settheme = 'nord' ]; then
-	# Nord
-	# https://www.nordtheme.com/docs/colors-and-palettes
-	export nord0="#2e3440"
-	export nord1="#3b4252"
-	export nord2="#434c5e"
-	export nord3="#4c566a"
+	# Direct base16 Mapping
+	#base00="$nord00"
+	#base01="$nord01"
+	#base02="$nord02"
+	#base03="$nord03"
+	#base04="$nord04"
+	#base05="$nord05"
+	#base06="$nord06"
+	#base07="$nord07"
+	#base08="$nord08"
+	#base09="$nord09"
+	#base0A="$nord0A"
+	#base0B="$nord0B"
+	#base0C="$nord0C"
+	#base0D="$nord0D"
+	#base0E="$nord0E"
+	#base0F="$nord0F"
 
-	export nord4="#d8dee9"
-	export nord5="#e5e9f0"
-	export nord6="#eceff4"
+	# Proper Base16 Mapping
+	# https://github.com/ada-lovecraft/base16-nord-scheme/issues/1
+	#export base00="$nord00"
+        #export base01="$nord01"
+        #export base02="$nord02"
+        #export base03="$nord03"
+        #export base04="$nord04"
+        #export base05="$nord05"
+        #export base06="$nord06"
+        #export base07="$nord07"
+        #export base08="$nord0B"
+        #export base09="$nord0C"
+        #export base0A="$nord0D"
+        #export base0B="$nord0E"
+        #export base0C="$nord08"
+        #export base0D="$nord09"
+        #export base0E="$nord0F"
+        #export base0F="$nord0A"
 
-	export nord7="#8fbcbb"
-	export nord8="#88c0d0"
-	export nord9="#81a1c1"
-	export nord10="#5e81ac"
-
-	export nord11="#bf616a"
-	export nord12="#d08770"
-	export nord13="#ebcb8b"
-	export nord14="#a3be8c"
-	export nord15="#b48ead"
-
-	# Theme colors
-	export theme0="$nord0"
-	export theme1="$nord1"
-	export theme2="$nord2"
-	export theme3="$nord3"
-
-	export theme4="$nord4"
-	export theme5="$nord5"
-	export theme6="$nord6"
-
-	export theme7="$nord7"
-	export theme8="$nord8"
-	export theme9="$nord9"
-	export theme10="$nord10"
-
-	export theme11="$nord11"
-	export theme12="$nord12"
-	export theme13="$nord13"
-	export theme14="$nord14"
-	export theme15="$nord15"
+	# Theme colors mapping
+	 theme0="$nord00"
+	 theme1="$nord01"
+	 theme2="$nord02"
+	 theme3="$nord03"
+	 theme4="$nord04"
+	 theme5="$nord05"
+	 theme6="$nord06"
+	 theme7="$nord07"
+	 theme8="$nord08"
+	 theme9="$nord09"
+	theme10="$nord0A"
+	theme11="$nord0B"
+	theme12="$nord0C"
+	theme13="$nord0D"
+	theme14="$nord0E"
+	theme15="$nord0F"
 fi
 
-if [ $settheme = 'monochrome' ]; then
+if [ $settheme = 'rose-pine' ]; then
+	# Theme colors mapping
+	export  theme0="$rose00"
+	export  theme1="$rose01"
+	export  theme2="$rose02"
+	export  theme3="$rose0C"
+	export  theme4="$rose03"
+	export  theme5="$rose04"
+	export  theme6="$rose05"
+	export  theme7="$rose0E"
+	export  theme8="$rose0B"
+	export  theme9="$rose07"
+	export theme10="$rose0A"
+	export theme11="$rose06"
+	export theme12="$rose08"
+	export theme13="$rose07"
+	export theme14="$rose09"
+	export theme15="$rose0B"
+fi
+
+if [ $settheme = 'basic' ]; then
 	# Theme colors
 	export theme0="#000000"
 	export theme1="#000000"
@@ -70,6 +147,44 @@ if [ $settheme = 'monochrome' ]; then
 	export theme15="#FF00FF"
 fi
 
+# Theme colors from base16
+#export theme0="$base00"
+#export theme1="$base01"
+#export theme2="$base02"
+#export theme3="$base03"
+#export theme4="$base04"
+#export theme5="$base05"
+#export theme6="$base06"
+#export theme7="$base07"
+#export theme8="$base0C"
+#export theme9="$base0D"
+#export theme10="$base0F"
+#export theme11="$base08"
+#export theme12="$base09"
+#export theme13="$base0A"
+#export theme14="$base0B"
+#export theme15="$base0E"
+
+# Final theme mappings
+# Names are based on Nord, but the main use for each color should be consistent across themes (ie. $theme_primary is always the primary color)
+export             theme_bg="$theme0"
+export      theme_bg_raised="$theme1"
+export        theme_bg_high="$theme2"
+export      theme_bg_higher="$theme3"
+
+export     theme_txt_dimmer="$theme4"
+export        theme_txt_dim="$theme5"
+export            theme_txt="$theme6"
+
+export  theme_primary_light="$theme7"
+export        theme_primary="$theme8"
+export   theme_primary_dark="$theme9"
+export theme_primary_darker="$theme10"
+
+export          theme_error="$theme11"
+export         theme_danger="$theme12"
+export           theme_warn="$theme13"
+export        theme_success="$theme14"
 
 # Transparency Configurations
 # TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
@@ -88,20 +203,6 @@ util_primary_dec_trans="$util_dec_trans"
 util_bg_highest_hex_trans="$util_hex_trans"
 util_bg_highest_pct_trans="$util_pct_trans"
 util_bg_highest_dec_trans="$util_dec_trans"
-
-# Final theme configuration
-export theme_bg="$theme0"
-export theme_bg_raised="$theme1"
-export theme_bg_highlight="$theme2"
-export theme_bg_highest="$theme3"
-export theme_txt="$theme4"
-export theme_txt_brighter="$theme5"
-export theme_txt_brightest="$theme6"
-export theme_primary="$theme10"
-export theme_error="$theme11"
-export theme_danger="$theme12"
-export theme_warn="$theme13"
-export theme_success="$theme14"
 
 export theme_bg_pct_trans="$theme_bg$util_bg_pct_trans"
 export theme_bg_raised_pct_trans="$theme_bg_raised$util_bg_raised_pct_trans"

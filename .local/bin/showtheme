@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+source ~/.config/shell/env/colors $1
+for num in {0..15}; do 
+	themevar=theme$num
+	echo -n $(echo ${!themevar})
+	echo "  $themevar"
+done | nvimpager -c
+

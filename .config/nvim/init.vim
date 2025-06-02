@@ -6,6 +6,8 @@ call plug#begin()
 
 " Install Plugins
 Plug 'tpope/vim-sensible'
+Plug 'rose-pine/neovim'
+"Plug 'rose-pine/vim'
 Plug 'nordtheme/vim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'fladson/vim-kitty'
@@ -22,7 +24,7 @@ autocmd VimEnter *
 
 " General Interface {{{
 " Colors: https://www.ditig.com/256-colors-cheat-sheet
-colorscheme nord
+colorscheme rose-pine
 hi 	Normal 		guibg=NONE
 "hi 	NonText		guibg=NONE
 "hi 	Normal 		ctermbg=NONE
@@ -35,6 +37,8 @@ set 	relativenumber
 set 	nu
 syntax	on
 set	foldmethod=marker
+" Line breaks on space
+set nolist wrap linebreak breakat&vim
 "setlocal spell spelllang=en_us
 " }}}
 

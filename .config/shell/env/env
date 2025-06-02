@@ -6,11 +6,12 @@
 export MOZ_USE_XINPUT2=1
 
 # QT/GTK Style
-export QT_STYLE_OVERRIDE=kvantum
+#export QT_STYLE_OVERRIDE=kvantum
 export QT_STYLE_OVERRIDE=qt5ct-style
 export GTK_CSD=0
-export GTK_THEME=Graphite-blue-Dark-nord
-export ADW_DISABLE_PORTAL=1
+#export GTK_THEME=Graphite-blue-Dark-nord
+export GTK_THEME=rose-pine-gtk
+export ADW_DISABLE_PORTAL=0
 # Java theming and font fixes
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
@@ -24,7 +25,7 @@ export PAGER='nvimpager'
 export MANPAGER='nvim +Man!'
 
 HISTFILE=~/.local/share/shell/history
-HISTSIZE=10000
+HISTSIZE=100000
 SAVEHIST=100000
 
 sourceife $HOME/.config/shell/env/xdg

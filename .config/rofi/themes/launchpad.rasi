@@ -13,8 +13,8 @@
 	bg2:  ${theme_bg_highlight_pct_trans};
 	bg3:  ${theme_bg_highest_pct_trans};
 	
-	fg0:  ${theme_txt_brighter};
-	fg1:  ${theme_txt};
+	fg0:  ${theme_txt};
+	fg1:  ${theme_txt_dim};
 	
     	background-color: transparent;
 	border-color:     ${theme_primary};

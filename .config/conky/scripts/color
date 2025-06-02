@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-source $HOME/.config/shell/environment-colors
+source $HOME/.config/shell/env/colors
 color="theme_${1}"
 echo -n \$\{color ${!color}\}
