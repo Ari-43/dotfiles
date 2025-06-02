@@ -240,9 +240,13 @@ exec --no-startup-id i3-msg workspace 1
 # }}}
 
 # Application Workspaces {{{
+assign [class="firefox"] $ws2
+assign [class="zen"] $ws2
+assign [class="librewolf"] $ws2
 assign [class="discord"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
+assign [class="element"] $ws8
 assign [class="Signal"] $ws8
 assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
@@ -259,6 +263,7 @@ assign [class="background-kitty"] $wsbg # For background kitty instance
 # }}}
 
 # Colors & Visual Tweaks {{{
+# TODO: Find a way to read variables for this section
 # class                 border  backgr. text    indicator child_border
 client.focused          #5e81ac #1d1f21 #d8d4cf #88c0d0   #5e81ac
 client.focused_inactive #333333 #222222 #d8d4cf #88c0d0   #5f676a
