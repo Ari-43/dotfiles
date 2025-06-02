@@ -47,4 +47,5 @@ if [[ $useflatpak == 1 ]]; then
 	echo 'Updating Flatpak packages...'
 	runifce flatpak upgrade
 fi
-		
+boxline
+echo 'All updates complete'
