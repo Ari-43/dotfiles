@@ -8,6 +8,10 @@ There's a lot of rmRadev's work here. I highly reccomend you show them some love
 Just a 1x1 pixel of the hex color #003333
 <hr>
 
+## nord0-2e3440.png
+1x1 pixel of nord0 (hex #2e3440)  
+<hr>
+
 ## colorful_mountains_by_rmradev_dep7u6t-fullview
 **Creator:** rmRadev  
 **License:** https://creativecommons.org/licenses/by-nc-sa/3.0/  
