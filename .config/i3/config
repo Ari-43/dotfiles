@@ -241,20 +241,20 @@ exec --no-startup-id i3-msg workspace 1
 
 # Application Workspaces {{{
 assign [class="firefox"] $ws2
-assign [class="zen"] $ws2
 assign [class="librewolf"] $ws2
 assign [class="discord"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
-assign [class="element"] $ws8
+assign [title="^Element"] $ws8
 assign [class="Signal"] $ws8
+assign [title="^Steam"] $ws5
+assign [title="Sign in to Steam"] $ws5
 assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
 assign [title="WreckageSystems"] $ws9
 assign [title="Wreckage Systems"] $ws9
 for_window [class="Keymapp"] move scratchpad
-#	Games should be on WS 6 TODO: Figure out a way to do this
-# (Possibly see if Steam is a parent process?)
+assign [class="^steam_app_"] $ws6
 
 # Background kitty instance for instant startup
 # While Polybar is configured to hide the workspace it goes on, this also causes issues with relative workspace switiching
