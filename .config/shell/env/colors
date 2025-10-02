@@ -3,6 +3,7 @@
 # TODO: Convert theme# to theme## (1 > 01) format, and use hex. This requires edits in some other configuration files. 
 # TODO: Create consistent definitions for each theme
 # TODO: Make definition order consistent (so themes can be easily swapped out)
+# TODO: Cleanup
 
 settheme='rose-pine'
 #if ! [ -z $1 ]; then
