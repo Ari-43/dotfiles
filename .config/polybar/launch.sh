@@ -24,6 +24,9 @@ if [[ $HOST == *"desk"* ]]; then
 	polybar right 2>&1 | tee -a /tmp/polybar1.log & disown
 	polybar last 2>&1 | tee -a /tmp/polybar1.log & disown
 fi
+
+polybar $HOST 2>&1 | tee -a /tmp/polybar1.log & disown
+
 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 
 # Launch bar on all screens. See https://github.com/polybar/polybar/issues/763 for details

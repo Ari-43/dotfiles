@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+if [ -z $1 ]; then
+	echo 'Use one of the following arguments: fpstest'
+	mustexit=true
+fi
+[[ $mustexit == true ]] && exit 1
+
+function applycolor () {
+	echo 100 | sudo tee '/sys/class/leds/chromeos:multicolor:charging/brightness' > /dev/null
+	echo $@ | sudo tee '/sys/class/leds/chromeos:multicolor:charging/multi_intensity' > /dev/null
+} 
+
+if [[ $1 == 'fpstest' ]]; then
+	echo -ne "Warning: Running this test repeatedly may damage your device. Proceed with caution. 
+Press Return to continue.\r"
+	read
+	try=0
+	begin=$(date +"%s.%N")
+	for i in {1..10}; do
+		((try++))
+		echo -ne "Change $try\r"
+		applycolor 100 0 0 0 0 0
+		((try++))
+		echo -ne "Change $try\r"
+		applycolor 0 100 0 0 0 0
+		((try++))
+		echo -ne "Change $try\r"
+		applycolor 0 0 100 0 0 0
+	done
+	end=$(date +"%s.%N")
+	echo $( echo "$i/($end - $begin)" | bc -l )
+	applycolor 0 0 0 0 0 0
+elif [[ $1 == 'oneshot' ]]; then
+	if [[ $2 == 'off' ]]; then
+		applycolor 0 0 0 0 0 0
+	elif [[ $2 == 'red' ]]; then
+		applycolor 100 0 0 0 0 0
+	elif [[ $2 == 'green' ]]; then
+		applycolor 0 100 0 0 0 0
+	elif [[ $2 == 'blue' ]]; then
+		applycolor 0 0 100 0 0 0
+	fi
+fi
