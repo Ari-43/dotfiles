@@ -32,7 +32,7 @@ if [[ $1 == 'x11' ]]; then
 	xrdb ~/.Xresources
 
 	# Fallback to manually set dvorak keyboard layout in X11
-	setxkbmap -layout us,us -variant 'dvorak, '
+	#setxkbmap -layout us,us -variant 'dvorak, '
 	
 	# Tray applets
 	blueman-applet &
@@ -42,3 +42,5 @@ if [[ $1 == 'x11' ]]; then
 	nm-applet &
 	xfce4-clipman &
 fi
+
+thunar --daemon &
