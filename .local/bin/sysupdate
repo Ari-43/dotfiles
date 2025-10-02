@@ -26,6 +26,11 @@ userustup=1
 sourceife /etc/os-release
 sourceife $HOME/.config/sysupdate/config
 
+if [[ $userustup == 1 ]]; then
+	boxline
+	echo 'Updating rust packages with rustup...'
+	runifce rustup update
+fi
 if [[ $ID == 'arch' ]]; then
 	if [[ $useaur = 1 ]]; then
 		boxline
@@ -36,11 +41,6 @@ if [[ $ID == 'arch' ]]; then
 		echo 'Updating Pacman packages...'
 		sudo pacman -Syu
 	fi
-fi
-if [[ $userustup == 1 ]]; then
-	boxline
-	echo 'Updating rust packages with rustup...'
-	runifce rustup update
 fi
 if [[ $useflatpak == 1 ]]; then
 	boxline
