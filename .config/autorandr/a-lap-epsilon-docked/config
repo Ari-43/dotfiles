@@ -12,12 +12,13 @@ output DisplayPort-6
 off
 output DisplayPort-7
 off
-output eDP
+output DisplayPort-2
 crtc 0
-mode 2256x1504
+mode 2560x1440
 pos 0x0
 primary
-rate 60.00
+rate 120.00
+x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default
 x-prop-max_bpc 16
 x-prop-non_desktop 0
@@ -26,12 +27,11 @@ x-prop-tearfree auto
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DisplayPort-2
+output eDP
 crtc 1
-mode 2560x1440
-pos 2256x0
-rate 59.95
-x-prop-broadcast_rgb Automatic
+mode 2256x1504
+pos 2560x0
+rate 60.00
 x-prop-colorspace Default
 x-prop-max_bpc 16
 x-prop-non_desktop 0
