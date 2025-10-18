@@ -228,14 +228,15 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Screen config
-workspace 1 output DP-2
+## NOTE: The amdgpu and i915 drivers use eDP for the first internal display, but nvidia(-open) uses e-DP. Both should be used and treated as equivalent. 
+workspace 1 output DP-2 DisplayPort-2
 workspace 2 output DP-0
-workspace 3 output DP-4
-workspace 8 output DP-4
-workspace 9 output DP-4
-workspace 10 output DP-4
+workspace 3 output DP-4 eDP e-DP
+workspace 8 output DP-4 eDP e-DP
+workspace 9 output DP-4 eDP e-DP
+workspace 10 output DP-4 eDP e-DP
 
-# i3 starts on the wrong workspace when the lowest numbered monitor output is not workspace 1
+# i3 starts with the wrong workspace focused when the lowest numbered monitor output is not workspace 1
 exec --no-startup-id i3-msg workspace 1
 # }}}
 
