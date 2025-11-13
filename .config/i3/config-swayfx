@@ -2,8 +2,10 @@
 # Source main Sway config
 include $HOME/.config/i3/config-sway
 
-# Shadows
+# Blur
 blur enable
+blur_passes 3
+blur_radius 1
 
 # Shadows
 shadows enable
@@ -16,3 +18,7 @@ default_dim_inactive 0.1
 # Borders
 corner_radius 10
 #titlebar_separator disable
+
+# vim:foldmethod=marker
+# vim:ft=swayconfig
+

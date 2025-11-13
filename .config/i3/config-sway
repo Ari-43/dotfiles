@@ -1,6 +1,9 @@
 # i3 config file (v4)
+# Sway(FX)-specific configuration. This configuration file will not be sourced by i3.
 
-# Input (keyboard/mouse) configuration
+set $mod Mod4
+
+# Input (keyboard/mouse) configuration {{{
 input * {
 	xkb_layout us
 	xkb_variant dvorak
@@ -13,41 +16,47 @@ input type:touchpad {
 	scroll_factor 0.5
 }
 input 2:10:TPPS/2_IBM_TrackPoint {
-	pointer_accel 0.7
+	pointer_accel 0.5
 	scroll_factor 0.5
 }
 
+# Video output configuration
+output 'ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00039EBD' {
+	mode 2560x1440@119.998Hz
+}
+output 'BOE 0x0BCA Unknown' {
+	mode 2256x1504@59.999Hz
+	scale 1.25
+}
+# }}}
+
+# Locker/Screensaver {{{
+#exec --no-startup-id xfce4-power-manager --daemon
+#exec --no-startup-id xfce4-screensaver
+
+# Support for Wayland is experimental and very unstable, replace this
+#set $locker xfce4-screensaver-command --lock
+
+bindsym $mod+mod1+l exec --no-startup-id $locker
+bindsym Control+mod1+l exec --no-startup-id $locker
+# }}}
+
 # Wallpaper
-exec --no-startup-id swaybg --image dotfiles/Pictures/wallpapers/dist/T480\ Padgriffin\ Remastered-background-trackpoint-nord.png
+exec --no-startup-id swaybg --mode fill --image dotfiles/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
 
 # GTK Theme
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-	gsettings set $gnome-schema gtk-theme 'Graphite-blue-Dark-nord'
-	gsettings set $gnome-schema icon-theme 'Papirus-Dark'
-	gsettings set $gnome-schema cursor-theme 'Posy_Cursor_Black'
-	gsettings set $gnome-schema font-name 'Noto Sans 11'
-	gsettings set $gnome-schema gtk-cursor-theme-size='24'
-	gsettings set $gnome-schema gtk-toolbar-style='GTK_TOOLBAR_BOTH_HORIZ'
-	gsettings set $gnome-schema gtk-toolbar-icon-size='GTK_ICON_SIZE_LARGE_TOOLBAR'
-	gsettings set $gnome-schema gtk-button-images='1'
-	gsettings set $gnome-schema gtk-menu-images='1'
-	gsettings set $gnome-schema gtk-enable-event-sounds='0'
-	gsettings set $gnome-schema gtk-enable-input-feedback-sounds='0'
-	gsettings set $gnome-schema gtk-xft-antialias='1'
-	gsettings set $gnome-schema gtk-xft-hinting='1'
-	gsettings set $gnome-schema gtk-xft-hintstyle='hintslight'
-	gsettings set $gnome-schema gtk-application-prefer-dark-theme='1'
-}
 #exec $HOME/.config/gtk-3.0/read.sh
+exec_always $HOME/.config/i3/scripts/set-gsettings
 
 # Notifications
 exec swaync
 
 # Desktop panel/bar
 #exec nwg-panel
-exec ags run
-exec sleep 5 && ags run ~/git/astal/examples/gtk3/js/osd/app.ts # There needs to be a delay between running multiple widgets
+#exec ags run
+#exec sleep 5 && ags run ~/git/astal/examples/gtk3/js/osd/app.ts # There needs to be a delay between running multiple widgets
+exec_always killall -SIGUSR2 waybar
+exec --no-startup-id waybar
 
 # Borders
 default_border pixel 3
@@ -56,3 +65,6 @@ hide_edge_borders none
 titlebar_border_thickness 3
 ## Hides window titles in tiled mode
 hide_edge_borders --i3 none
+
+# vim:foldmethod=marker
+# vim:ft=swayconfig
