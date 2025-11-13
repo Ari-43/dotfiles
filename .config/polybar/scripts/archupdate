@@ -17,7 +17,7 @@ aurhelperlist=('paru' 'yay' 'pikaur')
 parucmd='paru -Qum'
 yaycmd='yay -Qum'
 pikaurcmd='pikaur -Qua'
-#
+
 # https://unix.stackexchange.com/a/190610 
 # Check network status
 function net () {
@@ -38,11 +38,11 @@ done
 # Loading string
 echo "$(echo %{F$theme_primary}󰚰%{F-} )"
 
-# TODO: Set up checking for specific upgrades, such as `linux`, `firefox`, `(aur)/zen-browser-bin`, and other important packages. 
+# TODO: Set up checking for specific upgrades, such as `linux`, `firefox`, and other important packages. 
 updatecount=$((paru -Qum 2> /dev/null & checkupdates 2> /dev/null) | wc -l)
 if [ $updatecount -ge $minupdatecount ]; then
 	outline="$(echo %{F$theme_primary}󰚰%{F-} $updatecount)"
 fi
 # The bar item will be empty if there are no updates ($outline variable not set), which will save space
 echo $outline
-sleep 600
+sleep 300
