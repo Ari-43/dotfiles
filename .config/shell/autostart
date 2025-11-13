@@ -11,6 +11,9 @@ if [[ $1 == 'x11' ]]; then
 
 	# Display backlight managment
 	#clight-gui --tray &
+
+	# Display configuration
+	autorandr --change
 	
 	# WM-independent keybinds
 	#xbindkeys
