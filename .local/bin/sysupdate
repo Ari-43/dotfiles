@@ -22,6 +22,8 @@ useaur=1
 aurhelper='paru'
 useflatpak=1
 userustup=1
+useprotonup=1
+useprotonrtsp=0
 
 sourceife /etc/os-release
 sourceife $HOME/.config/sysupdate/config
@@ -47,5 +49,16 @@ if [[ $useflatpak == 1 ]]; then
 	echo 'Updating Flatpak packages...'
 	runifce flatpak upgrade
 fi
+if [[ $useprotonup == 1 ]]; then
+	boxline
+	echo 'Updating Proton-GE...'
+	runifce protonup-rs --quick-download 
+fi
+if [[ $useprotonrtsp == 1 ]]; then
+	boxline
+	echo 'Updating Proton-GE-RTSP for VRChat...'
+	runife ~/.local/share/Steam/compatibilitytools.d/update-proton-ge-rtsp.sh
+fi
+
 boxline
 echo 'All updates complete'
