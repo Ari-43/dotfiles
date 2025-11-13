@@ -59,6 +59,14 @@ alias lls='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias chx='chmod u+x'
+alias fmh='xdg-open "$(pwd)"'
+alias fmhere='xdg-open "$(pwd)"'
+function hist () {
+	cat $HISTFILE | grep -i $1
+}
+alias searchhist='hist'
+alias searchist='hist'
+alias histsearch='hist'
 
 # System
 alias sdn='shutdown now'
@@ -72,6 +80,7 @@ alias aoeu='setxkbmap us'
 alias asdf='setxkbmap us dvorak'
 alias id='installdots'
 alias fullcpu='stress -c 12'
+alias killall='killall --verbose --ignore-case'
 
 # Network and Wireless Communication
 alias ping4='ping -c 4'
@@ -102,3 +111,4 @@ asciilive () {
 alias yt='yt-dlp' 
 alias yt1080="yt-dlp --format 'bestvideo[height<=1080]+bestaudio'"
 alias yt720="yt-dlp --format 'bestvideo[height<=720]+bestaudio'"
+alias kssh="kitten ssh"
