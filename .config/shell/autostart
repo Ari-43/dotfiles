@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
+# Check if this is a Sway/i3-type session
+sourceife $HOME/.config/i3/scripts/swaydetect
+
 if [[ $1 == 'x11' ]]; then
 
 	# Set display preset
 	runife $HOME/.screenlayout/$(hostname).sh
 
-	# Check if this is a Sway/i3-type session
-	sourceife $HOME/.config/i3/swaydetect
 
 	# Display backlight managment
 	#clight-gui --tray &
