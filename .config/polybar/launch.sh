@@ -6,6 +6,8 @@ polybar-msg cmd quit
 # Otherwise you can use the nuclear option:
 # killall -q polybar
 HOST=$(hostname)
+# Update theme colors from script
+source $HOME/.config/shell/env/colors
 echo Device is $HOST
 if [[ $HOST == *"lap"* ]]; then
 	echo Launching laptop polybar

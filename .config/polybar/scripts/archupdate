@@ -21,7 +21,7 @@ pikaurcmd='pikaur -Qua'
 # https://unix.stackexchange.com/a/190610 
 # Check network status
 function net () {
-	if nc -zw1 archlinux.org 443 2>/dev/null && echo |openssl s_client -connect archlinux.org:443 2>&1 |awk '
+	if nc -zw1 archlinux.org 443 2>/dev/null && echo | openssl s_client -connect archlinux.org:443 2>&1 | awk '
 		$1 == "SSL" && $2 == "handshake" { handshake = 1 }
 		handshake && $1 == "Verification:" { ok = $2; exit }
 		END { exit ok != "OK" }'; then
@@ -39,7 +39,10 @@ done
 echo "$(echo %{F$theme_primary}󰚰%{F-} )"
 
 # TODO: Set up checking for specific upgrades, such as `linux`, `firefox`, and other important packages. 
-updatecount=$((paru -Qum 2> /dev/null & checkupdates 2> /dev/null) | wc -l)
+updatecount=$( ( paru -Qum 2>/dev/null & checkupdates 2>/dev/null & \
+	( flatpak remote-ls --updates --all | tail -n +1 ) & \
+	( rustup --quiet check | head -n -1 | grep 'Update available' ) \
+	) | wc -l )
 if [ $updatecount -ge $minupdatecount ]; then
 	outline="$(echo %{F$theme_primary}󰚰%{F-} $updatecount)"
 fi
