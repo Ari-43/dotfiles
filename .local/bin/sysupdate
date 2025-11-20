@@ -24,6 +24,7 @@ useflatpak=1
 userustup=1
 useprotonup=1
 useprotonrtsp=0
+usefwupd=1
 
 sourceife /etc/os-release
 sourceife $HOME/.config/sysupdate/config
@@ -58,6 +59,14 @@ if [[ $useprotonrtsp == 1 ]]; then
 	boxline
 	echo 'Updating Proton-GE-RTSP for VRChat...'
 	runife ~/.local/share/Steam/compatibilitytools.d/update-proton-ge-rtsp.sh
+fi
+if [[ $usefwupd == 1 ]]; then
+	boxline
+	echo 'Updating firmware with fwupd...'
+	if which fwupdmgr >/dev/null; then
+		sudo fwupdmgr refresh
+		sudo fwupdmgr update
+	fi
 fi
 
 boxline
