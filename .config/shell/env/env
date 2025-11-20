@@ -48,5 +48,10 @@ HISTFILE=~/.local/share/shell/history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Use ccache for binaries built on the CLI
+# https://wiki.archlinux.org/title/Ccache#Enable_for_command_line
+export PATH="/usr/lib/ccache/bin:$PATH"
+export GCC_COLORS=1
+
 sourceife $HOME/.config/shell/env/xdg
 sourceife $HOME/.config/shell/env/colors
