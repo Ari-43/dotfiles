@@ -5,6 +5,9 @@
 # Use smooth scrolling in Firefox
 export MOZ_USE_XINPUT2=1
 
+# Fix opening links in Firefox within Wayland+XWayland environments
+export MOZ_DBUS_REMOTE=1
+
 # QT/GTK Style
 #if [[ "$i3type" == 'i3' ]]; then
 	#export qt_engine="kvantum"
@@ -22,6 +25,9 @@ export MOZ_USE_XINPUT2=1
 #fi
 # Java theming and font fixes
 #export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+# Use Wayland native rendering in Electron applications (v28-37)
+ELECTRON_OZONE_PLATFORM_HINT='auto'
 
 # Required to use WiVRn for SteamVR applications
 export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
