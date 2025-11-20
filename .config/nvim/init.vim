@@ -1,5 +1,3 @@
-" vim:ft=vim:foldmethod=marker
-
 " Plugins {{{
 " Enable vim-plug
 call plug#begin()
@@ -46,10 +44,10 @@ set nolist wrap linebreak breakat&vim
 " Too good for plugins
 set laststatus=2
 set statusline=
+set statusline+=%{StatuslineMode()}
 set statusline+=\ 
 set statusline+=%F
 set statusline+=\ 
-set statusline+=%{StatuslineMode()}
 set statusline+=\ 
 set statusline+=%=
 set statusline+=%{strftime(\"%H:%M:%S\")}
@@ -71,27 +69,28 @@ set statusline+=\
 function! StatuslineMode()
   let l:mode=mode()
   if l:mode==#"n"
-    return "NORMAL"
+    return "NORMAL "
   elseif l:mode==?"v"
-    return "VISUAL"
+    return "VISUAL "
   elseif l:mode==#"i"
-    return "INSERT"
+    return "INSERT "
   elseif l:mode==#"R"
     return "REPLACE"
   elseif l:mode==?"s"
-    return "SELECT"
+    return "SELECT "
   elseif l:mode==#"t"
     return "TERMINAL"
   elseif l:mode==#"c"
     return "COMMAND"
   elseif l:mode==#"!"
-    return "SHELL"
+    return "SHELL  "
   endif
 endfunction
 " }}}
 
 " Usage {{{
 set 	clipboard=unnamedplus
+set 	undofile
 " }}}
 
 " Keybinds {{{
@@ -104,3 +103,4 @@ nnoremap s l
 nnoremap k n
 " }}}
 
+" vim:ft=vim:foldmethod=marker
