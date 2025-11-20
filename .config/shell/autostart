@@ -13,7 +13,7 @@ if [[ $1 == 'x11' ]]; then
 	#clight-gui --tray &
 
 	# Display configuration
-	autorandr --change
+	#autorandr --change	# Handled by autorandr.service
 	
 	# WM-independent keybinds
 	#xbindkeys
