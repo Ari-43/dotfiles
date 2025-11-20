@@ -34,6 +34,7 @@
         "host",
         "cpu",
         "gpu",
+	"memory",
         "display",
         "bluetooth",
         {
