@@ -3,21 +3,19 @@
 
 # XFCE4 Notification Daemon
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd # May be provided by a systemd user service
-#exec systemctl --user start xfce4-notifyd
 
-# Locker/Screensaver
+# Locker/Screensaver {{{
 # TODO: Set up xsecurelock
 #set $locker i3lock -c 003333
-#set $locker light-locker-command --lock
-set $locker xfce4-screensaver-command --lock
 #set $locker xdg-screensaver lock
+set $locker xfce4-screensaver-command --lock
 
 bindsym $mod+mod1+l exec --no-startup-id $locker
 bindsym Control+mod1+l exec --no-startup-id $locker
 
-#exec --no-startup-id light-locker
 exec --no-startup-id xfce4-power-manager --daemon
 exec --no-startup-id xfce4-screensaver
+# }}}
 
 # Screenshot
 bindcode $mod+Shift+39 exec xfce4-screenshooter
@@ -46,10 +44,11 @@ default_floating_border none
 # Remove borders when only one window is on screen
 #hide_edge_borders smart
 
-# Set appropriate monitor config
-
 # Per-app keymap
 #bindcode $mod+Shift+65 exec --no-startup-id xkb-switch -n
 
 # Custom Autostart/run
 #exec_always $HOME/.local/bin/wmstartup
+
+# vim:foldmethod=marker
+# vim:ft=i3config
