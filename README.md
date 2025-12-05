@@ -23,7 +23,7 @@ You will need to remove conflicting files and/or symlinks before running the ins
 
 ## Dependencies
 
-Dependencies follow Arch and AUR package names, since that's what I currently use most of the time. These are for i3 and do not include all experimental configs in this repo (ie. Hyprland). 
+Dependencies follow Arch and AUR package names, since that's what I currently use most of the time. These are for i3 and do not include all experimental configs in this repo (ie. Sway/Swayfx). 
 
 ### Important
 
