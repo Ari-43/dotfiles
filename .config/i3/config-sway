@@ -42,7 +42,7 @@ bindsym Control+mod1+l exec --no-startup-id $locker
 # }}}
 
 # Wallpaper
-exec --no-startup-id swaybg --mode fill --image dotfiles/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
+exec --no-startup-id swaybg --mode fill --image $HOME/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
 
 # GTK Theme
 #exec $HOME/.config/gtk-3.0/read.sh
