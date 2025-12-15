@@ -70,4 +70,4 @@ if [[ $usefwupd == 1 ]]; then
 fi
 
 boxline
-echo 'All updates complete'
+read -p 'All updates complete'
