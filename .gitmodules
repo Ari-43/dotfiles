@@ -1,0 +1,3 @@
+[submodule ".config/btop/themes/rose-pine-btop"]
+	path = .config/btop/themes/rose-pine-btop
+	url = https://github.com/rose-pine/btop.git
