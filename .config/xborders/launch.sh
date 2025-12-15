@@ -1,7 +1,7 @@
 kill $(ps -u $USER | grep -i xborders | awk '{print $1;}')
-#xborders --config ~/.config/xborder/config.json & disown
+#xborders & disown
 xborders \
-	--border-rgba "$theme_primary" \
+	--border-rgba "${theme_primary}FF" \
 	--border-radius 10 \
 	--border-width 2 \
 	--border-mode inside \

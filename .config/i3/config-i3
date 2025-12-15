@@ -36,7 +36,7 @@ exec_always --no-startup-id $HOME/.config/fehbg/$(hostname).fehbg
 exec --no-startup-id conky --config=$HOME/.config/conky/$(hostname).conf
 
 # Borders
-exec_always --no-startup-id $HOME/.config/xborder/launch.sh
+exec_always --no-startup-id $HOME/.config/xborders/launch.sh
 # Make borders thinner and remove the title bar
 #default_border pixel 2
 default_border none

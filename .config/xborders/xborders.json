@@ -1,10 +1,10 @@
 {
-    "border-rgba": "#5e81acFF",
+    "border-rgba": "#c4a7e7FF",
     "border-radius": 10,
     "border-width": 3,
     "border-mode": "inside",
     "disable-version-warning": true,
-    "border-gradient": "#1da5d4FF #1da5d4FF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #1da5d4FF",
+    "border-gradient": "#c4a7e7FF #c4a7e7FF #00000000 #00000000 #00000000 #00000000 #00000000 #00000000 #c4a7e7FF",
 
     "positive-x-offset": 0,
     "positive-y-offset": 0,
