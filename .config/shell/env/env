@@ -39,7 +39,7 @@ export U_PACING_COMP_MIN_TIME_MS=8
 export TERMINAL=kitty
 
 # Default terminal tools
-export EDITOR="$(which nvim)'
+export EDITOR="$(which nvim)"
 export VISUAL=$EDITOR 
 export PAGER='nvimpager'
 export MANPAGER='nvim +Man!'
