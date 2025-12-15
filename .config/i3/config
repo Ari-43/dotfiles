@@ -145,7 +145,8 @@ focus_on_window_activation none
 # for_window [class="kitty"] focus_on_window_activation focus # doesn't actually work, TODO: find a way to make only some windows focus on window activation
 
 # change focus wrapping behavior
-focus_wrapping workspace # keeps focus on current workspace
+# keeps focus on current workspace
+focus_wrapping workspace
 
 # resize window (you can also use the mouse for that)
 bindcode $mod+27 mode "resize"
@@ -254,7 +255,8 @@ exec --no-startup-id i3-msg workspace 1
 # Application Workspaces {{{
 assign [class="firefox"] $ws2
 assign [class="librewolf"] $ws2
-assign [class="PrismLauncher*"] $ws5
+assign [class="wivrn-dashboard"] $ws5
+assign [class="PrismLauncher"] $ws5
 assign [title="^Steam"] $ws5
 assign [title="Sign in to Steam"] $ws5
 assign [class="^steam_app_"] $ws6
