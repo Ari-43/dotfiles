@@ -3,7 +3,8 @@
 
 # Set default config variables
 radiotmp="$XDG_RUNTIME_DIR/mpvradio/"
-radiourl='https://wreckage-systems.club/radio/8000/stream192.mp3'
+#radiourl='https://wreckage-systems.club/radio/8000/stream192.mp3'
+radiourl='https://www.youtube.com/65propaganda/live'
 
 # Config file
 if [ -f "$(dirname $0)/config/mpvradio.env" ]; then
@@ -30,7 +31,7 @@ statusline () {
 radiomanager () {
 	action=$1
 	if [[ $action == play ]]; then
-		mpv $radiourl > /dev/null & disown
+		mpv --no-video $radiourl > /dev/null & disown
 		status=1
 	elif [[ $action == pause ]]; then
 		radiopid=$(pgrep -af "$radiourl" | head -n1 | awk '{print $1;}')
