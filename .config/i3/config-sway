@@ -3,7 +3,7 @@
 
 set $mod Mod4
 
-# Input (keyboard/mouse) configuration {{{
+# Input configuration {{{
 input * {
 	xkb_layout us
 	xkb_variant dvorak
@@ -13,7 +13,8 @@ input type:touchpad {
 	tap enabled
 	click_method clickfinger
 	pointer_accel 0.2
-	scroll_factor 0.5
+#	accel_profile flat
+	scroll_factor 2.0
 }
 input 2:10:TPPS/2_IBM_TrackPoint {
 	pointer_accel 0.5
