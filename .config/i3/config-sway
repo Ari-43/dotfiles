@@ -56,8 +56,8 @@ exec swaync
 #exec nwg-panel
 #exec ags run
 #exec sleep 5 && ags run ~/git/astal/examples/gtk3/js/osd/app.ts # There needs to be a delay between running multiple widgets
-exec_always killall -SIGUSR2 waybar
 exec --no-startup-id waybar
+exec_always killall -SIGUSR2 waybar
 
 # Borders
 default_border pixel 3
