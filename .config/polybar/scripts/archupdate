@@ -39,6 +39,7 @@ done
 #echo "$(echo %{F$theme_primary}󰚰%{F-} )"
 
 # TODO: Set up checking for specific upgrades, such as `linux`, `firefox`, and other important packages. 
+# TODO: Automatically detect an installed AUR helper and retrieve update count accordingly
 updatecount=$( ( paru -Qum 2>/dev/null & checkupdates 2>/dev/null & \
 	( flatpak remote-ls --updates --all 2>/dev/null | tail -n +1 ) & \
 	( rustup --quiet check | head -n -1 | grep 'Update available' ) \

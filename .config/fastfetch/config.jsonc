@@ -23,7 +23,6 @@
         }
     },
     "modules": [
-	"break",
 	"title",
         {
             "type": "custom", // HardwareStart
