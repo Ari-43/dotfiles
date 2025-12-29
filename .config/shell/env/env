@@ -34,6 +34,9 @@ export PRESSURE_VESSEL_IMPORT_OPENXR_1_RUNTIMES=1
 
 # Potentially reduce stuttering in VR
 export U_PACING_COMP_MIN_TIME_MS=8
+
+# Potential AMDGPU performance improvement: https://wiki.archlinux.org/title/AMDGPU#User_queues
+export AMD_USERQ=1
 	
 # Fix CLI applications opened on the desktop opening in xterm
 export TERMINAL=kitty
