@@ -14,6 +14,12 @@ function runifce () {
 	fi
 }
 
+function runife () {
+	if [ -f "$1" ]; then
+		"$@"
+	fi
+}
+
 function boxline () {
 	printf '%.s─' $(seq 1 $(tput cols))
 }
@@ -23,7 +29,7 @@ aurhelper='paru'
 useflatpak=1
 userustup=1
 useprotonup=1
-useprotonrtsp=0
+useprotonrtsp=1
 usefwupd=1
 
 sourceife /etc/os-release
