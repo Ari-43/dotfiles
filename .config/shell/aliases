@@ -93,6 +93,7 @@ alias pyhttp='python3 -m http.server'
 alias wificli='nmcli dev wifi'
 alias lswifi='nmcli dev wifi rescan && nmcli dev wifi list'
 alias bluez='bluetoothctl'
+alias curl='curl --progress-bar'
 
 # Fun
 aliasife neowofetch neofetch
