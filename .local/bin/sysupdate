@@ -64,7 +64,7 @@ if [[ $usefwupd == 1 ]]; then
 	boxline
 	echo 'Updating firmware with fwupd...'
 	if which fwupdmgr >/dev/null; then
-		sudo fwupdmgr refresh
+		sudo fwupdmgr refresh 2> /dev/null
 		sudo fwupdmgr update
 	fi
 fi
