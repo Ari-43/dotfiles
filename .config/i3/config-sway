@@ -26,6 +26,7 @@ output 'ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00039EBD' {
 	mode 2560x1440@119.998Hz
 }
 output 'BOE 0x0BCA Unknown' {
+	# Framework Laptop 13 internal display
 	mode 2256x1504@59.999Hz
 	scale 1.25
 }
