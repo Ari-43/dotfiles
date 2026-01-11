@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# A lot of tools try using an x-terminal-emulator binary, which is used on Debian, before others. This runs whatever the $TERMINAL variable is set to or another in order of preference. 
+for terminal in "$TERMINAL" kitty alacritty xfce4-terminal terminator urxvt rxvt uxterm xterm; do
+    if command -v "$terminal" > /dev/null 2>&1; then
+        exec "$terminal" "$@"
+    fi
+done
+
+zenity --error --text="$0 could not find a terminal emulator. Please install one."
+echo "$(date): $0 could not find a terminal emulator. Please install one." | tee -a "$HOME/terminal-search-failed"
