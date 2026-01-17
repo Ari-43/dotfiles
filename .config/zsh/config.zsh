@@ -2,13 +2,13 @@ setopt autocd correct histignorespace PROMPT_SUBST
 
 # Shell completion & correction
 zstyle :compinstall filename '/home/ari/.config/zsh/.zshrc'
-autoload -Uz compinit bashcompinit select-word-style
-select-word-style bash
-zstyle ':completion:*' matcher-list 'm:{A-Za-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion::complete:*' gain-privileges 1
 zstyle ':completion:*' menu select
 zstyle ':completion:*' use-ip true
+autoload -Uz compinit bashcompinit select-word-style
 compinit
+select-word-style bash
 bashcompinit
 
 ENABLE_CORRECTION="true"
