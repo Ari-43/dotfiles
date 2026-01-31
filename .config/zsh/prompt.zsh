@@ -22,4 +22,4 @@ function ecp () {
 sourceife $HOME/.config/shell/shortpwd
 
 sourceife $HOME/.config/zsh/prompts/*
-prompt slick-arrows
+[[ $(tput colors) == "256" ]] && prompt slick-arrows
