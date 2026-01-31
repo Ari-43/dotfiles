@@ -11,11 +11,12 @@ export MOZ_DBUS_REMOTE=1
 # QT/GTK Style
 #if [[ "$i3type" == 'i3' ]]; then
 	#export qt_engine="kvantum"
-	export qt_engine="qt5ct:qt6ct"
-	#export QT_STYLE_OVERRIDE="$qt_engine"
+	#export qt_engine="qt5ct:qt6ct"
+	export qt_engine="qt6ct"
+	#export QT_STYLE_OVERRIDE="kvantum"
 	export QT_QPA_PLATFORMTHEME="$qt_engine"
-	export QT_PLATFORMTHEME="$qt_engine"
-	export QT_PLATFORM_PLUGIN="$qt_engine"
+	#export QT_PLATFORMTHEME="$qt_engine"
+	#export QT_PLATFORM_PLUGIN="$qt_engine"
 	#export QT_AUTO_SCREEN_SCALE_FACTOR=0
 	#export QT_SCALE_FACTOR=1 
 	export GTK_CSD=0
