@@ -11,6 +11,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 export ACKRC="$XDG_CONFIG_HOME/ack/ackrc"
 ## ~/.android
 export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export ANDROID_HOME="$XDG_DATA_HOME"/android
 ## ~/.ansible
 export ANSIBLE_HOME="${XDG_CONFIG_HOME}/ansible"
 export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"

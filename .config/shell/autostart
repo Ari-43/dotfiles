@@ -26,8 +26,7 @@ if [[ $1 == 'x11' ]]; then
 
 
 	# Bar services
-	## TODO: Move mowbatcheck to polybar scripts folder
-	$HOME/.local/bin/mowbatcheck &
+	#$HOME/.local/bin/mowbatcheck &
 	## Disable mpvradio on login
 	$HOME/.config/polybar/scripts/mpvradio rclick &
 
@@ -48,3 +47,7 @@ if [[ $1 == 'x11' ]]; then
 fi
 
 thunar --daemon &
+
+# UxPlay background service
+# TODO: Make an actual service
+#stdbuf -o0 uxplay -p -pw | grep --line-buffered PIN | xargs -I {} notify-send "{}"
