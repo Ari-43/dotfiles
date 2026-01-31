@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Script to automatically run a program on the dedicated GPU if present
+# Works similarly to invoking the switcheroo-control command
+#
+# This script, at least with it's current implementation, just kind of 
+# guesses at what your GPU configuration is. It may get it wrong with 
+# certain unusual configurations. 
+
+prime-none () {
+	echo 'autoprime: (prime-none) Running with the default GPU; Do you have a dGPU connected?'
+	unset DRI_PRIME __NV_PRIME_RENDER_OFFLOAD __VK_LAYER_NV_optimus __GLX_VENDOR_LIBRARY_NAME
+	"$@"
+}
+
+prime-open () {
+	echo 'autoprime: (prime-open) Using DRI_PRIME for open source drivers'
+	DRI_PRIME=1 "$@"
+}
+
+prime-nvidia () {
+	echo 'autoprime: (prime-nvidia) Using NVIDIA PRIME/Optimus implementation'
+	__NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"
+}
+
+# dGPU detection
+# TODO: Get an lspci from someone with an Intel dGPU to add support for it
+radeonrx=$(lspci | grep -P 'Radeon RX [0-9]\d{3,4}' | cut -d" " -f 1)
+nvidiartx=$(lspci | grep -P 'GeForce RTX [0-9]\d{3,4}' | cut -d" " -f 1)
+dgpuid=$radeonrx$nvidiartx
+if [ -z "$dgpuid" ]; then
+	prime-none "$@"
+	exit
+else 
+	echo "autoprime: Detected $dgpuid"
+fi
+
+dgpudrv=$(lspci -k 2>/dev/null | grep $dgpuid -A3 | grep -oP "(?<=driver in use: ).*")
+if [[ "$dgpudrv" =~ ^(amdgpu|nouveau)$ ]]; then
+	prime-open "$@"
+elif [[ "$dgpudrv" == 'nvidia' ]]; then
+	prime-nvidia "$@"
+else 
+	echo 'autoprime: dGPU detected with unknown driver or another error occured'
+	prime-none "$@"
+fi

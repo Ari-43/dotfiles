@@ -82,10 +82,6 @@ alias asdf='setxkbmap us dvorak'
 alias id='installdots'
 alias fullcpu='stress -c 12'
 alias killall='killall --verbose --ignore-case'
-function amd-prime () {
-	echo Aliased running "$@" with "DRI_PRIME=1"
-	DRI_PRIME=1 $@
-}
 
 # Network and Wireless Communication
 alias ping4='ping -c 4'

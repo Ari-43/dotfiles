@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo Aliased running "$1" with "DRI_PRIME=1"
+export DRI_PRIME=1
+"$@"
