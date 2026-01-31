@@ -9,23 +9,6 @@ HOST=$(hostname)
 # Update theme colors from script
 source $HOME/.config/shell/env/colors
 echo Device is $HOST
-if [[ $HOST == *"lap"* ]]; then
-	echo Launching laptop polybar
-	if [[ $HOST == *"edu" ]]; then
-		echo Launching laptop polybar with marker for edu system
-		polybar laptop-edu 2>&1 | tee -a /tmp/polybar1.log & disown
-	else
-		polybar laptop 2>&1 | tee -a /tmp/polybar1.log & disown
-	fi
-fi
-
-if [[ $HOST == *"desk"* ]]; then
-	echo Launching desktop polybars
-	polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
-	polybar left 2>&1 | tee -a /tmp/polybar1.log & disown
-	polybar right 2>&1 | tee -a /tmp/polybar1.log & disown
-	polybar last 2>&1 | tee -a /tmp/polybar1.log & disown
-fi
 
 polybar $HOST 2>&1 | tee -a /tmp/polybar1.log & disown
 
