@@ -10,10 +10,10 @@ fi
 
 bat=$($mowtool report battery 2>/dev/null)
 
-if [[ bat = *\%* ]]; then
+if [[ "$bat" = *\%* ]]; then
 	#set -- $bat
 	#echo $1
-	echo $bat
+	echo -n " $bat"
 else
 	exit 1
 fi
