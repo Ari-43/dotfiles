@@ -31,7 +31,7 @@ Dependencies follow Arch and AUR package names, since that's what I currently us
 
 ### Optional
 
-`xfce4-power-manager libnotify xfce4-notifyd kvantum kvantum-qt5 kvantum-qt4-git papirus-icon-theme papirus-folders graphite-kde-theme-git graphite-gtk-theme-nord-git xfce4-clipman-plugin redshift redshift-gtk blueman streamdeckui xorg-setxkbmap xorg-xrdb clight clight-gui-git kdeconnect polkit-gnome gtk3-nocsd-git light-locker xfce4-screensaver i3lock firefox feh glib2 libinput-gestures xkb-switch conky zsh zsh-syntax-highlighting zsh-autosuggestions neovim xborder-git ttf-jetbrains-mono zenity`
+`xfce4-power-manager libnotify xfce4-notifyd qt6ct-kde qt5ct kvantum kvantum-qt5 rose-pine-gtk-theme papirus-icon-theme xfce4-clipman-plugin redshift redshift-gtk blueman streamdeckui xorg-setxkbmap xorg-xrdb clight clight-gui-git kdeconnect polkit-gnome gtk3-nocsd-git light-locker xfce4-screensaver i3lock firefox feh glib2 libinput-gestures xkb-switch conky zsh zsh-syntax-highlighting zsh-autosuggestions neovim xborder-git ttf-jetbrains-mono zenity`
 
 ## Structure
 
