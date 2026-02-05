@@ -1,9 +1,9 @@
 [Unit]
-Description=Create a temporary downloads folder at /run/user/$UID/tmp-downloads
+Description=Create a temporary downloads folder at /tmp/$USER-tmp-downloads
 
 [Service]
 Type=oneshot
-ExecStart=bash -c "mkdir -pv /run/user/$UID/tmp-downloads"
+ExecStart=bash -c "mkdir -pv /tmp/tmp-downloads-$USER"
 
 [Install]
 WantedBy=default.target
