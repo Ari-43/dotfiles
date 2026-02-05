@@ -2,9 +2,9 @@
 
 # XDG Base Directory Specification
 export PATH=$PATH:"$HOME/.local/bin"
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_STATE_HOME=$HOME/.local/state
-export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_CACHE_HOME="$HOME"/.cache
 
 # Home cleanup ----------------------------------
 ## ~/.ack
@@ -24,6 +24,8 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 ## $XDG_CONFIG_HOME/discord*
 export DISCORD_USER_DATA_DIR="${XDG_DATA_HOME}"
+## ~/.dotnet
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 ## ~/.dvdcss
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 ## ~/.ffmpeg
@@ -63,6 +65,8 @@ export NIMBLE_DIR="$XDG_DATA_HOME/nimble"
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR"/npm
+## ~/.nuget/packages
+export NUGET_PACKAGES="$XDG_CACHE_HOME"/NuGetPackages
 ## ~/.nvm
 export NVM_DIR="$XDG_DATA_HOME"/nvm
 ## ~/.openjfx
@@ -71,6 +75,9 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 export PARALLEL_HOME="$XDG_CONFIG_HOME"/parallel
 ## ~/.rustup
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+## ~/.terminfo
+export TERMINFO="$XDG_DATA_HOME"/terminfo                                                                                                                             
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 ## ~/.w3m
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 ## ~/.wgetrc
