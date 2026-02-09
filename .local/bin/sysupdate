@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo Obtaining superuser permissions...
 sudo echo -n
 
 function sourceife () {
