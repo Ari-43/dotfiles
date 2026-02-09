@@ -24,8 +24,8 @@ prime-nvidia () {
 
 # dGPU detection
 # TODO: Get an lspci from someone with an Intel dGPU to add support for it
-radeonrx=$(lspci | grep -P 'Radeon RX [0-9]\d{3,4}' | cut -d" " -f 1)
-nvidiartx=$(lspci | grep -P 'GeForce RTX [0-9]\d{3,4}' | cut -d" " -f 1)
+radeonrx=$(lspci -d ::03xx | grep -P 'Radeon RX [0-9]\d{3,4}' | cut -d" " -f 1)
+nvidiartx=$(lspci -d ::03xx | grep -P 'GeForce RTX [0-9]\d{3,4}' | cut -d" " -f 1)
 dgpuid=$radeonrx$nvidiartx
 if [ -z "$dgpuid" ]; then
 	prime-none "$@"
