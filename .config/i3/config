@@ -255,13 +255,18 @@ exec --no-startup-id i3-msg workspace 1
 # Application Workspaces {{{
 assign [class="firefox"] $ws2
 assign [class="librewolf"] $ws2
+
 assign [class="wivrn-dashboard"] $ws5
+assign [class="alvr.dashboard"] $ws5
+assign [class="alvr.launcher"] $ws5
 assign [class="PrismLauncher"] $ws5
 assign [title="^Steam"] $ws5
 assign [title="Sign in to Steam"] $ws5
 assign [class="heroic"] $ws5
+
 assign [class="^steam_app_"] $ws6
 assign [title="^Minecraft"] $ws6
+
 assign [class="discord"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
@@ -269,10 +274,12 @@ assign [title="^Element"] $ws8
 assign [title="^FluffyChat"] $ws8
 assign [class="Signal"] $ws8
 assign [class="vrcx"] $ws8
+
 assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
 assign [title="WreckageSystems"] $ws9
 assign [title="Wreckage Systems"] $ws9
+
 for_window [class="Keymapp"] move scratchpad
 
 # Background kitty instance for instant startup
