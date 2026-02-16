@@ -268,8 +268,11 @@ assign [class="^steam_app_"] $ws6
 assign [title="^Minecraft"] $ws6
 
 assign [class="discord"] $ws8
+assign [title="Vesktop"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
+assign [title="Equibop"] $ws8
+assign [class="equibop"] $ws8
 assign [title="^Element"] $ws8
 assign [title="^FluffyChat"] $ws8
 assign [class="Signal"] $ws8
