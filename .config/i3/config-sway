@@ -3,7 +3,7 @@
 
 set $mod Mod4
 
-# Input configuration {{{
+# HID Input configuration {{{
 input * {
 	xkb_layout us
 	xkb_variant dvorak
@@ -12,7 +12,7 @@ input type:touchpad {
 	natural_scroll enabled
 	tap enabled
 	click_method clickfinger
-	pointer_accel 0.2
+	pointer_accel 0.1
 #	accel_profile flat
 	scroll_factor 2.0
 }
@@ -20,8 +20,9 @@ input 2:10:TPPS/2_IBM_TrackPoint {
 	pointer_accel 0.5
 	scroll_factor 0.5
 }
+# }}}
 
-# Video output configuration
+# Video output configuration {{{
 output 'ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00039EBD' {
 	mode 2560x1440@119.998Hz
 }
@@ -47,8 +48,7 @@ bindsym Control+mod1+l exec --no-startup-id $locker
 exec --no-startup-id swaybg --mode fill --image $HOME/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
 
 # GTK Theme
-#exec $HOME/.config/gtk-3.0/read.sh
-exec_always $HOME/.config/i3/scripts/set-gsettings
+exec $HOME/.config/i3/scripts/set-gsettings
 
 # Notifications
 exec swaync
@@ -57,16 +57,19 @@ exec swaync
 #exec nwg-panel
 #exec ags run
 #exec sleep 5 && ags run ~/git/astal/examples/gtk3/js/osd/app.ts # There needs to be a delay between running multiple widgets
-exec --no-startup-id waybar
+#exec --no-startup-id waybar
+exec --no-startup-id ironbar
+# Reload bars
+exec_always ironbar reload
 exec_always killall -SIGUSR2 waybar
 
 # Borders
 default_border pixel 3
 default_floating_border pixel 3
 hide_edge_borders none
-titlebar_border_thickness 3
 ## Hides window titles in tiled mode
-hide_edge_borders --i3 none
+#hide_edge_borders --i3 none
+titlebar_border_thickness 3
 
 # vim:foldmethod=marker
 # vim:ft=swayconfig

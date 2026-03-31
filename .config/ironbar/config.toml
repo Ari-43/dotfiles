@@ -1,0 +1,80 @@
+name = "main"
+position = "top"
+height = 24
+icon_theme = "Papirus-Dark"
+popup_autohide = true
+
+[[start]]
+type = "workspaces"
+favorites = ['1', '2']
+
+[start.name_map] 
+1 = 'icon:terminal'
+2 = 'icon:firefox'
+
+[[start]]
+type = "focused"
+icon_size = 16
+
+[[center]]
+type = "clock"
+
+[[end]]
+type = "battery"
+show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'"
+
+[[end]]
+type = "sys_info"
+format = [
+    "󰍛 {cpu_percent}%",
+    "  {memory_percent}%",
+]
+
+[end.interval]
+cpu = 1
+
+[[end]]
+type = "tray"
+on_click_left = 'menu'
+on_click_right = 'default'
+prefer_theme_icons = true
+
+[[end]]
+class = 'power-menu'
+tooltip = '''Up: {{30000:uptime -p | cut -d ' ' -f2-}}'''
+type = 'custom'
+
+[[end.bar]]
+label = ''
+name = 'power-btn'
+on_click = 'popup:toggle'
+type = 'button'
+
+[[end.popup]]
+orientation = 'vertical'
+type = 'box'
+
+[[end.popup.widgets]]
+label = 'Power menu'
+name = 'header'
+type = 'label'
+
+[[end.popup.widgets]]
+type = 'box'
+
+[[end.popup.widgets.widgets]]
+class = 'power-btn'
+label = '''<span font-size='40pt'></span>'''
+on_click = '!shutdown now'
+type = 'button'
+
+[[end.popup.widgets.widgets]]
+class = 'power-btn'
+label = '''<span font-size='40pt'></span>'''
+on_click = '!reboot'
+type = 'button'
+
+[[end.popup.widgets]]
+label = '''Uptime: {{30000:uptime -p | cut -d ' ' -f2-}}'''
+name = 'uptime'
+type = 'label'

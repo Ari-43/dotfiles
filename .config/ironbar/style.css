@@ -1,0 +1,114 @@
+:root {
+    --color-dark-primary: #000000;
+    --color-bg: var(--theme_bg_color);
+    --color-bg1: var(--theme_base_color);
+    --color-dark-secondary: #2d2d2d;
+    --color-white: #fff;
+    --color-active: #6699cc;
+    --color-urgent: #8f0a0a;
+
+    --margin-lg: 1em;
+    --margin-sm: 0.5em;
+}
+
+* {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background-color: var(--color-bg);
+    font-family: 'NotoSans Nerd Font';
+}
+
+#bar, popover, popover contents, calendar {
+    background-color: var(--color-bg);
+}
+
+box, button, label {
+    color: var(--color-white);
+}
+
+button {
+    padding-left: var(--margin-sm);
+    padding-right: var(--margin-sm);
+}
+
+button:hover, button:active {
+    background-color: var(--color-bg1);
+}
+
+#end > * + * {
+	margin-left: var(--margin-lg);
+}
+
+.sysinfo > * + * {
+    margin-left: var(--margin-sm);
+}
+
+.clock {
+    font-weight: bold;
+}
+
+.popup-clock .calendar-clock {
+    font-size: 2.0em;
+}
+
+.popup-clock .calendar .today {
+    background-color: var(--color-active);
+}
+
+.workspaces {
+	padding-right: 5px;
+}
+
+.workspaces .item.visible {
+    box-shadow: inset 0 -1px var(--color-white);
+}
+
+.workspaces .item.focused {
+    box-shadow: inset 0 -1px var(--color-active);
+    background-color: var(--color-bg1);
+}
+
+.workspaces .item.urgent {
+    background-color: var(--color-urgent);
+}
+
+.power-menu {
+    margin-left: 10px;
+}
+
+.power-menu #power-btn {
+    color: white;
+    background-color: #2d2d2d;
+}
+
+.power-menu #power-btn:hover {
+    background-color: #1c1c1c;
+}
+
+.popup-power-menu {
+    padding: 1em;
+}
+
+.popup-power-menu #header {
+    color: white;
+    font-size: 1.4em;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.4em;
+    margin-bottom: 0.8em;
+}
+
+.popup-power-menu .power-btn {
+    color: white;
+    background-color: #2d2d2d;
+    border: 1px solid white;
+    padding: 0.6em 1em;
+}
+
+.popup-power-menu .power-btn + .power-btn {
+    margin-left: 1em;
+}
+
+.popup-power-menu .power-btn:hover {
+    background-color: #1c1c1c;
+}
