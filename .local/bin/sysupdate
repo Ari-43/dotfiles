@@ -21,8 +21,45 @@ function runife () {
 	fi
 }
 
+function mkselection () {
+	read -p "${1} ${2} " selected
+	export $3="$selected"
+}
+
 function boxline () {
 	printf '%.s─' $(seq 1 $(tput cols))
+}
+
+function kernelupdate () {
+	# Kernel upgrade method selection. 
+	# TODO: Detect running kernels other than mainline (i.e. linux-zen, linux-lts, linux-hardened) and 
+	# check if they specifically were updated
+	notify-send 'Additional action required to complete update'
+
+	syskernel=$(uname -r)
+	pkgkernel=$(pacman -Q linux)
+	pkgkernel=${pkgkernel:5} # Assumes the kernel package name is 5 chars
+	if [[ "$syskernel" != "$pkgkernel" ]]; then
+		mkselection 'The running kernel has updated. Would you like to kexec (y/k), (r)eboot, or do (n)othing?' '(Y/K/r/n)' kexecselect
+		if [[ "$kexecselect" =~ ^[YyKk]$ ]] || [[ -z "$kexecselect" ]]; then
+			uponcomplete='kexec'
+		elif [[ "$kexecselect" =~ ^[Rr]$ ]]; then
+			uponcomplete='reboot'
+		else
+			echo 'Doing nothing, driver instability may occur.'
+		fi
+	fi
+	if [[ -n "$uponcomplete" ]]; then
+		boxline
+		echo "Proceeding to $uponcomplete..."
+		sleep 1
+		if [[ "$uponcomplete" == 'kexec' ]]; then
+			sudo kexec -l /boot/vmlinuz-linux --initrd=/boot/initramfs-linux.img --reuse-cmdline
+			sudo systemctl kexec
+		elif [[ "$uponcomplete" == 'reboot' ]]; then
+			systemctl reboot
+		fi
+	fi
 }
 
 useaur=1
@@ -30,7 +67,7 @@ aurhelper='paru'
 useflatpak=1
 userustup=1
 useprotonup=1
-useprotonrtsp=1
+useprotonrtsp=0
 usefwupd=1
 
 sourceife /etc/os-release
@@ -55,7 +92,7 @@ fi
 if [[ $useflatpak == 1 ]]; then
 	boxline
 	echo 'Updating Flatpak packages...'
-	runifce flatpak upgrade
+	runifce flatpak upgrade -y # A flatpak breaking is extremely rare and a relatively minor issue for me. I therefore consider this safe. 
 fi
 if [[ $useprotonup == 1 ]]; then
 	boxline
@@ -78,4 +115,7 @@ if [[ $usefwupd == 1 ]]; then
 fi
 
 boxline
+kernelupdate
+notify-send 'All updates complete!'
 read -p 'All updates complete'
+boxline
