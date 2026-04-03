@@ -115,7 +115,8 @@ alias yt1080="yt-dlp --format 'bestvideo[height<=1080]+bestaudio'"
 alias yt720="yt-dlp --format 'bestvideo[height<=720]+bestaudio'"
 alias kssh="kitten ssh"
 alias ssh="kitten ssh"
-function paste() {
-	local file=${1:-/dev/stdin}
-	curl --data-binary @${file} https://paste.rs
-}
+#function paste() {
+#	local file=${1:-/dev/stdin}
+#	curl --data-binary @${file} https://paste.rs
+#}
+alias paste="nc termbin.com 9999"
