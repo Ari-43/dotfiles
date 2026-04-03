@@ -38,6 +38,7 @@ if [[ $1 == 'x11' ]]; then
 	#setxkbmap -layout us,us -variant 'dvorak, '
 	
 	# Tray applets
+	snixembed & # Fix Equibop
 	blueman-applet &
 	ibus-daemon &
 	kdeconnect-indicator &
