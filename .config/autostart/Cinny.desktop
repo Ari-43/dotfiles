@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network;
+Comment=Yet another matrix client
+Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 cinny
+StartupWMClass=cinny
+Icon=cinny
+Name=Cinny
+Terminal=false
+Type=Application

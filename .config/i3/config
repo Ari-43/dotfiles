@@ -275,6 +275,7 @@ assign [title="Equibop"] $ws8
 assign [class="equibop"] $ws8
 assign [title="^Element"] $ws8
 assign [title="^FluffyChat"] $ws8
+assign [title="^Cinny"] $ws8
 assign [class="Signal"] $ws8
 assign [class="vrcx"] $ws8
 
