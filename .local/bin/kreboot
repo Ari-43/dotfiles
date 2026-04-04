@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+echo Obtaining superuser permissions...
+sudo echo -n
+sudo kexec -l /boot/vmlinuz-linux --initrd=/boot/initramfs-linux.img --reuse-cmdline
+echo "Proceeding to kexec..."
+sleep 1
+sudo systemctl kexec
