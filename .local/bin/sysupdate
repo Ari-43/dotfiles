@@ -37,10 +37,11 @@ function kernelupdate () {
 	notify-send 'Additional action required to complete update'
 
 	syskernel=$(uname -r)
-	pkgkernel=$(pacman -Q linux)
-	pkgkernel=${pkgkernel:5} # Assumes the kernel package name is 5 chars
-	if [[ "$syskernel" != "$pkgkernel" ]]; then
-		mkselection 'The running kernel has updated. Would you like to kexec (y/k), (r)eboot, or do (n)othing?' '(Y/K/r/n)' kexecselect
+	# The kernel package replaces the '-' before 'arch' (the patchset) with a '.' because of how pacman works. This switches the format to the proper one from the kernel. 
+	pkgkernel=$(pacman -Q linux | sed -e 's/.arch/-arch/g') 
+	pkgkernel=${pkgkernel:6} # Assumes the kernel package name is 5 chars
+	if [ "$syskernel" != "$pkgkernel" ]; then
+		mkselection "The running kernel has updated from $syskernel to $pkgkernel. Would you like to kexec (y/k), (r)eboot, or do (n)othing?" '(Y/K/r/n)' kexecselect
 		if [[ "$kexecselect" =~ ^[YyKk]$ ]] || [[ -z "$kexecselect" ]]; then
 			uponcomplete='kexec'
 		elif [[ "$kexecselect" =~ ^[Rr]$ ]]; then
@@ -66,7 +67,7 @@ useaur=1
 aurhelper='paru'
 useflatpak=1
 userustup=1
-useprotonup=1
+useprotonup=0
 useprotonrtsp=0
 usefwupd=1
 
@@ -76,13 +77,14 @@ sourceife $HOME/.config/sysupdate/config
 if [[ $userustup == 1 ]]; then
 	boxline
 	echo 'Updating rust packages with rustup...'
-	runifce rustup update
+	echo -n 'rustup self: '; rustup self upgrade-data
+	rustup update
 fi
 if [[ $ID == 'arch' ]]; then
 	if [[ $useaur = 1 ]]; then
 		boxline
 		echo 'Updating Pacman and AUR packages...'
-		runifce $aurhelper -Syu
+		$aurhelper -Syu
 	else
 		boxline
 		echo 'Updating Pacman packages...'
@@ -92,12 +94,12 @@ fi
 if [[ $useflatpak == 1 ]]; then
 	boxline
 	echo 'Updating Flatpak packages...'
-	runifce flatpak upgrade -y # A flatpak breaking is extremely rare and a relatively minor issue for me. I therefore consider this safe. 
+	flatpak upgrade -y # A flatpak breaking is extremely rare and a relatively minor issue for me. I therefore consider this safe. 
 fi
 if [[ $useprotonup == 1 ]]; then
 	boxline
 	echo 'Updating Proton-GE...'
-	runifce protonup-rs --quick-download 
+	protonup-rs --quick-download 
 fi
 if [[ $useprotonrtsp == 1 ]]; then
 	boxline
