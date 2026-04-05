@@ -11,6 +11,7 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'fladson/vim-kitty'
 Plug 'ap/vim-css-color'
 Plug 'elkowar/yuck.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 
 autocmd VimEnter *
