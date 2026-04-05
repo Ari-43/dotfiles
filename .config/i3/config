@@ -268,9 +268,11 @@ workspace 10 output DP-4 eDP e-DP
 # }}}
 
 # Application Workspaces {{{
+# Browsers
 assign [class="firefox"] $ws2
 assign [class="librewolf"] $ws2
 
+# Game launchers and utilities
 assign [class="wivrn-dashboard"] $ws5
 assign [class="alvr.dashboard"] $ws5
 assign [class="alvr.launcher"] $ws5
@@ -279,20 +281,27 @@ assign [title="^Steam"] $ws5
 assign [title="Sign in to Steam"] $ws5
 assign [class="heroic"] $ws5
 
+# Covers games running via Proton
+# Doesn't work for Linux-native games or occasionally some Windows games
 assign [class="^steam_app_"] $ws6
+# TODO: Add some specific linux-native games I play a lot (ie. Half-Life)
 assign [title="^Minecraft"] $ws6
 
+# Social media workspace
 assign [class="discord"] $ws8
 assign [title="Vesktop"] $ws8
 assign [class="vesktop"] $ws8
 assign [class="vencord"] $ws8
 assign [title="Equibop"] $ws8
 assign [class="equibop"] $ws8
+assign [class="vrcx"] $ws8
+assign [title="^Cinny"] $ws8
 assign [title="^Element"] $ws8
 assign [title="^FluffyChat"] $ws8
-assign [title="^Cinny"] $ws8
 assign [class="Signal"] $ws8
-assign [class="vrcx"] $ws8
+assign [class="fluxer"] $ws8
+assign [class="stoat-desktop"] $ws8
+assign [class="dino"] $ws8
 exec --no-startup-id "i3-msg 'workspace 8; append_layout $HOME/.config/i3/ws/ws8.json; workspace 1'"
 
 assign [class="Cider"] $ws9
@@ -355,10 +364,6 @@ for_window [title="^Oryx$"] floating enable
 
 # GTK Theme Fix for libadwaita
 exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-
-# Update power sources on i3 restart (maybe?)
-# Power sources do not always automatically update when a battery is added or removed
-exec_always --no-startup-id upower --enumerate
 
 # i3 starts with the wrong workspace focused when the lowest numbered monitor output is not workspace 1
 exec --no-startup-id i3-msg workspace 1
