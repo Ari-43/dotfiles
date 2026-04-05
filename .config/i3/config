@@ -98,6 +98,12 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
+# or, use mouse buttons
+# button8 is typically forward
+bindsym --whole-window $mod+button8 focus left
+# button9 is typically back
+bindsym --whole-window $mod+button9 focus right
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -209,6 +215,9 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
+
+# Switch workspaces relatively
+# TODO: Make this more readable
 bindcode $mod+Control+44 workspace prev_on_output
 bindcode $mod+Control+47 workspace next_on_output
 bindsym $mod+Control+Left workspace prev_on_output
@@ -221,6 +230,15 @@ bindcode Control+mod1+44 workspace prev_on_output
 bindcode Control+mod1+47 workspace next_on_output
 bindsym Control+mod1+Left workspace prev_on_output
 bindsym Control+mod1+Right workspace next_on_output
+# Switch workspaces relatively with mouse buttons
+# button8 is typically forward
+bindsym --whole-window $mod+mod1+button8 workspace next_on_output
+bindsym --whole-window $mod+Control+button9 workspace next_on_output
+bindsym --whole-window Control+mod1+button8 workspace next_on_output
+# button9 is typically back
+bindsym --whole-window $mod+mod1+button9 workspace prev_on_output
+bindsym --whole-window $mod+Control+button9 workspace prev_on_output
+bindsym --whole-window Control+mod1+button9 workspace prev_on_output
 
 bindsym $mod+Control+space move scratchpad
 bindsym $mod+mod1+space scratchpad show
