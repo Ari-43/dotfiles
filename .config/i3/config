@@ -232,13 +232,13 @@ bindsym Control+mod1+Left workspace prev_on_output
 bindsym Control+mod1+Right workspace next_on_output
 # Switch workspaces relatively with mouse buttons
 # button8 is typically forward
-bindsym --whole-window $mod+mod1+button8 workspace next_on_output
+bindsym --whole-window $mod+mod1+button9 workspace next_on_output
 bindsym --whole-window $mod+Control+button9 workspace next_on_output
-bindsym --whole-window Control+mod1+button8 workspace next_on_output
+bindsym --whole-window Control+mod1+button9 workspace next_on_output
 # button9 is typically back
-bindsym --whole-window $mod+mod1+button9 workspace prev_on_output
-bindsym --whole-window $mod+Control+button9 workspace prev_on_output
-bindsym --whole-window Control+mod1+button9 workspace prev_on_output
+bindsym --whole-window $mod+mod1+button8 workspace prev_on_output
+bindsym --whole-window $mod+Control+button8 workspace prev_on_output
+bindsym --whole-window Control+mod1+button8 workspace prev_on_output
 
 bindsym $mod+Control+space move scratchpad
 bindsym $mod+mod1+space scratchpad show
@@ -256,7 +256,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Screen config
-## NOTE: The amdgpu and i915 drivers use eDP for the first internal display, but nvidia(-open) uses e-DP. Both eDP and e-DP should be used and treated as equivalent. 
+## NOTE: The amdgpu and i915 drivers use eDP for the first internal display, but nvidia uses e-DP. Both eDP and e-DP should be used and treated as equivalent. 
 workspace 1 output DP-2 DisplayPort-10 DisplayPort-2
 workspace 2 output DisplayPort-10 DisplayPort-2 DP-0
 workspace 3 output DP-4 eDP e-DP
