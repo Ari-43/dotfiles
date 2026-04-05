@@ -1,0 +1,104 @@
+// vim:ts=4:sw=4:et
+{
+    // tabbed split container with 4 children
+    "border": "none",
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "marks": [],
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1338,
+               "width": 2536,
+               "x": 13,
+               "y": 92
+            },
+            "marks": [],
+            "name": "Equibop",
+            "percent": 0.25,
+            "swallows": [
+               {
+                  "class": "^equibop$",
+                  "instance": "^equibop$",
+                  "title": "^Equibop$",
+                  "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1338,
+               "width": 2536,
+               "x": 13,
+               "y": 92
+            },
+            "marks": [],
+            "name": "VRCX",
+            "percent": 0.25,
+            "swallows": [
+               {
+                  "class": "^vrcx$",
+                  "instance": "^vrcx$",
+                  "title": "^VRCX$",
+                  "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "Cinny",
+            "percent": 0.25,
+            "swallows": [
+               {
+                  "class": "^Cinny$",
+                  "instance": "^cinny$",
+                  "title": "^Cinny$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1338,
+               "width": 2536,
+               "x": 13,
+               "y": 92
+            },
+            "marks": [],
+            "name": "Signal",
+            "percent": 0.25,
+            "swallows": [
+               {
+                  "class": "^Signal$",
+                  "instance": "^signal$",
+                  "title": "^Signal$",
+                  "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

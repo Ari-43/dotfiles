@@ -265,9 +265,6 @@ workspace 6 output DisplayPort-10 DisplayPort-2 DP-0
 workspace 8 output DP-4 eDP e-DP
 workspace 9 output DP-4 eDP e-DP
 workspace 10 output DP-4 eDP e-DP
-
-# i3 starts with the wrong workspace focused when the lowest numbered monitor output is not workspace 1
-exec --no-startup-id i3-msg workspace 1
 # }}}
 
 # Application Workspaces {{{
@@ -296,6 +293,7 @@ assign [title="^FluffyChat"] $ws8
 assign [title="^Cinny"] $ws8
 assign [class="Signal"] $ws8
 assign [class="vrcx"] $ws8
+exec --no-startup-id "i3-msg 'workspace 8; append_layout $HOME/.config/i3/ws/ws8.json; workspace 1'"
 
 assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
@@ -361,6 +359,9 @@ exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-sche
 # Update power sources on i3 restart (maybe?)
 # Power sources do not always automatically update when a battery is added or removed
 exec_always --no-startup-id upower --enumerate
+
+# i3 starts with the wrong workspace focused when the lowest numbered monitor output is not workspace 1
+exec --no-startup-id i3-msg workspace 1
 
 # vim:foldmethod=marker
 # vim:ft=swayconfig
