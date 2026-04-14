@@ -4,9 +4,9 @@ function counter() {
 	echo "Try #$count"
 }
 count=0
-counter
 echo 'Retrying `'"$@"'` until it succeeds'
-while ! sh -c "$@"; do 
+counter
+while ! sh -c "${*}"; do 
 	counter
 done 
 echo 'Command `'"$@"'` succeeded in '"$count"' tries'
