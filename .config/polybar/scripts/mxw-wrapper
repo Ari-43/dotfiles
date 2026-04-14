@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 if command -v mxw &>/dev/null; then
-	mowtool='mxw'
+	bat=$(mxw report battery --hide-status 2>/dev/null)
 elif command -v mow &>/dev/null; then
-	mowtool='mow'
+	bat=$(mow report battery 2>/dev/null)
 else
 	echo 'No Glorious wireless mouse support tool (mxw, mow) installed'
 	exit 2
 fi
 
-bat=$($mowtool report battery 2>/dev/null)
 
 if [[ "$bat" = *\%* ]]; then
 	#set -- $bat
