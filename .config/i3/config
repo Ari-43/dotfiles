@@ -302,7 +302,9 @@ assign [class="Signal"] $ws8
 assign [class="fluxer"] $ws8
 assign [class="stoat-desktop"] $ws8
 assign [class="dino"] $ws8
-exec --no-startup-id "i3-msg 'workspace 8; append_layout $HOME/.config/i3/ws/ws8.json; workspace 1'"
+# TODO: Make this not depend on $HOME being `/home/ari/`
+# TODO: Split this out into a script with more advanced logic, such as installed application and autostart checking
+exec --no-startup-id "i3-msg 'workspace 8; append_layout /home/ari/.config/i3/ws/ws8.json; workspace 1'"
 
 assign [class="Cider"] $ws9
 assign [title="Apple Music*"] $ws9
