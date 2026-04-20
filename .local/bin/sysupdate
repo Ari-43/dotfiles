@@ -68,7 +68,7 @@ aurhelper='paru'
 useflatpak=1
 userustup=1
 useprotonup=0
-useprotonrtsp=0
+useprotonrtsp=1
 usefwupd=1
 
 sourceife /etc/os-release
@@ -81,6 +81,8 @@ if [[ $userustup == 1 ]]; then
 	rustup update
 fi
 if [[ $ID == 'arch' ]]; then
+	echo 'Updating Pacman files database'
+	sudo pacman -Fy
 	if [[ $useaur = 1 ]]; then
 		boxline
 		echo 'Updating Pacman and AUR packages...'
@@ -94,7 +96,9 @@ fi
 if [[ $useflatpak == 1 ]]; then
 	boxline
 	echo 'Updating Flatpak packages...'
-	flatpak upgrade -y # A flatpak breaking is extremely rare and a relatively minor issue for me. I therefore consider this safe. 
+	flatpak upgrade -y # A flatpak operation breaking something is extremely rare and a relatively minor issue for me. I therefore consider this safe. 
+	echo 'Removing unused Flatpak packages...'
+	flatpak uninstall --unused -y
 fi
 if [[ $useprotonup == 1 ]]; then
 	boxline

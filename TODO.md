@@ -10,61 +10,34 @@
 # General To-Do (Low priority)
 
 - Add support for other distributions and package managers to polybar update status script
-  
   - `apt`
-  
   - Nix
-  
-  - Flatpak (High priority)
-
 - Add support for other distributions and package managers to sysupdate script
-  
   - `apt`
-  
   - Nix
-  
-  - Flatpak
-
 - Make polybar modules that do not strictly need to use a monospace font more readable using Noto Sans
-  
   - xwindow
   - date
   - i3
-
 - Fix polybar icon vertical alignment
-
 - Fix horizontal alignment of some icons
-  
   - Volume mute/unmute shifts the icon
     - Use a half space to add padding to the unmuted icon?
-
 - Fix spacing of polybar network icons
-
 - Finish Albert configuration
-  
   - Fix xborder showing around albert with empty padding in between
-
 - Set up an easier way of switching keyboard layouts
-  
   - Currently using ibus-daemon or shell commands/aliases
-
 - Reorganize polybar to be more balanced instead of most modules being on the right
-
 - Fix non-centered picom shadow on Polybar
-
+- Implement dynamic volume controls for airpods (6.25% increments)
 # Long-term project: Switch to Sway(Fx)
-
 - All applicable General TODO items
-
 - Set up a bar that works on Wayland
-  
   - Options: Waybar, Eww, ags
-
 - Security & Power managment
-  
   - Suspend on lid close
   - LightDM-like lock screen
-
+	  - xfce4-screensaver
 - Screenshot tool
-  
-  - xfce4-screenshooter may work since the XFCE 4.20 update
+  - xfce4-screenshooter works
