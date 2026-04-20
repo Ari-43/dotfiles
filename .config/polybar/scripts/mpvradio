@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Warning: Experimental script
-
 # Set default config variables
 radiotmp="$XDG_RUNTIME_DIR/mpvradio/"
 #radiourl='https://wreckage-systems.club/radio/8000/stream192.mp3'
@@ -28,6 +26,14 @@ statusline () {
 	fi
 }
 
+toggleradio () {
+	if [[ $status == 0 ]]; then
+		radiomanager play
+	else
+		radiomanager pause
+	fi
+}
+
 radiomanager () {
 	action=$1
 	if [[ $action == play ]]; then
@@ -42,14 +48,6 @@ radiomanager () {
 	fi
 	mkdir -p $radiotmp > /dev/null
 	echo $status > $radiotmp/status
-}
-
-toggleradio () {
-	if [[ $status == 0 ]]; then
-		radiomanager play
-	else
-		radiomanager pause
-	fi
 }
 
 if [ -z $status ] || (( $status >= 2 )); then
@@ -69,6 +67,7 @@ if ! [ -z $action ]; then
 		# also kill any other mpv instances, so using it regularly is not 
 		# desirable. 
 		radiomanager pause
+		# TODO: Only kill mpv instances spawned by this script
 		killall mpv
 	fi
 fi

@@ -7,7 +7,7 @@ if [[ $XDG_CURRENT_DESKTOP == 'sway' ]] || [[ $XDG_SESSION_DESKTOP == 'sway' ]] 
 	elif [[ $(sway --version | awk '{print $1}') == "sway" ]]; then
 		i3type='sway'
 	fi
-elif [[ $XDG_CURRENT_DESKTOP == 'i3' ]] || [[ $XDG_SESSION_DESKTOP == 'i3' ]] || [[ $DESKTOP_SESSION == 'i3' ]] && [[ $(i3 --version) =~ "^i3 " ]]; then
+elif [[ $XDG_CURRENT_DESKTOP == 'i3' ]] || [[ $XDG_SESSION_DESKTOP == 'i3' ]] || [[ $DESKTOP_SESSION =~ "^i3" ]] && [[ $(i3 --version) =~ "^i3 " ]]; then
 	i3type='i3'
 else
 	# Fall back to standard i3
