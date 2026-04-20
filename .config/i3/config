@@ -322,13 +322,39 @@ assign [class="background-kitty"] $wsbg # For background kitty instance
 # Colors & Visual Tweaks {{{
 # TODO: Find a way to read variables for this section
 # class                 border  backgr. text    indicator child_border
-client.focused          #c4a7e7 #1d1f21 #d8d4cf #88c0d0   #c4a7e7
-client.focused_inactive #333333 #222222 #d8d4cf #88c0d0   #5f676a
-client.unfocused        #333333 #222222 #777777 #292d2e   #222222
-client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
-client.placeholder      #000000 #0c0c0c #d8d4cf #000000   #0c0c0c
+#client.focused          #c4a7e7 #1d1f21 #d8d4cf #88c0d0   #c4a7e7
+#client.focused_inactive #333333 #222222 #d8d4cf #88c0d0   #5f676a
+#client.unfocused        #333333 #222222 #777777 #292d2e   #222222
+#client.urgent           #2f343a #900000 #d8d4cf #900000   #900000
+#client.placeholder      #000000 #0c0c0c #d8d4cf #000000   #0c0c0c
+#
+#client.background       #ffffff
 
-client.background       #ffffff
+# set primary Rosé Pine colorscheme colors
+set $base           #191724
+set $surface        #1f1d2e
+set $overlay        #26233a
+set $muted          #6e6a86
+set $subtle         #908caa
+set $text           #e0def4
+set $love           #eb6f92
+set $gold           #f6c177
+set $rose           #ebbcba
+set $pine           #31748f
+set $foam           #9ccfd8
+set $iris           #c4a7e7
+set $highlightlow   #21202e
+set $highlightmed   #403d52
+set $highlighthigh  #524f67
+
+# Theming border and Windows --------------
+# target                 title     bg         text   indicator  border
+client.focused           $iris     $surface   $text  $iris      $iris
+client.focused_inactive  $text     $base      $text  $subtle    $surface
+client.unfocused         $overlay  $base      $text  $overlay   $overlay
+client.urgent            $text     $base      $text  $love      $love
+client.placeholder       $base     $base      $text  $overlay   $overlay
+client.background        $base
 
 # Use gaps
 gaps inner 10
