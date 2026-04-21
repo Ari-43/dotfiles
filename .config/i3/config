@@ -9,8 +9,7 @@ include $HOME/.config/i3/config-$i3type
 set $mod Mod4
 
 # Fonts {{{
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# Font for window titles
 #font pango:monospace 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
