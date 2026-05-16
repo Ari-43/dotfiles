@@ -1,5 +1,10 @@
 # i3 config file (v4)
-# Sway(FX)-specific configuration. This configuration file will not be sourced by i3.
+# Fixes provided by package (https://wiki.archlinux.org/title/Sway#Screencast_/_WebRTC_not_working)
+include /etc/sway/config.d/*
+
+# Sway-specific configuration. This configuration file will not be sourced by i3, but will be used by SwayFX
+include $HOME/.config/i3/config-base
+include $HOME/.config/sway/config-$i3type
 
 set $mod Mod4
 
@@ -25,6 +30,7 @@ input 2:10:TPPS/2_IBM_TrackPoint {
 # Video output configuration {{{
 output 'ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00039EBD' {
 	mode 2560x1440@119.998Hz
+	scale 1.125
 }
 output 'BOE 0x0BCA Unknown' {
 	# Framework Laptop 13 internal display
@@ -40,15 +46,16 @@ output 'BOE 0x0BCA Unknown' {
 # Support for Wayland is experimental and very unstable, replace this
 #set $locker xfce4-screensaver-command --lock
 
-bindsym $mod+mod1+l exec --no-startup-id $locker
-bindsym Control+mod1+l exec --no-startup-id $locker
+#bindsym $mod+mod1+l exec --no-startup-id $locker
+#bindsym Control+mod1+l exec --no-startup-id $locker
 # }}}
 
 # Wallpaper
-exec --no-startup-id swaybg --mode fill --image $HOME/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
+#exec --no-startup-id swaybg --mode fill --image $HOME/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
+exec --no-startup-id swaybg --mode fill --image $HOME/git/rose-pine/wallpapers/something-beautiful-in-nature.jpg
 
 # GTK Theme
-exec $HOME/.config/i3/scripts/set-gsettings
+exec $HOME/.config/sway/scripts/set-gsettings
 
 # Notifications
 exec swaync
@@ -61,15 +68,15 @@ exec swaync
 exec --no-startup-id ironbar
 # Reload bars
 exec_always ironbar reload
-exec_always killall -SIGUSR2 waybar
+#exec_always killall -SIGUSR2 waybar
 
 # Borders
-default_border pixel 3
-default_floating_border pixel 3
-hide_edge_borders none
+default_border pixel 2
+default_floating_border pixel 2
+#hide_edge_borders none
 ## Hides window titles in tiled mode
-#hide_edge_borders --i3 none
-titlebar_border_thickness 3
+hide_edge_borders --i3 none
+titlebar_border_thickness 2
 
 # vim:foldmethod=marker
 # vim:ft=swayconfig

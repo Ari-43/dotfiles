@@ -6,11 +6,19 @@ popup_autohide = true
 
 [[start]]
 type = "workspaces"
-favorites = ['1', '2']
 
 [start.name_map] 
-1 = 'icon:terminal'
-2 = 'icon:firefox'
+1 =  ''
+2 =  '󰖟'
+3 =  '󰲤'
+4 =  '󰲦'
+5 =  ''
+6 =  '󰊗'
+7 =  '󰲬'
+8 =  '󰍩'
+9 =  '󰐍'
+10 = '󰿬'
+
 
 [[start]]
 type = "focused"
@@ -18,6 +26,7 @@ icon_size = 16
 
 [[center]]
 type = "clock"
+format = "%e %b %Y %H:%M"
 
 [[end]]
 type = "battery"
@@ -26,14 +35,46 @@ show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'"
 [[end]]
 type = "sys_info"
 format = [
-    "󰍛 {cpu_percent}%",
-    "  {memory_percent}%",
+    "󰍛  {cpu_percent}%",
+    "   {memory_percent}%",
 ]
+
+[[end]]
+type = "volume"
+format = "{icon} {percentage}%"
+sink_slider_orientation = "vertical"
+max_volume = 100
+truncate = "end"
+
+[end.icons]
+volume = "󰕾"
+muted = "󰝟"
+
+[end.profiles.medium]
+when = 50
+
+[end.profiles.medium.icons]
+volume = "󰖀"
+
+[end.profiles.low]
+when = 25
+
+[end.profiles.low.icons]
+volume = "󰕿"
 
 [end.interval]
 cpu = 1
 
 [[end]]
+type = 'custom'
+class = 'tray-menu'
+
+[[end.bar]]
+label = '󱊘'
+on_click = 'popup:toggle'
+type = 'button'
+
+[[end.popup]]
 type = "tray"
 on_click_left = 'menu'
 on_click_right = 'default'
@@ -45,7 +86,7 @@ tooltip = '''Up: {{30000:uptime -p | cut -d ' ' -f2-}}'''
 type = 'custom'
 
 [[end.bar]]
-label = ''
+label = '⏻'
 name = 'power-btn'
 on_click = 'popup:toggle'
 type = 'button'
@@ -64,7 +105,7 @@ type = 'box'
 
 [[end.popup.widgets.widgets]]
 class = 'power-btn'
-label = '''<span font-size='40pt'></span>'''
+label = '''<span font-size='40pt'>⏻</span>'''
 on_click = '!shutdown now'
 type = 'button'
 

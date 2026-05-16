@@ -1,9 +1,12 @@
 # i3 config file (v4)
 # Source main Sway config
-include $HOME/.config/i3/config-sway
+
+# Animations
+animation_duration_ms = 150
 
 # Blur
 blur enable
+blur_xray enable
 blur_passes 3
 blur_radius 1
 

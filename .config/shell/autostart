@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-# Check if this is a Sway/i3-type session
-sourceife $HOME/.config/i3/scripts/swaydetect
+# Check if this is a Sway or SwayFX session
+sourceife $HOME/.config/sway/scripts/swayfxdetect
 
 if [[ $1 == 'x11' ]]; then
+	# If we're on X11, overwrite the i3type from a Sway one to i3.
+	sourceife $HOME/.config/i3/scripts/swaydetect
 
 	# Set display preset
 	runife $HOME/.screenlayout/$(hostname).sh

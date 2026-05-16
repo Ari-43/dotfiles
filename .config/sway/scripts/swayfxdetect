@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Modified from swaydetect when I used it to choose i3 as well. i3type here is either sway or swayfx. 
+# Detects if the current WM is Sway or SwayFX. This output is then used by the Sway configuration file to source necessary configurations for each environment. 
+# Check if first word of the sway binary's version is swayfx or not
+if [[ $(sway --version | awk '{print $1}') == "swayfx" ]]; then
+	i3type='swayfx'
+elif [[ $(sway --version | awk '{print $1}') == "sway" ]]; then
+	i3type='sway'
+else
+	# Fall back to standard Sway
+	# I may make something here that spits an error to the screen if no i3type is detected, possibly using zenity and/or i3-nagbar
+	i3type='none'
+fi
+export i3type
+echo i3-like environment is $i3type
