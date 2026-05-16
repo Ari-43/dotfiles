@@ -120,3 +120,4 @@ alias ssh="kitten ssh"
 #	curl --data-binary @${file} https://paste.rs
 #}
 alias paste="nc termbin.com 9999"
+alias jpegify="magick mogrify -verbose -format jpg"
