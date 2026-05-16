@@ -109,6 +109,9 @@
     space_drag: {
       left: "/user/hand/left/input/menu/click",
     },
+    //space_rotate: {
+    //  right: "/user/hand/right/input/thumbstick/y",
+    //},
     space_reset: {
       double_click: true,
       left: "/user/hand/left/input/menu/click",
