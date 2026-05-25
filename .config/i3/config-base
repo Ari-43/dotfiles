@@ -330,11 +330,6 @@ assign [title="WreckageSystems"] $ws9
 assign [title="Wreckage Systems"] $ws9
 
 for_window [class="Keymapp"] move scratchpad
-
-# Background kitty instance for instant startup
-# While Polybar is configured to hide the workspace it goes on, this also causes issues with relative workspace switiching
-#exec kitty -1 --app-id background-kitty sleep infinity
-assign [class="background-kitty"] $wsbg # For background kitty instance
 # }}}
 
 # Colors & Visual Tweaks {{{

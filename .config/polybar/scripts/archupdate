@@ -11,7 +11,7 @@ else
 	exit
 fi
 
-minupdatecount=50
+minupdatecount=100
 
 aurhelperlist=('paru' 'yay' 'pikaur')
 parucmd='paru -Qum'
