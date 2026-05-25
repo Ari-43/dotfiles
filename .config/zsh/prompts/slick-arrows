@@ -17,14 +17,27 @@ function loadpromptvars () {
 	rend="$rsep2" # Left end of RPROMPT
 
 	# Colors
-	txt="15" # Text color
-	lc1="27" # Left colors
-	lc2="39"
-	rc1="207" # Right colors
-	rc2="201"
-	rc3="165"
+	if [[ "$COLORTERM" == 'truecolor' ]]; then
+		txt="$theme_txt"
+		ltxt="$theme_txt"
+		rtxt="$theme_bg"
+		lc1="$theme_positive" # Left colors
+		lc2="$theme_positive"
+		rc1="$theme_primary" # Right colors
+		rc2="$theme_primary"
+		rc3="$theme_primary"
+	else
+		txt="15" # Text color
+		lc1="27" # Left colors
+		lc2="39"
+		rc1="207" # Right colors
+		rc2="201"
+		rc3="165"
+	fi
 
 	txtc="%F{$txt}" # Text color
+	ltxtc="%F{$ltxt}"
+	rtxtc="%F{$rtxt}"
 	lfg1="%F{$lc1}" # Left foreground colors
 	lfg2="%F{$lc2}"
 	rfg1="%F{$rc1}" # Right foreground colors
@@ -52,7 +65,7 @@ function cleanecp () {
 	# If the error code is missing or 0 (ok), then don't show anything
 	if [[ $ecpout != '0 (ok)' ]] || [[ -z $ecpout ]]; then
 		loadpromptvars
-		echo -n "$rbg1$txtc $ecpout "
+		echo -n "$rbg1$rtxtc $ecpout "
 		clearpromptvars
 	else
 		echo -n ""
@@ -74,8 +87,8 @@ prompt_slick-arrows_setup () {
 	# TODO: Improve performance
 	loadpromptvars
 
-	PS1="$lfg1$ledge$lbg1$txtc"' %n '"$resetc$lfg1$lsep2$lfg2$lsep1$txtc"'$(cleanpwd)'"$resetc$lfg2$lsep2$resetc "
-	RPROMPT="$rfg1$rsep2"'$(cleanecp $?)'"$resetc$rfg1$rsep1$resetc$rfg2$rsep2$resetc$rbg2$txtc $($HOME/.config/shell/detectbox) $resetc$rfg2$rsep1$resetc$rfg3$rsep2$rbg3$txtc"' %* '"$resetbg$rfg3$redge$resetc"
+	PS1="$lfg1$ledge$lbg1$ltxtc"' %n '"$resetc$lfg1$lsep2$lfg2$lsep1$ltxtc"'$(cleanpwd)'"$resetc$lfg2$lsep2$resetc "
+	RPROMPT="$resetc$rfg1$rsep2$rtxtc"'$(cleanecp $?)'"$resetc$rfg1$rsep1$resetc$rfg2$rsep2$resetc$rbg2$rtxtc $($HOME/.config/shell/detectbox) $resetc$rfg2$rsep1$resetc$rfg3$rsep2$rbg3$rtxtc"' %* '"$resetbg$rfg3$redge$resetc"
 
 	clearpromptvars
 }

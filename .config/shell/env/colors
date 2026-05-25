@@ -167,7 +167,7 @@ fi
 #export theme15="$base0E"
 
 # Final theme mappings
-# Names are based on Nord, but the main use for each color should be consistent across themes (ie. $theme_primary is always the primary color)
+# Main use for each color should be consistent across themes (ie. $theme_primary is always the primary color)
 export             theme_bg="$theme0"
 export      theme_bg_raised="$theme1"
 export        theme_bg_high="$theme2"
@@ -182,10 +182,13 @@ export        theme_primary="$theme8"
 export   theme_primary_dark="$theme9"
 export theme_primary_darker="$theme10"
 
-export          theme_error="$theme11"
 export         theme_danger="$theme12"
+export        theme_success="$theme10"
+export       theme_positive="$theme14"
 export           theme_warn="$theme13"
-export        theme_success="$theme14"
+export          theme_error="$theme11"
+export       theme_failiure="$theme11"
+export       theme_negative="$theme11"
 
 # Transparency Configurations
 # TODO: Make this automatically use the defaults if the variable is not set instead of requiring manual definitions
