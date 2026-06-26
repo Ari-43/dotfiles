@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Cider
+Exec=env TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IldlYlBsYXlLaWQifQ.eyJpc3MiOiJBTVBXZWJQbGF5IiwiaWF0IjoxNzgxNjY1NDYwLCJleHAiOjE3ODQ2ODk0NjAsInJvb3RfaHR0cHNfb3JpZ2luIjpbImFwcGxlLmNvbSJdfQ.G9gedBX_DjTsGMB29EXibiCYMkVfgJ3YY2TchriAqcVZB1ecZsBR1R-7WjK2RcTXLWNJYxELYzR62iShvU5hhQ CIDER_PORT=9000 /usr/bin/cider %U
+Terminal=false
+Type=Application
+Icon=sh.cider.Cider
+StartupWMClass=Cider
+Comment=A new cross-platform Apple Music experience based on Electron and Vue.js written from scratch with performance in mind.
+MimeType=x-scheme-handler/ame;x-scheme-handler/cider;x-scheme-handler/itms;x-scheme-handler/itmss;x-scheme-handler/musics;x-scheme-handler/music;
+Categories=AudioVideo;
+Keywords=Apple;Music;AM
