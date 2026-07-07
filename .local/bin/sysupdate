@@ -125,7 +125,7 @@ fi
 if [[ $useprotonrtsp == 1 ]]; then
 	boxline
 	echo 'Updating Proton GE RTSP for VRChat...'
-	runife ~/.local/share/Steam/compatibilitytools.d/update-proton-ge-rtsp.sh
+	runife ~/.local/share/Steam/compatibilitytools.d/update-proton-rtsp.sh
 	echo 'Updating Proton GE RTSP Cam for VRChat...'
 	runife ~/.local/share/Steam/compatibilitytools.d/update-proton-ge-rtsp-cam.sh
 fi
