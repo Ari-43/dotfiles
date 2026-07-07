@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
 useaur=1
-aurhelper='paru'
+pacmanwrapperlist=('paru' 'yay' 'pacman')
 useflatpak=1
+userustup=1
+useprotonup=1
+useprotonrtsp=1
+usefwupd=1

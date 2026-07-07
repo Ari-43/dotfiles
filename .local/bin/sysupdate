@@ -2,6 +2,7 @@
 echo Obtaining superuser permissions...
 sudo echo -n
 
+# Convenience functions {{{
 function sourceife () {
 	if [ -f "$1" ]; then
 		source "$@"
@@ -29,6 +30,7 @@ function mkselection () {
 function boxline () {
 	printf '%.s─' $(seq 1 $(tput cols))
 }
+# }}}
 
 function kernelupdate () {
 	# Kernel upgrade method selection. 
@@ -37,7 +39,7 @@ function kernelupdate () {
 	syskernel=$(uname -r)
 	# The kernel package replaces the '-' before 'arch' (the patchset) with a '.' because of how pacman works. This switches the format to the proper one from the kernel. 
 	pkgkernel=$(pacman -Q linux | sed -e 's/.arch/-arch/g') 
-	pkgkernel=${pkgkernel:6} # Assumes the kernel package name is 5 chars
+	pkgkernel=${pkgkernel:6} # FIXME: Assumes the kernel package name is 5 chars
 	if [ "$syskernel" != "$pkgkernel" ]; then
 		boxline
 		notify-send 'Additional action required to complete update' &
@@ -63,16 +65,32 @@ function kernelupdate () {
 	fi
 }
 
-useaur=1
-aurhelper='paru'
-useflatpak=1
-userustup=1
-useprotonup=0
-useprotonrtsp=1
-usefwupd=1
-
 sourceife /etc/os-release
+
+useaur=0
+pacmanwrapperlist=('paru' 'yay' 'pikaur' 'pacman')
+useflatpak=0
+userustup=0
+useprotonup=0
+useprotonrtsp=0
+usefwupd=0
+
 sourceife $HOME/.config/sysupdate/config
+
+aursupport=0
+if [[ $useaur == 1 ]]; then
+	for wrapper in $pacmanwrapperlist; do
+		if [ -f $(which "$wrapper") ]; then
+			pacmanwrapper="$wrapper"
+			if [[ $pacmanwrapper != 'pacman' ]]; then
+				aursupport=1
+			fi
+			break
+		fi
+	done
+else
+	pacmanwrapper='pacman'
+fi
 
 if [[ $userustup == 1 ]]; then
 	boxline
@@ -82,14 +100,14 @@ if [[ $userustup == 1 ]]; then
 fi
 if [[ $ID == 'arch' ]]; then
 	boxline
-	echo 'Updating Pacman files database'
+	echo 'Updating Pacman files database...'
 	sudo pacman -Fy
-	if [[ $useaur = 1 ]]; then
+	if [[ $aursupport == 1 ]]; then
 		echo 'Updating Pacman and AUR packages...'
-		$aurhelper -Syu
+		$pacmanwrapper -Syuu
 	else
 		echo 'Updating Pacman packages...'
-		sudo pacman -Syu
+		sudo pacman -Syuu
 	fi
 fi
 if [[ $useflatpak == 1 ]]; then
@@ -102,7 +120,7 @@ fi
 if [[ $useprotonup == 1 ]]; then
 	boxline
 	echo 'Updating Proton GE...'
-	protonup-rs --quick-download 
+	protonup-rs --quick-download --whats-new
 fi
 if [[ $useprotonrtsp == 1 ]]; then
 	boxline
