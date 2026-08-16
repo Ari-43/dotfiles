@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+source $HOME/.config/autobg/autobg.conf
+if [[ -z "$background" ]] || [[ -z "$bgtype" ]]; then
+	background='#181818'
+	bgtype='color'
+fi
+
+x11tool='feh --no-fehbg --bg-fill'
+x11tool_image="$x11tool"
+x11tool_video=""
+x11tool_color="xsetroot -solid"
+wlrtool='swaybg --mode fill'
+wlrtool_image="$wlrtool --image"
+wlrtool_video="$wlrtool --image"
+wlrtool_color="$wlrtool --color"
+
+# Incorrectly assumes wlr is equivalent to wayland
+if [[ "$XDG_SESSION_TYPE" == 'wayland' ]]; then
+	bgtoolvar=wlrtool_$bgtype
+elif [[ "$XDG_SESSION_TYPE" == '' ]]; then
+	bgtoolvar=x11tool_$bgtype
+fi
+bgtool=${!bgtoolvar}
+echo "Using \`$bgtool\` to set the $bgtype background"
+$bgtool $background

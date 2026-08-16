@@ -6,7 +6,7 @@ animation_duration_ms = 150
 
 # Blur
 blur enable
-blur_xray enable
+blur_xray disable
 blur_passes 3
 blur_radius 1
 
@@ -20,7 +20,18 @@ default_dim_inactive 0.1
 
 # Borders
 corner_radius 10
-#titlebar_separator disable
+#smart_corner_radius true
+#titlebar_separator enable
+
+# Window rules
+layer_effects "ironbar" {
+	shadows enable;
+	shadow_offset 0 6;
+}
+
+set $opacity E6
+# target                 title     bg         text   indicator  border
+client.focused           $iris     $surface$opacity   $text  $overlay   $iris
 
 # vim:foldmethod=marker
 # vim:ft=swayconfig

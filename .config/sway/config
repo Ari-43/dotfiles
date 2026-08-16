@@ -35,16 +35,16 @@ output 'ASUSTek COMPUTER INC ASUS VG32VQ1B 0x00039EBD' {
 output 'BOE 0x0BCA Unknown' {
 	# Framework Laptop 13 internal display
 	mode 2256x1504@59.999Hz
-	scale 1.25
+	scale 1.3
 }
 # }}}
 
 # Locker/Screensaver {{{
-#exec --no-startup-id xfce4-power-manager --daemon
-#exec --no-startup-id xfce4-screensaver
+exec --no-startup-id xfce4-power-manager --daemon
+exec --no-startup-id xfce4-screensaver
 
 # Support for Wayland is experimental and very unstable, replace this
-#set $locker xfce4-screensaver-command --lock
+set $locker xfce4-screensaver-command --lock
 
 #bindsym $mod+mod1+l exec --no-startup-id $locker
 #bindsym Control+mod1+l exec --no-startup-id $locker
@@ -52,7 +52,8 @@ output 'BOE 0x0BCA Unknown' {
 
 # Wallpaper
 #exec --no-startup-id swaybg --mode fill --image $HOME/Pictures/wallpapers/framework/framework-exploded/framework-exploded-rosepine-highlight-iris.png
-exec --no-startup-id swaybg --mode fill --image $HOME/git/rose-pine/wallpapers/something-beautiful-in-nature.jpg
+#exec --no-startup-id swaybg --mode fill --image $HOME/git/rose-pine/wallpapers/something-beautiful-in-nature.jpg
+exec --no-startup-id autobg
 
 # GTK Theme
 exec $HOME/.config/sway/scripts/set-gsettings
@@ -61,22 +62,19 @@ exec $HOME/.config/sway/scripts/set-gsettings
 exec swaync
 
 # Desktop panel/bar
-#exec nwg-panel
-#exec ags run
-#exec sleep 5 && ags run ~/git/astal/examples/gtk3/js/osd/app.ts # There needs to be a delay between running multiple widgets
 #exec --no-startup-id waybar
 exec --no-startup-id ironbar
 # Reload bars
-exec_always ironbar reload
 #exec_always killall -SIGUSR2 waybar
+exec_always ironbar reload
 
 # Borders
 default_border pixel 2
 default_floating_border pixel 2
 #hide_edge_borders none
 ## Hides window titles in tiled mode
-hide_edge_borders --i3 none
-titlebar_border_thickness 2
+hide_edge_borders --i3 smart_no_gaps
+#titlebar_border_thickness 2
 
 # vim:foldmethod=marker
 # vim:ft=swayconfig
