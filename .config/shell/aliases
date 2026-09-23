@@ -38,6 +38,11 @@ alias nvp='nvimpager'
 alias untar='tar -fvxz'              
 alias mkdir='mkdir -pv' # Make new directories recursively (-p) and lists them (-v)
 alias mkd='mkdir'
+function mkcd () {
+	mkdir -p $1
+	cd $1
+	echo "mkcd: entered directory $1"
+}
 alias nvc='nvimpager -c'
 #aliasife bat cat --paging=never
 #aliasife nvimpager cat -c
@@ -73,6 +78,7 @@ alias histsearch='hist'
 alias sdn='shutdown now'
 alias du='du -h'
 alias df='df -h'
+alias ddd='dcfldd'
 alias gt='trash-put -v'
 alias db='distrobox'
 alias dbe='distrobox enter'
@@ -115,9 +121,11 @@ alias yt1080="yt-dlp --format 'bestvideo[height<=1080]+bestaudio'"
 alias yt720="yt-dlp --format 'bestvideo[height<=720]+bestaudio'"
 alias kssh="kitten ssh"
 alias ssh="kitten ssh"
-#function paste() {
-#	local file=${1:-/dev/stdin}
-#	curl --data-binary @${file} https://paste.rs
-#}
-alias paste="nc termbin.com 9999"
+function paste() {
+	local data=/dev/stdin
+	for pastebin in 'paste.rs'; do
+		curl --data-binary @${data} https://$pastebin || return 1
+		echo .$1
+	done
+}
 alias jpegify="magick mogrify -verbose -format jpg"
